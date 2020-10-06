@@ -23,6 +23,7 @@ use LWP::UserAgent;
    my $user     = $ENV{'RP_USER'}     // '';
    my $password = $ENV{'RP_PASSWORD'} // '';
    my $timeout  = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
+   my $DEBUG    = $ENV{'RP_DEBUG'}    || 0;
 
    if ($api_key eq '') {
       print "error: do source ../set.sh to set the envariables.\n";
@@ -30,10 +31,6 @@ use LWP::UserAgent;
    }
 
 ### start of contact settings
-
-   my $DEBUG = 1;
-
-   $timeout = TIMEOUT_SEC;
 
 ### end of contact settings
 

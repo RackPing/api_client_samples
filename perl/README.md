@@ -20,8 +20,8 @@ Install the following dependencies:
 
 ```
 perl --version
-cpan LWP
-cpan HTTP::Request
+sudo cpan LWP
+sudo cpan HTTP::Request
 jq (optional for the demo.sh test harness)
 ```
 

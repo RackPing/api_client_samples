@@ -6,7 +6,7 @@
 
 ### start of user settings
 
-# Your RackPing account API key
+# Your RackPing account API key (numeric)
 export RP_API_KEY=
 
 # Your RackPing account contact email address
@@ -15,8 +15,11 @@ export RP_USER=
 # Your RackPing account contact password
 export RP_PASSWORD=
 
-# RackPing Monitoring Client API timeout
+# RackPing Monitoring Client API timeout (seconds)
 export RP_TIMEOUT=5.0
+
+# Debug mode (zero when running demo.sh)
+export RP_DEBUG=0
 
 ### end of user settings
 

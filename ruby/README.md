@@ -1,6 +1,6 @@
-# RackPing API 2.0 Client Sample Python Programs
+# RackPing API 2.0 Client Sample Ruby Programs
 
-Python sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
+Ruby sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
 
 ## Getting Started
 
@@ -14,15 +14,13 @@ Python sample programs that you can copy-and-paste to automate common RackPing m
 
 ### Prerequisites
 
-python version 2.7.9 or higher.
+Tested with Ruby 2.3, but earlier 2.x versions may also work.
 
 Install the following dependencies:
 
 ```
-python --version (need 2.7.9 or higher)
-install python-pip
-sudo pip install urllib3
-sudo pip install requests
+ruby --version
+sudo gem install httparty
 jq (optional for the demo.sh test harness)
 ```
 
