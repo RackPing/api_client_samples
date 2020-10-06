@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 # Program: rp_pause_maint.rb
-# Usage: ./rp_pause_maint.rb
+# Usage: ./rp_pause_maint.rb checkid
 # Purpose: ruby language sample client program for RackPing Monitoring API 2.0
 # Copyright: RackPing USA 2020
 # Env: Ruby 2
