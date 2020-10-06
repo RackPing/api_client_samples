@@ -2,6 +2,7 @@
 
 # Program: demo.sh
 # Usage: ./demo.sh
+# Date: 2020 10 05
 # Purpose: demo/test harness for the RackPing Monitoring API sample client programs
 # Version: 1.0
 # Copyright: RackPing USA 2020

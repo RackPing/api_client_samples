@@ -1,5 +1,6 @@
 # Program: set.sh
 # Purpose: configure envariables for RackPing Monitoring API 2.0 sample client programs
+# Date: 2020 10 05
 # Env: bash
 # Usage: source set.sh
 # Note: this file needs to be 'sourced' to set the envariables. Executing this file will incorrectly only transiently set the envariables.
@@ -7,13 +8,13 @@
 ### start of user settings
 
 # Your RackPing account API key (numeric)
-export RP_API_KEY=
+export RP_API_KEY=""
 
 # Your RackPing account contact email address
-export RP_USER=
+export RP_USER=""
 
 # Your RackPing account contact password
-export RP_PASSWORD=
+export RP_PASSWORD=""
 
 # RackPing Monitoring Client API timeout (seconds)
 export RP_TIMEOUT=5.0
