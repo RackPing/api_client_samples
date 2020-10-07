@@ -17,7 +17,7 @@ export RP_USER=""
 export RP_PASSWORD=""
 
 # RackPing Monitoring Client API timeout (seconds)
-export RP_TIMEOUT=5.0
+export RP_TIMEOUT=5
 
 # Debug mode (zero when running demo.sh)
 export RP_DEBUG=0
