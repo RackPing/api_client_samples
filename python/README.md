@@ -42,7 +42,7 @@ chmod 755 filename
 
 ## Running the tests
 
-After installing all the files in this folder, you can use demo.sh as a test harness to create a temporary check and contact using your account::
+After installing all the files in this folder, you can use demo.sh as a test harness to create a temporary check and contact using your account:
 
 ```
 source ../set.sh

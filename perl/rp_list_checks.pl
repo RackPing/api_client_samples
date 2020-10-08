@@ -32,8 +32,6 @@ use LWP::UserAgent;
 
 ### start of user settings
 
-   $timeout = TIMEOUT_SEC;
-
 ### end of user settings
 
 # Create a user agent object

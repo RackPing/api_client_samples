@@ -32,11 +32,14 @@ use LWP::UserAgent;
 
 ### start of user settings
 
-   $timeout = TIMEOUT_SEC;
-
-   my $monitor = shift;
+   my $check = shift // '';
 
 ### end of user settings
+
+   if ($check eq '') {
+      print "usage: $0 id\n";
+      exit 1;
+   }
 
 # Create a user agent object
    my $ua = LWP::UserAgent->new;
@@ -48,7 +51,7 @@ use LWP::UserAgent;
    $ua->default_header('Authorization' => 'Basic ' . encode_base64("$user:$password", ''));
 
 # Create a request for one check
-   my $req = HTTP::Request->new(DELETE => $url . "/checks/$monitor");
+   my $req = HTTP::Request->new(DELETE => $url . "/checks/$check");
    $req->header('App-key' => "$api_key");
 
 # Pass request to the user agent and get a response back

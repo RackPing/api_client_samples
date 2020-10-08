@@ -51,6 +51,8 @@ end
 begin
    id = ARGV[0]
 
+   abort "usage: #{$PROGRAM_NAME} id" unless id
+
    success = 0
    puts "Delete one check"
    url='/checks/'+id

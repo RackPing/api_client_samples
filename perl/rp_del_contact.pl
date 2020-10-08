@@ -32,11 +32,14 @@ use LWP::UserAgent;
 
 ### start of user settings
 
-   $timeout = TIMEOUT_SEC;
-
-   my $contact_id = shift;
+   my $contact_id = shift // '';
 
 ### end of user settings
+
+   if ($contact_id eq '') { 
+      print "usage: $0 id\n";
+      exit 1;
+   }
 
 # Create a user agent object
    my $ua = LWP::UserAgent->new;

@@ -77,6 +77,11 @@ func main() {
    g_api_key  = api_key
 
    {
+      if (len(os.Args) < 2) {
+         fmt.Fprintf(os.Stderr, "usage: %s id\n", os.Args[0])
+         os.Exit(0)
+      }
+
       id := os.Args[1]
 
       // if you want to understand this type definition, see the following links:

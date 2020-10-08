@@ -51,6 +51,8 @@ end
 begin
    id = ARGV[0]
 
+   abort "usage: #{$PROGRAM_NAME} id" unless id
+
    data = {
       'contactid'   => id,
       'first'       => 'JohnJohn',

@@ -18,8 +18,8 @@ jq_cmd="/usr/bin/jq"
 # set the language extension for this sample folder
 mylang="py"
 
-#cmd_python="/opt/rh/python27/root/usr/bin/python"
-cmd_python=""
+cmd_python="/opt/rh/python27/root/usr/bin/python"
+#cmd_python=""
 
 source ../set.sh
 

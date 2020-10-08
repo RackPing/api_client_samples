@@ -32,7 +32,8 @@ use LWP::UserAgent;
 
 ### start of user settings
 
-   my $contactid    = shift;
+   my $contactid    = shift // '';
+
    my $first        = 'JohnJohn';
    my $last         = 'Doe';
    my $email        = 'john.doe@gmail.com';
@@ -42,6 +43,11 @@ use LWP::UserAgent;
    my $countryiso   = 'US';
 
 ### end of user settings
+
+   if ($contactid eq '') {
+      print "usage: $0 id\n";
+      exit 1;
+   }
 
 # Create a user agent object
    my $ua = LWP::UserAgent->new;
