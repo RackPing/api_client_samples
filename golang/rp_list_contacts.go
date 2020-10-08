@@ -44,10 +44,6 @@ func redirectPolicyFunc(req *http.Request, via []*http.Request) error {
 }
 
 func main() {
-   type RackPing struct { // if you want to understand this type definition, see https://golang.org/pkg/encoding/json/#Marshal
-      Name string `json:"name"`
-   }
-
    var username string = os.Getenv("RP_USER")
    var password string = os.Getenv("RP_PASSWORD")
    var api_key  string = os.Getenv("RP_API_KEY")

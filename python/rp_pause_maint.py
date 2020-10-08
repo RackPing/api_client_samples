@@ -37,6 +37,9 @@ except KeyError as e:
 
 url = scheme + domain + base_url
 
+if len(sys.argv) < 2:
+   sys.exit('usage: ' + sys.argv[0] + ' id')
+
 ### start of user settings
 
 debug = 0
