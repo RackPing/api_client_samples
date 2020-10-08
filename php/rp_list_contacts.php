@@ -1,0 +1,101 @@
+#!/usr/bin/php
+<?php
+// Program: rp_list_contacts.php
+// Usage: ./rp_list_contacts.php
+// Date: 2020 10 07
+// Purpose: php language sample client program for RackPing Monitoring API 2.0
+// Version: 1.0
+// Copyright: RackPing USA 2020
+// Env: PHP5 or newer
+// Returns: exit status is non-zero on failure
+// Note: first do: source ../set.sh
+
+   error_reporting(E_ALL);
+
+   $url            = $_SERVER['RP_SCHEME'] . $_SERVER['RP_DOMAIN'] . $_SERVER['RP_BASE_URL'];
+   $api_key        = $_SERVER['RP_API_KEY'];
+   $user           = $_SERVER['RP_USER'];
+   $password       = $_SERVER['RP_PASSWORD'];
+   $debug          = $_SERVER['RP_DEBUG'];
+   $timeout        = $_SERVER['RP_TIMEOUT'];
+
+function http_parse_headers($header) {
+// http://php.net/manual/it/function.http-parse-headers.php by Anon
+
+   $retVal = array();
+   $fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
+   foreach( $fields as $field ) {
+      if (preg_match('/([^:]+): (.+)/m', $field, $match)) {
+         $match[1] = preg_replace('/(?<=^|[\x09\x20\x2D])./e', 'strtoupper("\0")', strtolower(trim($match[1])));
+         if (isset($retVal[$match[1]]) ) {
+            if (!is_array($retVal[$match[1]])) {
+               $retVal[$match[1]] = array($retVal[$match[1]]);
+            }
+            $retVal[$match[1]][] = $match[2];
+         } else {
+            $retVal[$match[1]] = trim($match[2]);
+         }
+      }
+   }
+   return $retVal;
+}
+
+function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
+   // echo "method=$method, url=$endpoint, data=$data\n";
+
+   $headers = array(
+      'Content-Type: application/json',
+      'Authorization: Basic '. base64_encode("$user:$pw"),
+      "App-key: $api_key"
+   );
+
+   $ch = curl_init();
+
+   curl_setopt($ch, CURLOPT_URL, $endpoint);
+   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+   curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   curl_setopt($ch, CURLOPT_HEADER, 1);
+
+   if ($method == 'POST' or $method == 'PUT' or $method == 'DELETE') {
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+
+      // for HTML form POST data:
+      // curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query($data));
+
+      // for JSON data:
+      $json_data = json_encode($data);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+   }
+
+   $response = curl_exec($ch);
+   $info = curl_getinfo($ch);
+   $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+   curl_close($ch);  
+
+   $headers = substr($response, 0, $header_size);
+   $body = substr($response, $header_size);
+
+   $info['headers'] = http_parse_headers($headers);
+   $info['body'] = $body;
+
+   return $info;
+}
+
+   $ret = 0;
+
+   echo "Get list of contacts\n";
+   $response = do_curl('GET', $url . '/contacts', $user, $password, $api_key, $timeout, NULL);
+   $rc = $response['http_code'];
+   if ($rc == '200') {
+      echo "OK ($rc) - ";
+   }
+   else {
+      echo "ERROR ($rc) - ";
+      $ret++;
+   }
+   echo $response['body'];
+   echo "\n";
+
+   exit($ret);
+?>
