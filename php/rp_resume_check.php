@@ -12,12 +12,17 @@
 
    error_reporting(E_ALL);
 
-   $url            = $_SERVER['RP_SCHEME'] . $_SERVER['RP_DOMAIN'] . $_SERVER['RP_BASE_URL'];
-   $api_key        = $_SERVER['RP_API_KEY'];
-   $user           = $_SERVER['RP_USER'];
-   $password       = $_SERVER['RP_PASSWORD'];
-   $debug          = $_SERVER['RP_DEBUG'];
-   $timeout        = $_SERVER['RP_TIMEOUT'];
+   $url      = getenv('RP_SCHEME') . getenv('RP_DOMAIN') . getenv('RP_BASE_URL');
+   $api_key  = getenv('RP_API_KEY');
+   $user     = getenv('RP_USER');
+   $password = getenv('RP_PASSWORD');
+   $timeout  = getenv('RP_TIMEOUT');
+   $debug    = getenv('RP_DEBUG');
+
+   if (empty($api_key)) {
+      echo "error: do source ../set.sh to set the envariables.\n";
+      exit(1);
+   }
 
 function http_parse_headers($header) {
 // http://php.net/manual/it/function.http-parse-headers.php by Anon
@@ -83,6 +88,11 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
 }
 
    $id = $argv[1];
+
+   if (empty($id)) {
+      echo "usage: ./$argv[0] contactid\n";
+      exit(1);
+   }
 
    $ret = 0;
 
