@@ -53,5 +53,8 @@ $ruby_cmd ./rp_del_check.$mylang $id
 
 $ruby_cmd ./rp_list_checks.$mylang
 
+echo
+echo "info: if there's any failed steps above, login to your RackPing account and manually delete any test contacts or checks, then try again."
+
 exit 0
 
