@@ -32,12 +32,12 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Add one check:" >&2
-wget $options $auth_options --header='X-HTTP-Method-Override: POST' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
+wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
    --post-data='{ "name": "Test", "host": "https://rackping.com/", "port": 443, "resolution": 5 }' ${url}/checks
 ret=$?
 
 if [ "$debug" == "1" ]; then
-   echo -e "\nret=$ret\n"
+   echo -e "\nret=$ret\n" >&2
 fi
 
 exit 0

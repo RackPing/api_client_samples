@@ -2,7 +2,7 @@
 
 wget sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
 
-Note: curl is generally recommended instead of wget for programming. These wget sample programs are provided in case you cannot install curl. If you must use wget, install GNU wget version 1.15+ and use the --method option for DELETE, POST and PUT methods for best results.
+Note: curl is generally recommended instead of wget for programming. These wget sample programs are provided in case you cannot install curl. If you must use wget, install GNU wget version 1.15+ and use the convenient `--method` option for DELETE, POST and PUT methods for best results.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Note: curl is generally recommended instead of wget for programming. These wget 
 
 ### Prerequisites
 
-Tested with wget 1.12, but earlier versions may also work. GNU wget 1.15+ is recommended since it supports the --method option.
+Tested with wget 1.12, but earlier versions may also work. GNU wget 1.15+ is recommended since it supports the convenient `--method` option.
 
 Install the following dependencies:
 

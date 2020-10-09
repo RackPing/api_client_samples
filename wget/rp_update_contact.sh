@@ -35,12 +35,16 @@ if [ "$id" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Update one contact:"
 wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
-   --post-data='{ "first": "JohnJohn", "last": "Doe", "email": "john.doe@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }' ${url}/contacts
+   $ENABLE_DEBUG --post-data='{ "first": "JohnJohn", "last": "Doe", "email": "john.doe@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }' ${url}/contacts
 ret=$?
 
 if [ "$debug" == "1" ]; then

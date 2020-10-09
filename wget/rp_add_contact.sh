@@ -32,12 +32,12 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Add one contact:" >&2
-wget $options $auth_options --header='X-HTTP-Method-Override: POST' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
+wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
    --post-data='{ "first": "John", "last": "Doe", "email": "john.doe@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }' ${url}/contacts
 ret=$?
 
 if [ "$debug" == "1" ]; then
-   echo -e "\nret=$ret\n"
+   echo -e "\nret=$ret\n" >&2
 fi
 
 exit 0
