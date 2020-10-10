@@ -41,7 +41,7 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Disable maintenance for one check:"
-wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/checks/$id?maintenance=0
+wget --post-data '' $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/checks/$id?maintenance=0
 ret=$?
 
 if [ "$debug" == "1" ]; then
