@@ -42,9 +42,16 @@ fi
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
+json=$(cat <<EOF
+{ "contactid": $id, "first": "John", "last": "Doe", "email": "john.doe2@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }
+EOF
+)
+
+#echo $json
+
 echo "Update one contact:"
 wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
-   $ENABLE_DEBUG --post-data='{ "first": "JohnJohn", "last": "Doe", "email": "john.doe@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }' ${url}/contacts
+   $ENABLE_DEBUG --post-data="$json" ${url}/contacts/$id
 ret=$?
 
 if [ "$debug" == "1" ]; then
