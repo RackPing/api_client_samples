@@ -37,11 +37,15 @@ if [ "$id" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Resume one check:"
-wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" ${url}/checks/$id?paused=0
+wget $ENABLE_DEBUG $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" ${url}/checks/$id?paused=0
 ret=$?
 
 if [ "$debug" == "1" ]; then

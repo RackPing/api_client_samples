@@ -37,11 +37,15 @@ if [ "$id" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Delete one contact:"
-wget --post-data ''  $options $auth_options --header='X-HTTP-Method-Override: DELETE' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/contacts/$id
+wget $ENABLE_DEBUG --post-data ''  $options $auth_options --header='X-HTTP-Method-Override: DELETE' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/contacts/$id
 ret=$?
 
 if [ "$debug" == "1" ]; then

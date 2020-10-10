@@ -37,11 +37,15 @@ if [ "$id" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Disable maintenance for one check:"
-wget --post-data '' $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/checks/$id?maintenance=0
+wget $ENABLE_DEBUG --post-data '' $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/checks/$id?maintenance=0
 ret=$?
 
 if [ "$debug" == "1" ]; then

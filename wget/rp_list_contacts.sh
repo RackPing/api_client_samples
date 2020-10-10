@@ -30,11 +30,15 @@ if [ "$url" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Get list of contacts:"
-wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/contacts
+wget $ENABLE_DEBUG $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" ${url}/contacts
 ret=$?
 
 if [ "$debug" == "1" ]; then

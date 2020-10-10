@@ -28,12 +28,16 @@ if [ "$url" == "" ]; then
    exit 1
 fi
 
+if [ "$debug" == "1" ]; then
+   ENABLE_DEBUG="-d"
+fi
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Add one check:" >&2
 wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
-   --post-data='{ "name": "Test", "host": "https://rackping.com/", "port": 443, "resolution": 5 }' ${url}/checks
+   $ENABLE_DEBUG --post-data='{ "name": "Test", "host": "https://rackping.com/", "port": 443, "resolution": 5 }' ${url}/checks
 ret=$?
 
 if [ "$debug" == "1" ]; then
