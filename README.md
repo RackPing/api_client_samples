@@ -10,7 +10,15 @@ See the README in each folder above for language-specific installation notes.
 
 ## Getting Started
 
-Click on the programming language folder above that you prefer, and read the related documentation.
+Click on an above folder for your preferred programming language.
+
+## Documentation
+
+See the [RackPing API web page](https://www.rackping.com/api.html) for:
+
+* complete RackPing 2.0 API PDF
+* errata (recent changes after PDF was generated)
+* interactive Live API demo in your browser.
 
 ## Running the tests
 
