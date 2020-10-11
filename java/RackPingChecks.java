@@ -84,15 +84,20 @@ public class RackPingChecks {
          r = obj.send(url + "/checks", username, password, api_key, timeout, data, "POST");
          System.out.println(r.get("body").get(0));
 
-         Object myObj = new JSONParser().parse(r.get("body").get(0));
+         try {
+            Object myObj = new JSONParser().parse(r.get("body").get(0));
+            final JSONObject jsonObject = (JSONObject) myObj;
+            final JSONObject user = (JSONObject) jsonObject.get("checks");
 
-         final JSONObject jsonObject = (JSONObject) myObj;
+            // 411 - this is a fragile parsing method, and won't work upon call or duplicate errors, hence the try/catch block
+            id = (Long) user.get("id");
+         }
+         catch (Exception e_id) {
+            System.out.println("error: unable to parse response for a new numeric check id. Please login manually, remove the old test check, and try again, " + e_id +"\n");
+            System.exit(1);
+         }
 
-         final JSONObject user = (JSONObject) jsonObject.get("checks");
-
-         id = (Long) user.get("id");
          System.out.println("id=" + id);
-
          // location = r.get("Location").get(0);
          rc = Integer.valueOf(r.get("response-code").get(0));
       }
@@ -145,6 +150,8 @@ public class RackPingChecks {
          catch (IOException e) {
             System.out.println(e);
          }
+
+System.exit(1);
 
          try {
             System.out.println("8. Delete one check");

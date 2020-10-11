@@ -21,12 +21,20 @@ ruby_cmd="ruby"
 
 source ../set.sh
 
+re='^[0-9]+$'
+
 # 1. Demo the contacts (users) scripts
 
 $ruby_cmd ./rp_list_contacts.$mylang
 
-# edit add_contact.$mylang to set the contact (user) info
+# edit rp_add_contact.$mylang to set the contact (user) info
 id=`$ruby_cmd ./rp_add_contact.$mylang | $jq_cmd '.contact .id'`
+
+if ! [[ $id =~ $re ]] ; then
+   echo "error: unable to parse response for a new numeric contact id. Please login manually, remove the old test contact, and try again." >&2
+   exit 1
+fi
+
 echo "info: new contact id $id"
 
 $ruby_cmd ./rp_update_contact.$mylang $id
@@ -39,8 +47,14 @@ $ruby_cmd ./rp_list_contacts.$mylang
 
 $ruby_cmd ./rp_list_checks.$mylang
 
-# edit add_check.$mylang to set the check (monitor) info
-id=`$ruby_cmd ./rp_add_check.$mylang | $jq_cmd '.checks[0] .id'`
+# edit rp_add_check.$mylang to set the check (monitor) info
+id=`$ruby_cmd ./rp_add_check.$mylang | $jq_cmd '.checks .id'`
+
+if ! [[ $id =~ $re ]] ; then
+   echo "error: unable to parse response for a new numeric check id. Please login manually, remove the old test check, and try again." >&2
+   exit 1
+fi
+
 echo "info: new check id $id"
 
 $ruby_cmd ./rp_pause_check.$mylang $id

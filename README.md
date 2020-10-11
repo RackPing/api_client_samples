@@ -1,6 +1,6 @@
 # RackPing API 2.0 Client Sample Programs
 
-Sample programs in several languages that you can copy-and-paste to automate common RackPing Monitoring tasks from the command line or cron.
+Sample programs in several programming languages that you can copy-and-paste to automate common RackPing Monitoring tasks from the command line, custom scripts or cron.
 
 These are end-user sample client programs that call the RackPing Monitoring API 2.0.
 
@@ -14,15 +14,15 @@ Click on an above folder for your preferred programming language.
 
 ## Documentation
 
-See the [RackPing API web page](https://www.rackping.com/api.html) for:
+See the [RackPing API web](https://www.rackping.com/api.html) for:
 
-* complete RackPing 2.0 API PDF
-* errata (recent changes after PDF was generated)
+* RackPing 2.0 API PDF
+* errata (recent changes)
 * interactive Live API demo in your browser.
 
 ## Running the tests
 
-After installing all the files in this repo, you can use demo_all.sh as a test harness to create a temporary check and contact using your account with all supported programming languages:
+After installing all the files in this repo, you can optionally use demo_all.sh as a test harness to create a temporary check (monitor) and contact (user) using your RackPing account with all supported programming languages:
 
 ```
 source ../set.sh

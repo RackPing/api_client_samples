@@ -31,11 +31,12 @@ There is a build script called build.sh that will build the java source code and
 ```
 source ../set.sh
 ./build.sh
+./demo.sh
 ```
 
 ## Documentation
 
-See the [RackPing API web](https://www.rackping.com/api.html) for:
+See the [RackPing API web page](https://www.rackping.com/api.html) for:
 
 * RackPing 2.0 API PDF
 * errata (recent changes)

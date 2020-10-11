@@ -1,8 +1,8 @@
 # Program: set.sh
-# Purpose: configure envariables for RackPing Monitoring API 2.0 sample client programs
-# Date: 2020 10 05
-# Env: bash
+# Purpose: setup envariables for test and sample client programs
 # Usage: source set.sh
+# Copyright: RackPing USA 2020
+# Env: bash
 # Note: this file needs to be 'sourced' to set the envariables. Executing this file will incorrectly only transiently set the envariables.
 
 ### start of user settings
@@ -32,3 +32,4 @@ export RP_BASE_URL="/api/2.0"
 export RP_REDIRECTS=3
 
 ### end of RackPing-reserved settings
+

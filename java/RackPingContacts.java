@@ -87,13 +87,19 @@ public class RackPingContacts {
          r = obj.send(url + "/contacts", username, password, api_key, timeout, data, "POST");
          System.out.println(r.get("body").get(0));
 
-         Object myObj = new JSONParser().parse(r.get("body").get(0));
+         try {
+            Object myObj = new JSONParser().parse(r.get("body").get(0));
+            final JSONObject jsonObject = (JSONObject) myObj;
+            final JSONObject user = (JSONObject) jsonObject.get("contact");
 
-         final JSONObject jsonObject = (JSONObject) myObj;
+            // 411 - this is a fragile parsing method, and won't work upon call or duplicate errors, hence the try/catch block
+            id = (Long) user.get("id");
+         }
+         catch (Exception e_id) {
+            System.out.println("error: unable to parse response for a new numeric contact id. Please login manually, remove the old test contact, and try again, " + e_id +"\n");
+            System.exit(1);
+         }
 
-         final JSONObject user = (JSONObject) jsonObject.get("contact");
-
-         id = (Long) user.get("id");
          System.out.println("id=" + id);
 
          // location = r.get("Location").get(0);

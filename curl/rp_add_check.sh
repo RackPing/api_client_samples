@@ -9,9 +9,10 @@
 # Returns: exit status is non-zero on failure
 # Note: First set the envariables with: source ../set.sh
 
-set -e
 
-#source ../set.sh
+source ../set.sh
+
+set -e
 
 api_key=$RP_API_KEY
 user=$RP_USER

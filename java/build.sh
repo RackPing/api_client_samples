@@ -14,20 +14,23 @@
 
 source ../set.sh
 
+set -e
+
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-0.el6_10.x86_64
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH="."
 
 java="/usr/bin/java -client"
-#javac="/usr/bin/javac -g:none -Xlint:all"
-javac="/usr/bin/javac -Xlint:all -cp *:."
+javac="/usr/bin/javac -g:none -Xlint:all"
 opt="-cp .:json-simple-1.1.1.jar"
 
-for i in RackPingChecks RackPingContacts; do
-   class=$i
+for f in *.java; do
+   class=`basename $f .java`
+   echo $class
    rm -f $class.class
    $javac $opt $class.java
-   $java $opt $class
 done
+
+set +e
 
 exit 0

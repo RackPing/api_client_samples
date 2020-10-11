@@ -37,6 +37,14 @@ For a single program file:
 chmod 755 filename
 ```
 
+## Documentation
+
+See the [RackPing API web page](https://www.rackping.com/api.html) for:
+
+* RackPing 2.0 API PDF
+* errata (recent changes)
+* interactive Live API demo in your browser.
+
 ## Running the tests
 
 After installing all the files in this folder, you can use demo.sh as a test harness to create a temporary check and contact using your account:
