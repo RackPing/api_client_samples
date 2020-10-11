@@ -20,13 +20,12 @@ Install the following dependencies:
 
 ```
 java -version
-wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/json-simple/json-simple-1.1.1.jar
 jq (optional for the demo.sh test harness)
 ```
 
 ### Installing
 
-There is a build script called build.sh that will build the java source code and run the demo:
+There are build and demo scripts:
 
 ```
 source ../set.sh

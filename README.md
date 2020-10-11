@@ -14,7 +14,7 @@ Click on an above folder for your preferred programming language.
 
 ## Documentation
 
-See the [RackPing API web](https://www.rackping.com/api.html) for:
+See the [RackPing API web page](https://www.rackping.com/api.html) for:
 
 * RackPing 2.0 API PDF
 * errata (recent changes)
