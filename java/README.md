@@ -30,7 +30,7 @@ There are build and demo scripts:
 ```
 source ../set.sh
 ./build.sh
-./demo.sh
+time ./demo.sh
 ```
 
 ## Documentation
