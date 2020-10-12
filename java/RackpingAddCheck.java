@@ -66,10 +66,11 @@ public class RackpingAddCheck {
          @SuppressWarnings("unchecked")
          Map<String, String> json = new JSONObject();
 
-         json.put("name", "Test");
-         json.put("host", "https://rackping.com/");
+         json.put("name", "APITest");
+         json.put("host", "https://www.rackping.com/");
          json.put("port", "443");
-         json.put("resolution", "5");
+         json.put("resolution", "60");
+         json.put("paused", "1");
 
          String data = new String(json.toString());
          r = obj.send(url + "/checks", username, password, api_key, timeout, data, "POST");

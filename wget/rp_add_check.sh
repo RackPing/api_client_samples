@@ -37,7 +37,7 @@ auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Add one check:" >&2
 wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" \
-   $ENABLE_DEBUG --post-data='{ "name": "Test", "host": "https://rackping.com/", "port": 443, "resolution": 5 }' ${url}/checks
+   $ENABLE_DEBUG --post-data='{ "name": "APITest", "host": "https://www.rackping.com/", "port": 443, "resolution": 60, "paused": 1 }' ${url}/checks
 ret=$?
 
 if [ "$debug" == "1" ]; then

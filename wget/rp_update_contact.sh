@@ -43,7 +43,7 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 json=$(cat <<EOF
-{ "contactid": $id, "first": "John", "last": "Doe", "email": "john.doe2@gmail.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }
+{ "first": "John", "last": "Doe", "email": "john.doe2@example.com", "role": "O", "cellphone": "408 555 1212", "countrycode": 1, "countryiso": "US" }
 EOF
 )
 

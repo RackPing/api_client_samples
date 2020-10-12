@@ -34,10 +34,11 @@ use LWP::UserAgent;
 
    $timeout = TIMEOUT_SEC;
 
-   my $name       = 'Test';
-   my $host       = 'https://rackping.com/';
+   my $name       = 'APITest';
+   my $host       = 'https://www.rackping.com/';
    my $port       = 443;
-   my $resolution = 5;
+   my $resolution = 60;
+   my $paused     = 1;
 
 ### end of user settings
 
@@ -57,6 +58,7 @@ use LWP::UserAgent;
       host       => $host,
       port       => $port,
       resolution => $resolution,
+      paused     => $paused,
    ];
 
 # Pass request to the user agent and get a response back

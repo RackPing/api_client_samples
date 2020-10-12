@@ -86,13 +86,15 @@ func main() {
            Host       string `json:"host"`
            Port       int    `json:"port"`
            Resolution int    `json:"resolution"`
+           Paused     int    `json:"paused"`
       }
 
       m := RackPing{
-         Name:       "Test",
-         Host:       "https://rackping.com/",
+         Name:       "APITest",
+         Host:       "https://api.rackping.com/",
          Port:       443,
-         Resolution: 5 } // leave bracket on same line as last field
+         Resolution: 60,
+         Paused:     1 } // leave bracket on same line as last field
 
       b, err := json.Marshal(m)
       data := bytes.NewBuffer(b)

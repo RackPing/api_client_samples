@@ -4,7 +4,7 @@ Sample programs in several programming languages that you can copy-and-paste to 
 
 These are end-user sample client programs that call the RackPing Monitoring API 2.0.
 
-The philosophy is that they should be easy-to-use, standalone (minimal or no dependencies), cut-and-paste code that illustrate common monitoring automation tasks.
+The philosophy is that they should be easy-to-use, standalone (minimal or no dependencies), cut-and-paste code that illustrate common monitoring automation tasks (ie. "No code".)
 
 See the README in each folder above for language-specific installation notes.
 
@@ -37,3 +37,6 @@ Version 1.0
 
 Copyright RackPing USA 2013-2021
 
+## Keywords
+
+RackPing REST API, SDK, Monitoring, Observability, Nocode, No-code, programming

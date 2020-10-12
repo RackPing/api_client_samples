@@ -38,7 +38,7 @@ curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP
 {
    "first"        : "John",
    "last"         : "Doe",
-   "email"        : "john.doe@gmail.com",
+   "email"        : "john.doe@example.com",
    "role"         : "O",
    "cellphone"    : "408 555 1212",
    "countrycode"  : 1,

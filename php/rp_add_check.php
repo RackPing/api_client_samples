@@ -92,10 +92,11 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    fwrite(STDERR, "Add one check" . PHP_EOL);
 
    $data = array(
-      "name"       => "John",
-      "host"       => "https://rackping.com/",
+      "name"       => "APITest",
+      "host"       => "https://www.rackping.com/",
       "port"       => 443,
-      "resolution" => 5
+      "resolution" => 60,
+      "paused"     => 1
    );
 
    $response = do_curl('POST', $url . '/checks', $user, $password, $api_key, $timeout, $data);

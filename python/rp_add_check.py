@@ -42,10 +42,11 @@ url = scheme + domain + base_url
 debug = 0
 
 form = {
-   'name':       'Test',
-   'host':       'https://rackping.com/',
+   'name':       'APITest',
+   'host':       'https://www.rackping.com/',
    'port':       443,
-   'resolution': 5
+   'resolution': 60,
+   'paused':     1
 }
 
 ### end of user settings

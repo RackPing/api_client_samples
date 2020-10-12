@@ -75,10 +75,9 @@ public class RackpingUpdateContact {
          @SuppressWarnings("unchecked")
          Map<String, String> json = new JSONObject();
 
-         json.put("contactid", Integer.toString(id));
          json.put("first", "John");
          json.put("last", "Doe");
-         json.put("email", "john.doe@gmail.com");
+         json.put("email", "john.doe@example.com");
          json.put("role", "O");
          json.put("cellphone", "408 555 1212");
          json.put("countrycode", "1");

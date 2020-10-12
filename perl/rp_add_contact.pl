@@ -36,7 +36,7 @@ use LWP::UserAgent;
 
    my $first        = 'John';
    my $last         = 'Doe';
-   my $email        = 'john.doe@gmail.com';
+   my $email        = 'john.doe@example.com';
    my $role         = 'O';
    my $cellphone    = '408 555 1212';
    my $countrycode  = '1';

@@ -52,10 +52,11 @@ begin
 # Create a request to add one check
 
    data = {
-      'name'       => 'Test',
-      'host'       => 'https://rackping.com/',
+      'name'       => 'APITest',
+      'host'       => 'https://www.rackping.com/',
       'port'       => 443,
-      'resolution' => 5
+      'resolution' => 60,
+      'paused'     => 1
    }
 
    success = 0

@@ -43,10 +43,9 @@ auth_options="--basic -u $user:$password"
 echo "Update one contact using HERE document:"
 curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/contacts/$id <<EOF
 {
-   "contactid"    : $id,
    "first"        : "JohnJohn",
    "last"         : "Doe",
-   "email"        : "john.doe@gmail.com",
+   "email"        : "john.doe@example.com",
    "role"         : "O",
    "cellphone"    : "408 555 1212",
    "countrycode"  : 1,

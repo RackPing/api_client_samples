@@ -89,7 +89,6 @@ func main() {
       // - https://golang.org/pkg/encoding/json/#Marshal
 
       type RackPing struct {
-           Contactid   int    `json:"contactid"`
            First       string `json:"first"`
            Last        string `json:"last"`
            Email       string `json:"email"`
@@ -99,13 +98,10 @@ func main() {
            Countryiso  string `json:"countryiso"`
       }
 
-      contactid, err := strconv.Atoi(id)
-
       m := RackPing{
-         Contactid:   contactid,
          First:       "JohnJohn",
          Last:        "Doe",
-         Email:       "john.doe@gmail.com",
+         Email:       "john.doe@example.com",
          Role:        "O",
          Cellphone:   "408 555 1212",
          Countrycode: 1,
