@@ -151,8 +151,6 @@ public class RackPingChecks {
             System.out.println(e);
          }
 
-System.exit(1);
-
          try {
             System.out.println("8. Delete one check");
             r = obj.send(url + "/checks/" + id, username, password, api_key, timeout, "", "DELETE");
