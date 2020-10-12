@@ -10,7 +10,6 @@
 # Notes:
 # - this script will use your RackPing account to list, add and delete sample records
 # - requires installation of jq
-# - requires Perl CPAN module HTTP::Request::Common 6.07+ (can be checked with perldoc -m HTTP::Request::Common)
 
 # use the jq Command-line JSON processor to extract new id's
 jq_cmd="/usr/bin/jq"
@@ -23,13 +22,56 @@ source ../set.sh
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-0.el6_10.x86_64
 export PATH=$JAVA_HOME/bin:$PATH
 
-java="/usr/bin/java -client"
 opt="-cp .:json-simple-1.1.1.jar"
+java="/usr/bin/java -client $opt "
 
-for f in *.java; do
-   class=`basename $f .java`
-   echo $class
-   $java $opt $class
-done
+re='^[0-9]+$'
+
+# 1. Demo the contacts (users) scripts
+
+$java RackpingListContacts
+
+# edit RackpingAddContact.java to set the contact (user) info
+id=`$java RackpingAddContact | $jq_cmd '.contact .id'`
+echo "info: new contact id $id"
+
+if ! [[ $id =~ $re ]] ; then
+   echo "error: unable to parse response for a new numeric contact id. Please login manually, remove the old test contact, and try again." >&2
+   exit 1
+fi
+
+$java RackpingUpdateContact $id
+
+$java RackpingDelContact $id
+
+$java RackpingListContacts
+
+# 2. Demo the checks (monitors) scripts
+
+$java RackpingListChecks
+
+# edit RackpingAddCheck.java to set the check (monitor) info
+id=`$java RackpingAddCheck | $jq_cmd '.checks .id'`
+
+if ! [[ $id =~ $re ]] ; then
+   echo "error: unable to parse response for a new numeric check id. Please login manually, remove the old test check, and try again." >&2
+   exit 1
+fi
+
+echo "info: new check id $id"
+
+$java RackpingPauseCheck $id
+$java RackpingResumeCheck $id
+
+$java RackpingPauseMaint $id
+$java RackpingResumeMaint $id
+
+$java RackpingDelCheck $id
+
+$java RackpingListChecks
+
+echo
+echo "info: if there's any failed steps above, login to your RackPing account and manually delete any test contacts or checks, then try again."
 
 exit 0
+
