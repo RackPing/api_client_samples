@@ -57,6 +57,8 @@ fi
 
 echo "info: new check id $id"
 
+$ruby_cmd ./rp_update_check.$mylang $id
+
 $ruby_cmd ./rp_pause_check.$mylang $id
 $ruby_cmd ./rp_resume_check.$mylang $id
 

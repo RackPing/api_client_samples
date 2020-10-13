@@ -56,6 +56,8 @@ fi
 
 echo "info: new check id $id"
 
+./rp_update_check.$mylang $id
+
 ./rp_pause_check.$mylang $id
 ./rp_resume_check.$mylang $id
 

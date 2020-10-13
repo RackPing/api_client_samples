@@ -2,8 +2,8 @@
 
 '''This is a python sample client program for the RackPing Monitoring API 2.0.'''
 
-# Program: rp_resume_check.py
-# Usage: ./rp_resume_check.py id
+# Program: rp_update_check.py
+# Usage: ./rp_update_check.py id
 # Version: 1.0
 # Env: Python 2.7.9 or newer with urllib3
 # Returns: exit status is non-zero on failure
@@ -37,16 +37,24 @@ except KeyError as e:
 
 url = scheme + domain + base_url
 
+if len(sys.argv) < 2:
+   sys.exit('usage: ' + sys.argv[0] + ' id')
+
 ### start of user settings
 
 debug = 0
 
-monitor = sys.argv[1]
+checkid    = sys.argv[1];
+
+form = {
+   'name':       'APITestTest',
+   'host':       'https://www.rackping.com/',
+   'port':       443,
+   'resolution': 60,
+   'paused':     1
+}
 
 ### end of user settings
-
-if debug:
-    print "url=", url
 
 headers = {'Content-type': 'application/json',
            'App-Key': api_key
@@ -71,8 +79,8 @@ def main():
     '''Entry point if called as an executable'''
 
     try:
-        print "Create a request to disable 1 monitor:\n"
-        myResponse = requests.put(url + "/checks/" + monitor + '?paused=0', \
+        sys.stderr.write("Create a request to update 1 check (monitor):\n")
+        myResponse = requests.put(url + "/checks/" + checkid, json=form, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \
                                   timeout=timeout)

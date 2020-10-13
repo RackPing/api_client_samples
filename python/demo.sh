@@ -59,6 +59,8 @@ fi
 
 echo "info: new check id $id"
 
+$cmd_python ./rp_update_check.$mylang $id
+
 $cmd_python ./rp_pause_check.$mylang $id
 $cmd_python ./rp_resume_check.$mylang $id
 

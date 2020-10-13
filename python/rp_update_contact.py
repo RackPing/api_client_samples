@@ -2,8 +2,8 @@
 
 '''This is a python sample client program for the RackPing Monitoring API 2.0.'''
 
-# Program: py_update_contact.py
-# Usage: ./py_update_contact.py id
+# Program: rp_update_contact.py
+# Usage: ./rp_update_contact.py id
 # Version: 1.0
 # Env: Python 2.7.9 or newer with urllib3
 # Returns: exit status is non-zero on failure
