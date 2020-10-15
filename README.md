@@ -22,12 +22,20 @@ See the [RackPing API web page](https://www.rackping.com/api.html) for:
 
 ## Running the tests
 
+A paid RackPing account is required to run the demo_all.sh and demo.sh scripts, since they add and delete a check and a contact. However, Free accounts can run the other scripts in each each language folder to update or pause existing checks and contacts.
+
 After installing all the files in this repo, you can optionally use demo_all.sh as a test harness to create a temporary check (monitor) and contact (user) using your RackPing account with all supported programming languages:
 
 ```
 source ../set.sh
 time ./demo_all.sh
 ```
+
+## RackPing Account Limitations
+
+* Free accounts only allow one contact (user) and one check (monitor.) So the sample API scripts for add and delete check and contact will not succeed, likewise the demo.sh and demo_all.sh test harnesses. Please upgrade to a paid RackPing account.
+
+* Paid accounts allow adding checks and contacts up to your plan limits.
 
 ## Versioning
 
