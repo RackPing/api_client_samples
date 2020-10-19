@@ -14,12 +14,12 @@ Python sample programs that you can copy-and-paste to automate common RackPing m
 
 ### Prerequisites
 
-python version 2.7.9 or higher.
+Test with python versions 2.7.9 and 3.7.4.
 
 Install the following dependencies:
 
 ```
-python --version (need 2.7.9 or higher)
+python --version (tested wth 2.7.9 and 3.7.4)
 install python-pip
 sudo pip install urllib3
 sudo pip install requests
