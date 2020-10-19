@@ -8,7 +8,7 @@
 # Notes: sudo gem install httparty
 #  source ../set.sh
 
-#require 'rubygems'
+require 'rubygems'
 require 'httparty'
 
 user=ENV['RP_USER']

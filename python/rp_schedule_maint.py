@@ -51,7 +51,7 @@ end     = sys.argv[3].replace(" ", "%20");
 ### end of user settings
 
 if debug:
-    print "url=", url
+    print("url=", url)
 
 headers = {'Content-type': 'application/json',
            'App-Key': api_key
@@ -62,10 +62,10 @@ msg_json_error = 'error: decoding JSON failed ...'
 def output(s):
     # For a successful API call, response code will be 200 (OK) or 201 (Created)
     if debug:
-       print "status=", s.status_code
+       print("status=", s.status_code)
     if s.ok:
         jData = json.loads(s.content)
-        print json.dumps(jData)
+        print(json.dumps(jData))
     else:
         s.raise_for_status()
         pprint(vars(s))
@@ -76,7 +76,7 @@ def main():
     '''Entry point if called as an executable'''
 
     try:
-        print "Create a request to enable a maintenance window for 1 monitor:\n"
+        print("Create a request to enable a maintenance window for 1 monitor:\n")
         myResponse = requests.put(url + "/checks/" + monitor + '?maintenance=1', \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \
@@ -85,7 +85,7 @@ def main():
     except requests.exceptions.RequestException as e:
         sys.exit(e)
     except ValueError as e:
-        print msg_json_error, e
+        print(msg_json_error, e)
         sys.exit()
     # end try
 

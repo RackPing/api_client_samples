@@ -27,6 +27,12 @@ A paid RackPing account is required to run the demo_all.sh and demo.sh scripts, 
 After installing all the files in this repo, you can optionally use demo_all.sh as a test harness to create a temporary check (monitor) and contact (user) using your RackPing account with all supported programming languages:
 
 ```
+# on Mac OS X
+brew install jq
+ln -s /usr/local/bin/jq /usr/bin/jq
+```
+
+```
 source ../set.sh
 time ./demo_all.sh
 ```
