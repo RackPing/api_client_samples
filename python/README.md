@@ -14,7 +14,7 @@ Python sample programs that you can copy-and-paste to automate common RackPing m
 
 ### Prerequisites
 
-Test with python versions 2.7.9 and 3.7.4.
+Tested with python versions 2.7.9 and 3.7.4.
 
 Install the following dependencies:
 

@@ -10,7 +10,8 @@ See the README in each folder above for language-specific installation notes.
 
 ## Getting Started
 
-Click on an above folder for your preferred programming language.
+* Click on an above folder for your preferred programming language to view the source code.
+* Click on the green Github "Code" button, then "Download zip" to download the complete source code for all languages.
 
 ## Documentation
 
