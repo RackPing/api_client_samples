@@ -14,7 +14,7 @@ Perl sample programs that you can copy-and-paste to automate common RackPing mon
 
 ### Prerequisites
 
-Tested with Perl 5.10.1, but earlier versions may also work.
+Tested with Perl 5.10.1, but earlier and later versions will also very likely work.
 
 Install the following dependencies:
 
@@ -29,7 +29,7 @@ Note: Perl CPAN module HTTP::Request::Common 6.07+ is required for some PUT and 
 ```
 perldoc -m HTTP::Request::Common
 ```
-Sample output:
+Sample output showing $VERSION info:
 ```
 package HTTP::Request::Common;
 
@@ -39,7 +39,7 @@ use warnings;
 our $VERSION = '6.26';
 ```
 
-On Mac OS X, SSL certificates are needed:
+On Mac OS X, SSL certificates are needed for perl LWP:
 ```
 sudo cpan Mozilla::CA
 ```
