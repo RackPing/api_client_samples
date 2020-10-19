@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Program: rp_pause_maint.sh
-# Usage:  ./rp_pause_maint.sh checkid
+# Program: rp_schedule_maint.sh
+# Usage:  ./rp_schedule_maint.sh checkid "start" "end"
 # Purpose: curl sample client program for RackPing Monitoring API 2.0
 # Version: 1.0
 # Copyright: RackPing USA 2020
@@ -30,18 +30,20 @@ if [ "$url" == "" ]; then
    exit 1
 fi
 
-id=$1
-
-if [ "$id" == "" ]; then
-   echo "usage: $0 id"
+if [ $# -ne 3 ]; then
+   echo "usage: $0 id 'start' 'end'"
    exit 1
 fi
+
+id=$1
+start=`echo "$2" | sed 's/ /%20/'`
+end=`echo "$3" | sed 's/ /%20/'`
 
 options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
-echo "Enable maintenance mode for one check:"
-curl $options $auth_options -H "App-key: $RP_API_KEY" -X PUT ${url}/checks/$id?maintenance=1 -w "\n"
+echo "Enable maintenance window for one check:"
+curl $options $auth_options -H "App-key: $RP_API_KEY" -X PUT "${url}/checks/$id?start_maintenance=$start&end_maintenance=$end" -w "\n"
 ret=$?
 echo -e "ret=$ret\n"
 

@@ -1,5 +1,5 @@
-// Program: RackpingDelCheck.java
-// Usage: java RackpingDelCheck
+// Program: RackpingScheduleMaint.java
+// Usage: java RackpingScheduleMaint id 'start' 'end'
 // Purpose: Java language sample client program for RackPing Monitoring API 2.0
 // Copyright: RackPing USA 2020
 // Env: Java 1.8
@@ -25,7 +25,7 @@ import org.json.simple.parser.JSONParser;
 
 // import javax.net.ssl.HttpsURLConnection;
 
-public class RackpingDelCheck {
+public class RackpingScheduleMaint {
 
    private final String USER_AGENT = "Mozilla/5.0";
 
@@ -47,28 +47,41 @@ public class RackpingDelCheck {
       final String password = System.getenv("RP_PASSWORD");
       final String api_key  = System.getenv("RP_API_KEY");
 
-      RackpingDelCheck obj = new RackpingDelCheck();
+      RackpingScheduleMaint obj = new RackpingScheduleMaint();
 
       HttpURLConnection.setFollowRedirects(true);
       System.setProperty("http.maxRedirects", "3");
 
-      int id = 0;
-      if (args.length > 0) {
-          try {
-              id = Integer.parseInt(args[0]);
-          } catch (NumberFormatException e) {
-              System.err.println("usage: check id must be numeric.");
-              System.exit(1);
-          }
+      int id        = 0;
+      String start  = "";;
+      String end    = "";
+
+      if (args.length > 2) {
+         try {
+             id = Integer.parseInt(args[0]);
+         } catch (NumberFormatException e) {
+             System.err.println("usage: check id must be numeric.");
+             System.exit(1);
+         }
+
+         start = args[1].replace(" ", "%20");
+         end   = args[2].replace(" ", "%20");
+      }
+      else {
+         System.err.println("usage: java -cp .:json-simple-1.1.1.jar RackpingScheduleMaint id 'start' 'end'.");
+         System.exit(1);
       }
 
       // response Map with HTTP response headers, response code and content body
       Map<String, List<String>> r;
 
+      int rc = 0;
+
       try {
-         System.out.println("8. Delete one check");
-         r = obj.send(url + "/checks/" + id, username, password, api_key, timeout, "", "DELETE");
+         System.out.println("7. Enable maintenance window for one check");
+         r = obj.send(url + "/checks/" + id + "?start_maintenance=" + start + "&end_maintenance=" + end, username, password, api_key, timeout, "", "PUT");
          System.out.println(r.get("body").get(0));
+         rc = Integer.valueOf(r.get("response-code").get(0));
       }
       catch (IOException e) {
          System.out.println(e);

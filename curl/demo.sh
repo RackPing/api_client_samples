@@ -64,6 +64,8 @@ echo "info: new check id $id"
 ./rp_pause_maint.$mylang $id
 ./rp_resume_maint.$mylang $id
 
+./rp_schedule_maint.$mylang $id "2020-10-01 00:00:00" "2020-10-07 00:00:00"
+
 ./rp_del_check.$mylang $id
 
 ./rp_list_checks.$mylang

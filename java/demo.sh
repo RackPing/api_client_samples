@@ -65,6 +65,7 @@ $java RackpingResumeCheck $id
 
 $java RackpingPauseMaint $id
 $java RackpingResumeMaint $id
+$java RackpingScheduleMaint $id "2020-10-01 00:00:00" "2020-10-07 00:00:00"
 
 $java RackpingDelCheck $id
 
