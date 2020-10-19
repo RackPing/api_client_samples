@@ -25,12 +25,24 @@ sudo cpan HTTP::Request
 jq (optional for the demo.sh test harness)
 ```
 
+Note: Perl CPAN module HTTP::Request::Common 6.07+ is required for some PUT and POST requests. You can check the version with:
 ```
-# on Mac OS X, SSL certificates are needed:
-sudo cpan Mozilla::CA
+perldoc -m HTTP::Request::Common
+```
+Sample output:
+```
+package HTTP::Request::Common;
+
+use strict;
+use warnings;
+
+our $VERSION = '6.26';
 ```
 
-Note: Perl CPAN module HTTP::Request::Common 6.07+ is required for some PUT and POST requests (the version can be checked with perldoc -m HTTP::Request::Common)
+On Mac OS X, SSL certificates are needed:
+```
+sudo cpan Mozilla::CA
+```
 
 ### Installing
 
