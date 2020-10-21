@@ -44,11 +44,11 @@ func redirectPolicyFunc(req *http.Request, via []*http.Request) error {
 }
 
 func main() {
-   var username string = os.Getenv("RP_USER")
-   var password string = os.Getenv("RP_PASSWORD")
-   var api_key  string = os.Getenv("RP_API_KEY")
+   g_username = os.Getenv("RP_USER")
+   g_password = os.Getenv("RP_PASSWORD")
+   g_api_key  = os.Getenv("RP_API_KEY")
 
-   if username == "" {
+   if g_username == "" {
       fmt.Printf("%s\n", "error: do 'source ../set.sh' first.")
       os.Exit(1)
    }
@@ -71,10 +71,6 @@ func main() {
       Timeout: time.Duration(timeout) * time.Second,
       CheckRedirect: redirectPolicyFunc,
    }
-
-   g_username = username
-   g_password = password
-   g_api_key  = api_key
 
    {
       // if you want to understand this type definition, see the following links:
@@ -109,7 +105,7 @@ func main() {
 
       req.Header.Set("Content-Type", "application/json")
       req.SetBasicAuth(g_username, g_password)
-      req.Header.Set("app-key", api_key)
+      req.Header.Set("app-key", g_api_key)
       if Debug { debug(httputil.DumpRequestOut(req, true)) }
 
       res, err := client.Do(req)
