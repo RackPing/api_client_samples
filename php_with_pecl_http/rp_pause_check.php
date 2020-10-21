@@ -37,12 +37,13 @@
 
    fwrite(STDERR, "Pause one check" . PHP_EOL);
 
-   $http_req = new HttpRequest($url . '/checks/' . $id . '?paused=1', HttpRequest::METH_PUT);
+   $http_req = new HttpRequest($url . '/checks/' . $id . '?paused=1', HttpRequest::METH_POST);
 
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
-      'Content-type'  => 'application/json'
+      'Content-type'  => 'application/json',
+      'X-HTTP-Method-Override' => 'PUT'
    );
 
    $http_req->setHeaders($headers);

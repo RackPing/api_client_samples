@@ -39,12 +39,13 @@
 
    fwrite(STDERR, "Schedule maintenance for one check" . PHP_EOL);
 
-   $http_req = new HttpRequest($url . '/checks/' . $id . '?start_maintenance=' . $start . '&end_maintenance=' . $end, HttpRequest::METH_PUT);
+   $http_req = new HttpRequest($url . '/checks/' . $id . '?start_maintenance=' . $start . '&end_maintenance=' . $end, HttpRequest::METH_POST);
 
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
-      'Content-type'  => 'application/json'
+      'Content-type'  => 'application/json',
+      'X-HTTP-Method-Override' => 'PUT'
    );
 
    $http_req->setHeaders($headers);

@@ -47,12 +47,15 @@
 
    $json_data = json_encode($data);
 
-   $http_req = new HttpRequest($url . '/checks/' . $id, HttpRequest::METH_PUT);
+   echo $json_data;
+
+   $http_req = new HttpRequest($url . '/checks/' . $id, HttpRequest::METH_POST);
 
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
-      'Content-type'  => 'application/json'
+      'Content-type'  => 'application/json',
+      'X-HTTP-Method-Override' => 'PUT'
    );
 
    $http_req->setHeaders($headers);
@@ -62,6 +65,7 @@
                                'redirect'  => $redirects
    ));
 
+   // $http_req->setRawPostData($json_data);
    $http_req->setBody($json_data);
 
    try {

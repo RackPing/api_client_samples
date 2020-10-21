@@ -49,12 +49,13 @@
 
    $json_data = json_encode($data);
 
-   $http_req = new HttpRequest($url . '/contacts/' . $id, HttpRequest::METH_PUT);
+   $http_req = new HttpRequest($url . '/contacts/' . $id, HttpRequest::METH_POST);
 
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
-      'Content-type'  => 'application/json'
+      'Content-type'  => 'application/json',
+      'X-HTTP-Method-Override' => 'PUT'
    );
 
    $http_req->setHeaders($headers);
