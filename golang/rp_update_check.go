@@ -1,4 +1,4 @@
-///bin/true; exec /usr/bin/env go run "$0" "$@"
+//usr/bin/go run $0 $@; exit $?
 
 // Program: rp_update_check.go
 // Usage: go run rp_update_check.go id

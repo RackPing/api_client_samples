@@ -1,6 +1,6 @@
-# RackPing API 2.0 Client Sample Go Programs
+# RackPing API 2.0 Client Sample PHP Programs
 
-Go sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
+PHP (with pecl_http) sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
 
 ## Getting Started
 
@@ -14,18 +14,19 @@ Go sample programs that you can copy-and-paste to automate common RackPing monit
 
 ### Prerequisites
 
-Tested with Go 1.13.14, but earlier versions may also work.
+Tested with PHP 5.3.3., but earlier versions may also work.
 
 Install the following dependencies:
 
 ```
-go version
-jq (optional for the demo.sh test harness)
-```
+php -v
+sudo pecl install pecl_http-2.5.5
+# /etc/php.ini:
 
-On Mac OS X, you may need to link go:
-```
-sudo ln -s /usr/local/bin/go /usr/bin/go
+extension = http.so
+http.enabled=1
+
+jq (optional for the demo.sh test harness)
 ```
 
 ### Installing

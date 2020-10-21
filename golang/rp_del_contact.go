@@ -1,4 +1,4 @@
-///bin/true; exec /usr/bin/env go run "$0" "$@"
+//usr/bin/go run $0 $@; exit $?
 
 // Program: rp_del_contact.go
 // Usage: go run rp_del_contact.go id
