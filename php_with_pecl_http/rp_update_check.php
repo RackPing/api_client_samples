@@ -54,6 +54,7 @@
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
+      'Accept'        => 'application/json',
       'Content-type'  => 'application/json',
       'X-HTTP-Method-Override' => 'PUT'
    );

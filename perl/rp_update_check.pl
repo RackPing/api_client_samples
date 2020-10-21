@@ -23,6 +23,7 @@ use LWP::UserAgent;
    my $user     = $ENV{'RP_USER'}     // '';
    my $password = $ENV{'RP_PASSWORD'} // '';
    my $timeout  = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
+   my $useragent = $ENV{'RP_USERAGENT'} // '';
    my $DEBUG    = $ENV{'RP_DEBUG'}    || 0;
 
    if ($api_key eq '') {
@@ -49,12 +50,8 @@ use LWP::UserAgent;
 
 # Create a user agent object
    my $ua = LWP::UserAgent->new;
-   $ua->agent("RackPing/0.1");
    $ua->from('rackping@example.com');
    $ua->timeout($timeout); # 411 - not reliable for https requests?
-
-# Add auth token to user agent
-   $ua->default_header('Authorization' => 'Basic ' . encode_base64("$user:$password", ''));
 
 # Create a request for one check
 
@@ -66,9 +63,21 @@ use LWP::UserAgent;
       paused     => $paused,
    ];
 
+
+   my @headers = (
+      'Accept'         => 'application/json',
+      'Accept-Charset' => 'utf-8',
+      'App-key'        => "$api_key",
+      'Authorization'  => 'Basic ' . encode_base64("$user:$password", ''),
+      'Content-type'   => 'application/json',
+      'User-Agent'     => $useragent,
+   );
+
+   $ua->default_header(@headers);
+
 # Pass request to the user agent and get a response back
 
-   my $res = $ua->put( $url . "/checks/" . $checkid, 'App-key' => $api_key, Content => $form );
+   my $res = $ua->put( $url . "/checks/" . $checkid, Content => $form );
 
    print STDERR "info: update one check\n" if $DEBUG;
 

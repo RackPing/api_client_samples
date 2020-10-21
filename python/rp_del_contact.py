@@ -51,7 +51,9 @@ monitor = sys.argv[1]
 if debug:
     print("url=", url)
 
-headers = {'Content-type': 'application/json',
+headers = {
+           'Accept': 'application/json',
+           'Content-type': 'application/json',
            'App-Key': api_key
           }
 

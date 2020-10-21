@@ -23,6 +23,7 @@ use LWP::UserAgent;
    my $user     = $ENV{'RP_USER'}     // '';
    my $password = $ENV{'RP_PASSWORD'} // '';
    my $timeout  = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
+   my $useragent = $ENV{'RP_USERAGENT'} // '';
    my $DEBUG    = $ENV{'RP_DEBUG'}    || 0;
 
    if ($api_key eq '') {
@@ -34,18 +35,23 @@ use LWP::UserAgent;
 
 ### end of contact settings
 
+   my @headers = (
+      'Accept'         => 'application/json',
+      'Accept-Charset' => 'utf-8',
+      'App-key'        => "$api_key",
+      'Authorization'  => 'Basic ' . encode_base64("$user:$password", ''),
+      'Content-type'   => 'application/json',
+      'User-Agent'     => $useragent,
+   );
+
 # Create a contact agent object
    my $ua = LWP::UserAgent->new;
-   $ua->agent("RackPing/0.1");
    $ua->from('rackping@example.com');
    $ua->timeout($timeout); # 411 - not reliable for https requests?
 
-# Add auth token to contact agent
-   $ua->default_header('Authorization' => 'Basic ' . encode_base64("$user:$password", ''));
-
 # Create a request for a list of contacts
    my $req = HTTP::Request->new(GET => $url . '/contacts');
-   $req->header('App-key' => "$api_key");
+   $req->header(@headers);
 
 # Pass request to the contact agent and get a response back
    my $res = $ua->request($req);

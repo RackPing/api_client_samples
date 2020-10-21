@@ -56,7 +56,9 @@ form = {
 
 ### end of user settings
 
-headers = {'Content-type': 'application/json',
+headers = {
+           'Accept': 'application/json',
+           'Content-type': 'application/json',
            'App-Key': api_key
           }
 

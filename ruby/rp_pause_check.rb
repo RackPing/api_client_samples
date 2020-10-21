@@ -20,6 +20,7 @@ class RackPing
   format :json
   base_uri ENV['RP_SCHEME']+ENV['RP_DOMAIN']+ENV['RP_BASE_URL']
   default_timeout ENV['RP_TIMEOUT'].to_f
+  headers 'Accept' => 'application/json'
   headers 'Content-Type' => 'application/json'
   headers 'App-key' => user=ENV['RP_API_KEY']
   if ENV['RP_DEBUG'] != "0"

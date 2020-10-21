@@ -42,7 +42,8 @@
    $headers = array(
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
-      'Content-type'  => 'application/json'
+      'Content-type'  => 'application/json',
+      'Accept'        => 'application/json'
    );
 
    $http_req->setHeaders($headers);

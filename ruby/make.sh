@@ -12,6 +12,7 @@
 mylang=rb
 
 for i in *.$mylang; do
+    echo -n "$i: "
     chmod 755 $i
     ruby -c $i
 done
