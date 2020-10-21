@@ -26,7 +26,6 @@
       exit(1);
    }
 
-
    $id = $argv[1];
 
    if (empty($id)) {
@@ -77,6 +76,7 @@
        }
    } catch (HttpException $ex) {
        echo $ex;
+       exit(1);
    }
 
    exit($ret);

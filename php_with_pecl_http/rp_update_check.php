@@ -74,6 +74,7 @@
        }
    } catch (HttpException $ex) {
        echo $ex;
+       exit(1);
    }
 
    exit($ret);
