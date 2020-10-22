@@ -33,20 +33,27 @@ func debug(data []byte, err error) {
 }
 
 // global variables for communicating with callback redirect function redirectPolicyFunc()
-var g_username string = ""
-var g_password string = ""
-var g_api_key  string = ""
+var g_username   string = ""
+var g_password   string = ""
+var g_api_key    string = ""
+var g_user_agent string = ""
 
 func redirectPolicyFunc(req *http.Request, via []*http.Request) error {
    req.SetBasicAuth(g_username, g_password)
-   req.Header.Set("app-key", g_api_key)
+   req.Header.Set("App-key", g_api_key)
+   req.Header.Set("Content-type", "application/json")
+   req.Header.Set("Accept", "application/json")
+   req.Header.Set("Accept-Charset", "utf-8")
+   req.Header.Set("User-Agent", g_user_agent)
+
    return nil
 }
 
 func main() {
-   g_username = os.Getenv("RP_USER")
-   g_password = os.Getenv("RP_PASSWORD")
-   g_api_key  = os.Getenv("RP_API_KEY")
+   g_username   = os.Getenv("RP_USER")
+   g_password   = os.Getenv("RP_PASSWORD")
+   g_api_key    = os.Getenv("RP_API_KEY")
+   g_user_agent = os.Getenv("RP_USERAGENT")
 
    if g_username == "" {
       fmt.Printf("%s\n", "error: do 'source ../set.sh' first.")
