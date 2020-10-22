@@ -41,7 +41,7 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Update one check using HERE document:"
-curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/checks/$id <<EOF
+curl $options $auth_options -H 'Accept: application/json' -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/checks/$id <<EOF
 {
    "name"       : "APITestTest",
    "host"       : "https://www.rackping.com/",
@@ -52,7 +52,7 @@ curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP
 EOF
 
 ret=$?
-echo -e "ret:$ret\n"
+echo -e "ret=$ret\n"
 
 set +e
 

@@ -42,7 +42,7 @@ auth_options="--basic -u $user:$password"
 
 echo "Delete one check"
 #rc=`curl $options -I -w "%{http_code}" $auth_options -H "App-key: $RP_API_KEY" -X DELETE $url/checks/$id`
-rc=`curl $options $auth_options -H "App-key: $RP_API_KEY" -X DELETE $url/checks/$id`
+rc=`curl $options $auth_options -H 'Accept: application/json' -H "App-key: $RP_API_KEY" -X DELETE $url/checks/$id`
 ret=$?
 echo "rc=$rc"
 echo -e "ret=$ret\n"

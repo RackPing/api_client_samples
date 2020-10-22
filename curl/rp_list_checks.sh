@@ -34,9 +34,9 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Get list of checks:"
-curl $options $auth_options -H "App-key: $RP_API_KEY" ${url}/checks -w "\n"
+curl $options $auth_options -H "App-key: $RP_API_KEY" -H 'Accept: application/json' ${url}/checks -w "\n"
 ret=$?
-echo -e "ret=$ret\n"
+#echo -e "ret=$ret\n"
 
 set +e
 

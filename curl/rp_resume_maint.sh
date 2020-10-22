@@ -41,7 +41,7 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Disable maintenance mode for one check:"
-curl $options $auth_options -H "App-key: $RP_API_KEY" -X PUT ${url}/checks/$id?maintenance=0 -w "\n"
+curl $options $auth_options -H 'Accept: application/json' -H "App-key: $RP_API_KEY" -X PUT ${url}/checks/$id?maintenance=0 -w "\n"
 ret=$?
 echo -e "ret=$ret\n"
 

@@ -41,7 +41,7 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Update one contact using HERE document:"
-curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/contacts/$id <<EOF
+curl $options $auth_options -H 'Accept: application/json' -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/contacts/$id <<EOF
 {
    "first"        : "JohnJohn",
    "last"         : "Doe",
@@ -54,7 +54,7 @@ curl $options $auth_options -H 'Content-type: application/json' -H "App-key: $RP
 EOF
 
 ret=$?
-echo -e "ret:$ret\n"
+echo -e "ret=$ret\n"
 
 set +e
 
