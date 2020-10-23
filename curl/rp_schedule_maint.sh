@@ -43,7 +43,7 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Enable maintenance window for one check:"
-curl $options $auth_options -H 'Accept: application/json' -H "App-key: $RP_API_KEY" -X PUT "${url}/checks/$id?start_maintenance=$start&end_maintenance=$end" -w "\n"
+curl $options $auth_options -H 'Accept: application/json' -H 'Accept-Charset: utf-8' -H "App-key: $RP_API_KEY" -X PUT "${url}/checks/$id?start_maintenance=$start&end_maintenance=$end" -w "\n"
 ret=$?
 echo -e "ret=$ret\n"
 

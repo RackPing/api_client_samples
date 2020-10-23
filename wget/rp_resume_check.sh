@@ -45,7 +45,7 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Resume one check:"
-wget $ENABLE_DEBUG $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept: application/json" --header="Content-type: application/json" ${url}/checks/$id?paused=0
+wget $ENABLE_DEBUG $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept: application/json" --header="Accept-Charset: utf-8" --header="Content-type: application/json" ${url}/checks/$id?paused=0
 ret=$?
 
 if [ "$debug" == "1" ]; then
