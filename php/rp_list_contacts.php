@@ -52,6 +52,7 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
       'Content-Type: application/json',
       'Authorization: Basic '. base64_encode("$user:$pw"),
       'Accept: application/json',
+      'Accept-Charset: utf-8',
       "App-key: $api_key"
    );
 

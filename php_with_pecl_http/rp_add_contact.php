@@ -48,7 +48,8 @@
       'App-key'       => $api_key,
       'Authorization' => "Basic " . base64_encode("$user:$password"),
       'Content-type'  => 'application/json',
-      'Accept'        => 'application/json'
+      'Accept'        => 'application/json',
+      'Accept-Charset' => 'utf-8'
    );
 
    $http_req->setHeaders($headers);

@@ -19,8 +19,9 @@ class RackPing
 # see http://www.rubydoc.info/github/jnunemaker/httparty/HTTParty/ClassMethods
   format :json
   base_uri ENV['RP_SCHEME']+ENV['RP_DOMAIN']+ENV['RP_BASE_URL']
-  headers 'Accept' => 'application/json'
   default_timeout ENV['RP_TIMEOUT'].to_f
+  headers 'Accept' => 'application/json'
+  headers 'Accept-Charset' => 'utf-8'
   headers 'Content-Type' => 'application/json'
   headers 'App-key' => user=ENV['RP_API_KEY']
   if ENV['RP_DEBUG'] != "0"
