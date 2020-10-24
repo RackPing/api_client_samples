@@ -163,11 +163,12 @@ public class RackPingContacts {
          // con.setRequestProperty("Accept-Encoding", "gzip, deflate");
          con.setRequestProperty("Content-Type", "application/json");
          con.setRequestProperty("App-key", api_key);
+         con.setRequestProperty("Accept-Charset", "utf-8");
 
          con.setConnectTimeout(timeout);
          con.setReadTimeout(timeout);
 
-         String encoded = Base64.getEncoder().encodeToString((username+":"+password).getBytes("UTF-8"));
+         String encoded = Base64.getEncoder().encodeToString((username+":"+password).getBytes("utf-8"));
          con.setRequestProperty("Authorization", "Basic "+encoded);
 
          // Send request

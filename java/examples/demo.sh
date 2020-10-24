@@ -32,4 +32,7 @@ for f in *.java; do
    $java $opt $class
 done
 
+echo
+echo "info: if there's any failed steps above, login to your RackPing account and manually delete any test contacts or checks, then try again."
+
 exit 0

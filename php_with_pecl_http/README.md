@@ -20,13 +20,13 @@ Install the following dependencies:
 
 ```
 php -v
+jq (optional for the demo.sh test harness)
 sudo pecl install pecl_http-2.5.5
-# /etc/php.ini:
-
+```
+In /etc/php.ini:
+```
 extension = http.so
 http.enabled=1
-
-jq (optional for the demo.sh test harness)
 ```
 
 ### Installing

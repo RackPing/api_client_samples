@@ -87,7 +87,7 @@ public class RackpingListContacts {
          con.setConnectTimeout(timeout);
          con.setReadTimeout(timeout);
 
-         String encoded = Base64.getEncoder().encodeToString((username+":"+password).getBytes("UTF-8"));
+         String encoded = Base64.getEncoder().encodeToString((username+":"+password).getBytes("utf-8"));
          con.setRequestProperty("Authorization", "Basic "+encoded);
 
          // Send request

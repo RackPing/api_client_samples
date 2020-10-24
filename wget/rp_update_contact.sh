@@ -50,7 +50,7 @@ EOF
 #echo $json
 
 echo "Update one contact:"
-wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: UTF-8" --header="Content-Type: application/json" --header="Accept: application/json" \
+wget $options $auth_options --header='X-HTTP-Method-Override: PUT' --header="App-key: $api_key" --header="Accept-Charset: utf-8" --header="Content-Type: application/json" --header="Accept: application/json" \
    $ENABLE_DEBUG --post-data="$json" ${url}/contacts/$id
 ret=$?
 

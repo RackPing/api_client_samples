@@ -2,6 +2,8 @@
 
 PHP sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command line or cron.
 
+If you have the php pecl httpd module installed, see the php_with_pecl_http/ folder instead.
+
 ## Getting Started
 
 * Download or copy-and-paste a program, then configure set.sh with your RackPing login and API key.
