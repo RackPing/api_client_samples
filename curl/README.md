@@ -60,3 +60,7 @@ time ./demo.sh
 
 Copyright RackPing USA 2013-2021
 
+## Keywords
+
+RackPing REST API, SDK, Monitoring, Observability, Nocode, No-code, programming, scripting, observability, automation.
+

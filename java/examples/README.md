@@ -42,3 +42,7 @@ See the [RackPing API web page](https://www.rackping.com/api.html) for:
 
 Copyright RackPing USA 2013-2021
 
+## Keywords
+
+RackPing REST API, SDK, Monitoring, Observability, Nocode, No-code, programming, scripting, observability, automation.
+
