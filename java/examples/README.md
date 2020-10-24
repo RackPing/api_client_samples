@@ -4,6 +4,7 @@ Longer Java sample programs that can be modified to write complex, multi-step pr
 
 ## Getting Started
 
+* [Create a FREE RackPing monitoring account](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
 * Download or copy-and-paste a program, then configure set.sh with your RackPing login and API key.
 
 ### Prerequisites
@@ -44,5 +45,5 @@ Copyright RackPing USA 2013-2021
 
 ## Keywords
 
-RackPing REST API, SDK, Monitoring, Observability, Nocode, No-code, programming, scripting, observability, automation.
+RackPing REST API, SDK, Monitoring, Observability, Nocode, No-code, programming, scripting, automation.
 
