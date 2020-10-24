@@ -6,7 +6,7 @@ If you have the php pecl httpd module installed, see the php_with_pecl_http/ fol
 
 ## Getting Started
 
-* [Create a FREE RackPing monitoring account](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
+* [Create a FREE RackPing monitoring account!](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
 * Download or copy-and-paste a program, then configure set.sh with your RackPing login and API key.
 * For a linux cron job, download or copy-and-paste a RackPing Monitoring client program and manually set the RackPing account login information in the script according to the explanation in set.sh
 
