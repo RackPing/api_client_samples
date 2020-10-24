@@ -1,6 +1,6 @@
 # RackPing API 2.0 Client Sample Java Programs
 
-Longer Java sample programs that can be modified to write complex, multi-step programs that chain several REST calls. These programs demonstrate traditional (advanced) programming with JSON encoding and decoding, and comprehensive error handling, beyond basic scripting. For scripting examples, see the parent folder.
+Longer Java sample programs that can be modified to write complex, multi-step programs that chain several REST calls. These programs demonstrate traditional (advanced) programming with JSON encoding and decoding, and comprehensive error handling, beyond basic scripting. For easy-to-use scripting examples, see the parent folder.
 
 ## Getting Started
 
