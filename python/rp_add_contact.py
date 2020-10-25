@@ -44,7 +44,7 @@ debug = 0
 form = {
     'first':       'John',
     'last':        'Doe',
-    'email':       'john.doe@example.com',
+    'email':       'john.doe+' + api_key + '@example.com',
     'role':        'O',
     'cellphone':   '408 555 1212',
     'countrycode': '1',

@@ -56,7 +56,7 @@ public class RackpingListContacts {
       Map<String, List<String>> r;
 
       try {
-         System.out.println("1. Get list of contacts");
+         System.err.println("1. Get list of contacts");
          r = obj.send(url + "/contacts", username, password, api_key, timeout, "", "GET");
          System.out.println(r.get("body").get(0));
       }

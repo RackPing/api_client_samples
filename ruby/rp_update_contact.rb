@@ -13,6 +13,7 @@ require 'httparty'
 
 user=ENV['RP_USER']
 pass=ENV['RP_PASSWORD']
+$api_key=ENV['RP_API_KEY']
 
 class RackPing
   include HTTParty
@@ -23,7 +24,7 @@ class RackPing
   headers 'Accept' => 'application/json'
   headers 'Accept-Charset' => 'utf-8'
   headers 'Content-Type' => 'application/json'
-  headers 'App-key' => user=ENV['RP_API_KEY']
+  headers 'App-key' => $api_key
   if ENV['RP_DEBUG'] != "0"
      puts "info: enabling debug mode"
      debug_output
@@ -58,7 +59,7 @@ begin
    data = {
       'first'       => 'JohnJohn',
       'last'        => 'Doe',
-      'email'       => 'john.doe@example.com',
+      'email'       => 'john.doe+' + $api_key + '@example.com',
       'role'        => 'O',
       'cellphone'   => '408 555 1212',
       'countrycode' => 1,

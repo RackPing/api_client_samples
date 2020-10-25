@@ -38,7 +38,7 @@ echo "Add one check using HERE document:" >&2
 curl $options $auth_options -H 'Content-type: application/json' -H 'Accept: application/json' -H 'Accept-Charset: utf-8' -H "App-key: $RP_API_KEY" -w "\n" -X POST --data-binary @- ${url}/checks <<EOF
 {
    "name"       : "APITest",
-   "host"       : "https://www.rackping.com/",
+   "host"       : "https://www.rackping.com/?$api_key",
    "port"       : 443,
    "resolution" : 60,
    "paused"     : 1

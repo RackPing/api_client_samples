@@ -80,7 +80,7 @@ func main() {
    }
 
    {
-      fmt.Printf("%s\n", "Get list of checks")
+      println("Get list of checks")
 
       req, err := http.NewRequest("GET", url + "/checks", nil)
       req.SetBasicAuth(g_username, g_password)

@@ -29,7 +29,7 @@
 
    $ret = 0;
 
-   echo "Get list of contacts\n";
+   fwrite(STDERR, "Get list of contacts\n");
 
    $http_req = new HttpRequest($url . '/contacts');
 

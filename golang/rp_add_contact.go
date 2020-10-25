@@ -97,7 +97,7 @@ func main() {
       m := RackPing{
          First:       "John",
          Last:        "Doe",
-         Email:       "john.doe@example.com",
+         Email:       "john.doe+" + g_api_key + "@example.com",
          Role:        "O",
          Cellphone:   "408 555 1212",
          Countrycode: 1,

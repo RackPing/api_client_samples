@@ -37,7 +37,7 @@ fi
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
-echo "Get list of checks:"
+echo "Get list of checks:" >&2
 wget $ENABLE_DEBUG $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: utf-8" --header="Accept: application/json" ${url}/checks
 ret=$?
 

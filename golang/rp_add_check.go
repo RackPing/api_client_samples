@@ -94,7 +94,7 @@ func main() {
 
       m := RackPing{
          Name:       "APITest",
-         Host:       "https://api.rackping.com/",
+         Host:       "https://api.rackping.com/?" + g_api_key,
          Port:       443,
          Resolution: 60,
          Paused:     1 } // leave bracket on same line as last field

@@ -1,0 +1,8 @@
+mylang="sh"
+
+re='^[0-9]+$'
+
+old_id=`./rp_list_contacts.$mylang | jq '.contacts[] | select(.last=="Doe") | .id'`
+if [[ $old_id =~ $re ]] ; then
+   ./rp_del_contact.$mylang $old_id
+fi

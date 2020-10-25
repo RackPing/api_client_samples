@@ -27,6 +27,26 @@ java="/usr/bin/java -client $opt "
 
 re='^[0-9]+$'
 
+# 0. Cleanup old demo contacts and checks
+
+old_id=`$java RackpingListContacts | jq '.contacts[] | select(.last=="Doe") | .id'`
+if [[ $old_id =~ $re ]] ; then
+   $java RackpingDelContact $old_id
+fi
+
+# support versions of jq before 1.5, which don't have startswith()
+old_id=`$java RackpingListChecks | jq '.checks[] | select(.name=="APITest") | .id'`
+if [[ $old_id =~ $re ]] ; then
+   $java RackpingDelCheck $old_id
+fi
+
+if [ -z "$old_id" ]; then
+   old_id=`$java RackpingListChecks | jq '.checks[] | select(.name=="APITestTest") | .id'`
+   if [[ $old_id =~ $re ]] ; then
+      $java RackpingDelCheck $old_id
+   fi
+fi
+
 # 1. Demo the contacts (users) scripts
 
 $java RackpingListContacts

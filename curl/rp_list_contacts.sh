@@ -33,10 +33,10 @@ fi
 options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
-echo "Get list of contacts:"
+echo "Get list of contacts:" >&2
 curl $options $auth_options -H "App-key: $RP_API_KEY" -H 'Accept: application/json' -H 'Accept-Charset: utf-8' ${url}/contacts -w "\n"
 ret=$?
-echo -e "ret=$ret\n"
+echo -e "ret=$ret\n" >&2
 
 set +e
 

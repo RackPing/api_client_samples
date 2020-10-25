@@ -76,7 +76,7 @@ public class RackpingUpdateCheck {
          Map<String, String> json = new JSONObject();
 
          json.put("name", "APITestTest");
-         json.put("host", "https://www.rackping.com/");
+         json.put("host", "https://www.rackping.com/?" + api_key);
          json.put("port", "443");
          json.put("resolution", "60");
          json.put("paused", "1");

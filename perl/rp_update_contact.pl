@@ -37,7 +37,7 @@ use LWP::UserAgent;
 
    my $first        = 'JohnJohn';
    my $last         = 'Doe';
-   my $email        = 'john.doe@example.com';
+   my $email        = 'john.doe+' . $api_key . '@example.com';
    my $role         = 'O';
    my $cellphone    = '408 555 1212';
    my $countrycode  = '1';

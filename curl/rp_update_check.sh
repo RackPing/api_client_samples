@@ -44,7 +44,7 @@ echo "Update one check using HERE document:"
 curl $options $auth_options -H 'Accept: application/json' -H 'Accept-Charset: utf-8' -H 'Content-type: application/json' -H "App-key: $RP_API_KEY" -w "\n" -X PUT --data-binary @- ${url}/checks/$id <<EOF
 {
    "name"       : "APITestTest",
-   "host"       : "https://www.rackping.com/",
+   "host"       : "https://www.rackping.com/?$api_key",
    "port"       : 443,
    "resolution" : 60,
    "paused"     : 1

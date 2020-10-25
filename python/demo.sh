@@ -25,6 +25,26 @@ source ../set.sh
 
 re='^[0-9]+$'
 
+# 0. Cleanup old demo contacts and checks
+
+old_id=`$cmd_python ./rp_list_contacts.$mylang | jq '.contacts[] | select(.last=="Doe") | .id'`
+if [[ $old_id =~ $re ]] ; then
+   $cmd_python ./rp_del_contact.$mylang $old_id
+fi
+
+# support versions of jq before 1.5, which don't have startswith()
+old_id=`$cmd_python ./rp_list_checks.$mylang | jq '.checks[] | select(.name=="APITest") | .id'`
+if [[ $old_id =~ $re ]] ; then
+   $cmd_python ./rp_del_check.$mylang $old_id
+fi
+
+if [ -z "$old_id" ]; then
+   old_id=`$cmd_python ./rp_list_checks.$mylang | jq '.checks[] | select(.name=="APITestTest") | .id'`
+   if [[ $old_id =~ $re ]] ; then
+      $cmd_python ./rp_del_check.$mylang $old_id
+   fi
+fi
+
 # 1. Demo the contacts (users) scripts
 
 $cmd_python ./rp_list_contacts.$mylang

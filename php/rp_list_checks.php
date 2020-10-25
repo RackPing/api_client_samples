@@ -91,7 +91,7 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
 
    $ret = 0;
 
-   echo "Get list of checks\n";
+   fwrite(STDERR, "Get list of checks\n");
    $response = do_curl('GET', $url . '/checks', $user, $password, $api_key, $timeout, NULL);
    $rc = $response['http_code'];
    if ($rc == '200') {

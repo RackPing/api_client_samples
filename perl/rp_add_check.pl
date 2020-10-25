@@ -34,7 +34,7 @@ use LWP::UserAgent;
 ### start of user settings
 
    my $name       = 'APITest';
-   my $host       = 'https://www.rackping.com/';
+   my $host       = 'https://www.rackping.com/?' . $api_key;
    my $port       = 443;
    my $resolution = 60;
    my $paused     = 1;

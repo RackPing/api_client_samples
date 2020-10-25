@@ -1,0 +1,7 @@
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-0.el6_10.x86_64
+export PATH=$JAVA_HOME/bin:$PATH
+
+opt="-cp .:json-simple-1.1.1.jar"
+java="/usr/bin/java -client $opt "
+$java RackpingListContacts
+

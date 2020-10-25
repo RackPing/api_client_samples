@@ -13,6 +13,7 @@ require 'httparty'
 
 user=ENV['RP_USER']
 pass=ENV['RP_PASSWORD']
+$api_key=ENV['RP_API_KEY']
 
 class RackPing
   include HTTParty
@@ -23,7 +24,7 @@ class RackPing
   headers 'Accept' => 'application/json'
   headers 'Accept-Charset' => 'utf-8'
   headers 'Content-Type' => 'application/json'
-  headers 'App-key' => user=ENV['RP_API_KEY']
+  headers 'App-key' => $api_key
   if ENV['RP_DEBUG'] != "0"
      puts "info: enabling debug mode"
      debug_output
@@ -52,7 +53,7 @@ end
 
 begin
    success = 0
-   puts "List contacts:"
+   $stderr.puts "List contacts:"
    url='/contacts'
    response = RackPing.new(user, pass).get(url)
    if response.code == 200

@@ -39,7 +39,7 @@
 
    $data = array(
       "name"       => "APITestTest",
-      "host"       => "https://www.rackping.com/",
+      "host"       => "https://www.rackping.com/?" . $api_key,
       "port"       => 443,
       "resolution" => 60,
       "paused"     => 1

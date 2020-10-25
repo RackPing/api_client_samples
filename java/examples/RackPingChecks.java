@@ -76,7 +76,7 @@ public class RackPingChecks {
          Map<String, String> json = new JSONObject();
 
          json.put("name", "APITest");
-         json.put("host", "https://www.rackping.com/");
+         json.put("host", "https://www.rackping.com/?" + api_key);
          json.put("port", "443");
          json.put("resolution", "60");
          json.put("paused", "1");
@@ -116,7 +116,7 @@ public class RackPingChecks {
 
             json.put("checkid", Long.toString(id));
             json.put("name", "APITestTest");
-            json.put("host", "https://www.rackping.com/");
+            json.put("host", "https://www.rackping.com/?" + api_key);
             json.put("port", "443");
             json.put("resolution", "60");
 

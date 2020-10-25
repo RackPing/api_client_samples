@@ -77,7 +77,7 @@ public class RackPingContacts {
 
          json.put("first", "John");
          json.put("last", "Doe");
-         json.put("email", "john.doe@example.com");
+         json.put("email", "john.doe+" + api_key + "@example.com");
          json.put("role", "O");
          json.put("cellphone", "408 555 1212");
          json.put("countrycode", "1");
@@ -119,7 +119,7 @@ public class RackPingContacts {
 
             json.put("first", "JohnJohn");
             json.put("last", "Doe");
-            json.put("email", "john.doe@example.com");
+            json.put("email", "john.doe+" + api_key + "@example.com");
             json.put("role", "O");
             json.put("cellphone", "408 555 1212");
             json.put("countrycode", "1");

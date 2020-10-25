@@ -29,7 +29,7 @@
 
    $ret = 0;
 
-   echo "Get list of checks\n";
+   fwrite(STDERR, "Get list of checks\n");
 
    $http_req = new HttpRequest($url . '/checks');
 

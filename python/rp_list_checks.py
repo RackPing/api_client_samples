@@ -72,7 +72,7 @@ def main():
     '''Entry point if called as an executable'''
 
     try:
-        print("Create a request to fetch list of monitors:\n")
+        sys.stderr.write("Create a request to fetch list of monitors:\n")
         myResponse = requests.get(url + "/checks", \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \
