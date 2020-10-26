@@ -32,12 +32,26 @@ if [ "$debug" == "1" ]; then
    ENABLE_DEBUG="-d"
 fi
 
+json=$(cat <<EOF
+{
+   "name"       : "APITest",
+   "host"       : "https://www.rackping.com/?$api_key",
+   "port"       : 443,
+   "resolution" : 60,
+   "paused"     : 1
+}
+EOF
+)
+
+#echo $json
+
 options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 echo "Add one check:" >&2
 wget $options $auth_options --header="App-key: $api_key" --header="Accept-Charset: utf-8" --header="Content-Type: application/json" --header="Accept: application/json" \
-   $ENABLE_DEBUG --post-data='{ "name": "APITest", "host": "https://www.rackping.com/", "port": 443, "resolution": 60, "paused": 1 }' ${url}/checks
+   $ENABLE_DEBUG --post-data="$json" ${url}/checks
+
 ret=$?
 
 if [ "$debug" == "1" ]; then

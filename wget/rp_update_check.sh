@@ -43,7 +43,13 @@ options="--max-redirect=$redirects --quiet --timeout $timeout -O -"
 auth_options="--auth-no-challenge --http-user $user --http-password $password"
 
 json=$(cat <<EOF
-{ "name": "APITestTest", "host": "https://www.rackping.com/", "port": 443, "resolution": 60, "paused": 1 }
+{
+   "name"       : "APITestTest",
+   "host"       : "https://www.rackping.com/?$api_key",
+   "port"       : 443,
+   "resolution" : 60,
+   "paused"     : 1
+}
 EOF
 )
 
