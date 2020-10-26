@@ -40,6 +40,21 @@ source ../set.sh
 time ./demo_all.sh
 ```
 
+Sample output:
+```
+real	1m47.736s
+user	0m40.550s
+sys	0m6.428s
+```
+
+## Notes
+
+demo_all.sh can be monitoring aurally using the following tones:
+
+* 2 beeps for each failed add contact call
+* 3 beeps for each failed add check call
+* 1 beep at end of run
+
 ## RackPing Account Limitations
 
 * Free accounts only allow one contact (user) and one check (monitor.) So the sample API scripts for add and delete check and contact will not succeed, likewise the demo.sh and demo_all.sh test harnesses. Please upgrade to a paid RackPing account.

@@ -52,6 +52,7 @@ id=`$ruby_cmd ./rp_add_contact.$mylang | $jq_cmd '.contact .id'`
 
 if ! [[ $id =~ $re ]] ; then
    echo "error: unable to parse response for a new numeric contact id. Please login manually, remove the old test contact, and try again." >&2
+   echo 
    exit 1
 fi
 
@@ -72,6 +73,7 @@ id=`$ruby_cmd ./rp_add_check.$mylang | $jq_cmd '.checks .id'`
 
 if ! [[ $id =~ $re ]] ; then
    echo "error: unable to parse response for a new numeric check id. Please login manually, remove the old test check, and try again." >&2
+   echo 
    exit 1
 fi
 
