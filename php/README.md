@@ -57,6 +57,13 @@ source ../set.sh
 time ./demo.sh
 ```
 
+## Notes
+
+* if you see the following error, then pecl-http is installed, so use the [php_with_pecl_http](../php_with_pecl_http) sample:
+```
+Fatal error: Cannot redeclare http_parse_headers()
+```
+
 ## Version
 
 1.0
