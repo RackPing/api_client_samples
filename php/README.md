@@ -59,7 +59,7 @@ time ./demo.sh
 
 ## Notes
 
-* if you see the following php error, then the php pecl-http module is installed, so use the [php_with_pecl_http](../php_with_pecl_http) sample:
+* if you see the following php error, then the php pecl-http extension is installed, so use the RackPing [php_with_pecl_http](../php_with_pecl_http) sample:
 ```
 Fatal error: Cannot redeclare http_parse_headers()
 ```
