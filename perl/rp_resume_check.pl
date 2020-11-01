@@ -23,6 +23,7 @@ use LWP::UserAgent;
    my $user     = $ENV{'RP_USER'}     // '';
    my $password = $ENV{'RP_PASSWORD'} // '';
    my $timeout  = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
+   my $max_redirects = $ENV{'RP_REDIRECTS'} || 3;
    my $useragent = $ENV{'RP_USERAGENT'} // '';
    my $DEBUG    = $ENV{'RP_DEBUG'}    || 0;
 
@@ -42,6 +43,7 @@ use LWP::UserAgent;
 
    $ua->from('rackping@example.com');
    $ua->timeout($timeout); # 411 - not reliable for https requests?
+   $ua->max_redirect($max_redirects);
 
    my @headers = (
       'Accept'         => 'application/json',

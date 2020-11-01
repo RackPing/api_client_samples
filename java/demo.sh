@@ -27,7 +27,7 @@ java="/usr/bin/java -client $opt "
 
 re='^[0-9]+$'
 
-# 0. Cleanup old demo contacts and checks
+echo "0. Cleanup old demo contacts and checks:"
 
 old_id=`$java RackpingListContacts | jq '.contacts[] | select(.last=="Doe") | .id'`
 if [[ $old_id =~ $re ]] ; then

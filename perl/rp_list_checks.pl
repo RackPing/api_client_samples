@@ -19,12 +19,13 @@ use LWP::UserAgent;
 
    my $url = $ENV{'RP_SCHEME'} . $ENV{'RP_DOMAIN'} . $ENV{'RP_BASE_URL'};
 
-   my $api_key  = $ENV{'RP_API_KEY'}  // '';
-   my $user     = $ENV{'RP_USER'}     // '';
-   my $password = $ENV{'RP_PASSWORD'} // '';
-   my $timeout  = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
-   my $useragent = $ENV{'RP_USERAGENT'} // '';
-   my $DEBUG    = $ENV{'RP_DEBUG'}    || 0;
+   my $api_key       = $ENV{'RP_API_KEY'}  // '';
+   my $user          = $ENV{'RP_USER'}     // '';
+   my $password      = $ENV{'RP_PASSWORD'} // '';
+   my $timeout       = $ENV{'RP_TIMEOUT'}  || TIMEOUT_SEC;
+   my $max_redirects = $ENV{'RP_REDIRECTS'} || 3;
+   my $useragent     = $ENV{'RP_USERAGENT'} // '';
+   my $DEBUG         = $ENV{'RP_DEBUG'}    || 0;
 
    if ($api_key eq '') {
       print "error: do source ../set.sh to set the envariables.\n";
@@ -48,6 +49,7 @@ use LWP::UserAgent;
    my $ua = LWP::UserAgent->new;
    $ua->from('rackping@example.com');
    $ua->timeout($timeout); # 411 - not reliable for https requests?
+   $ua->max_redirect($max_redirects);
 
 # Create a request for a list of checks
    my $req = HTTP::Request->new(GET => $url . '/checks');

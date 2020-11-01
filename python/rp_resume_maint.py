@@ -25,13 +25,14 @@ from requests.auth import HTTPBasicAuth
 from pprint import pprint
 
 try:
-   scheme   = os.environ['RP_SCHEME']
-   domain   = os.environ['RP_DOMAIN']
-   base_url = os.environ['RP_BASE_URL']
-   timeout  = float(os.environ['RP_TIMEOUT'])
-   api_key  = os.environ['RP_API_KEY']
-   user     = os.environ['RP_USER']
-   password = os.environ['RP_PASSWORD']
+   scheme        = os.environ['RP_SCHEME']
+   domain        = os.environ['RP_DOMAIN']
+   base_url      = os.environ['RP_BASE_URL']
+   timeout       = float(os.environ['RP_TIMEOUT'])
+   max_redirects = float(os.environ['RP_REDIRECTS'])
+   api_key       = os.environ['RP_API_KEY']
+   user          = os.environ['RP_USER']
+   password      = os.environ['RP_PASSWORD']
 except KeyError as e:
    sys.exit('error: env not set. Please do source ../set.sh and try again: First missing key ' + e.args[0])
 
@@ -76,12 +77,17 @@ def output(s):
 def main():
     '''Entry point if called as an executable'''
 
+    redirects_flag = False
+    if max_redirects:
+       redirects_flag = True
+
     try:
         print("Create a request to end maintenance mode  1 monitor:\n")
         myResponse = requests.put(url + "/checks/" + monitor + '?maintenance=0', \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \
-                                  timeout=timeout)
+                                  timeout=timeout, \
+                                  allow_redirects=redirects_flag)
         output(myResponse)
     except requests.exceptions.RequestException as e:
         sys.exit(e)

@@ -40,7 +40,7 @@ source ../set.sh
 time ./demo_all.sh
 ```
 
-Sample output:
+Sample output on linux and Mac OS X:
 ```
 real	1m47.736s
 user	0m40.550s
@@ -49,11 +49,13 @@ sys	0m6.428s
 
 ## Notes
 
-demo_all.sh can be monitoring aurally using the following tones:
+The demo_all.sh script can be monitored aurally using the following tones:
 
 * 2 beeps for each failed add contact call
 * 3 beeps for each failed add check call
 * 1 beep at end of run
+
+(The php and php_with_pecl_http sample demos are mutually exclusive based on whether the pecl http extension is installed or not, so one of those sample demos will always generate 2 beeps when add contact is attempted.)
 
 ## RackPing Account Limitations
 

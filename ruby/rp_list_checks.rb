@@ -21,10 +21,18 @@ class RackPing
   format :json
   base_uri ENV['RP_SCHEME']+ENV['RP_DOMAIN']+ENV['RP_BASE_URL']
   default_timeout ENV['RP_TIMEOUT'].to_f
+
+  if ENV['RP_REDIRECTS'].to_i > 0
+     follow_redirects true
+  else
+     no_follow true
+  end
+
   headers 'Accept' => 'application/json'
   headers 'Accept-Charset' => 'utf-8'
   headers 'Content-Type' => 'application/json'
   headers 'App-key' => $api_key
+
   if ENV['RP_DEBUG'] != "0"
      puts "info: enabling debug mode"
      debug_output

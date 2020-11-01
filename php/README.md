@@ -64,6 +64,18 @@ time ./demo.sh
 Fatal error: Cannot redeclare http_parse_headers()
 ```
 
+The value for CURLOPT_POSTREDIR can be one of the following:
+```
+0 -> do not set any behavior
+1 -> follow redirect with the same type of request only for 301 redirects.
+2 -> follow redirect with the same type of request only for 302 redirects.
+3 -> follow redirect with the same type of request both for 301 and 302 redirects.
+
+# Example:
+
+curl_setopt($curl, CURLOPT_POSTREDIR, 3);
+```
+
 ## Version
 
 1.0

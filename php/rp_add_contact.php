@@ -64,6 +64,24 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
    curl_setopt($ch, CURLOPT_HEADER, 1);
 
+   $redirects = getenv('RP_REDIRECTS');
+   if ($redirects) {
+      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+      curl_setopt($curl, CURLOPT_POSTREDIR, 3);
+   }
+   else {
+      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+   }
+
+   $redirects = getenv('RP_REDIRECTS');
+   if ($redirects) {
+      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+      curl_setopt($curl, CURLOPT_POSTREDIR, $redirects);
+   }
+   else {
+      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+   }
+
    if ($method == 'POST' or $method == 'PUT' or $method == 'DELETE') {
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
 

@@ -22,12 +22,11 @@ source ../set.sh
 
 re='^[0-9]+$'
 
-# 0. Cleanup old demo contacts and checks
+echo "0. Cleanup old demo contacts and checks:"
 
 old_id=`./rp_list_contacts.$mylang | jq '.contacts[] | select(.last=="Doe") | .id'`
 if [[ $old_id =~ $re ]] ; then
-#   ./rp_del_contact.$mylang $old_id
-echo "test"
+   ./rp_del_contact.$mylang $old_id
 fi
 
 # support versions of jq before 1.5, which don't have startswith()
