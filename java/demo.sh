@@ -27,6 +27,10 @@ java="/usr/bin/java -client $opt "
 
 re='^[0-9]+$'
 
+if [[ ! -f "RackpingAddCheck.class" ]]; then
+   ./build.sh
+fi
+
 echo "0. Cleanup old demo contacts and checks:"
 
 old_id=`$java RackpingListContacts | jq '.contacts[] | select(.last=="Doe") | .id'`

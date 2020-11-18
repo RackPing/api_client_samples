@@ -21,4 +21,7 @@ for i in *.sh; do
     chmod 755 $i
 done
 
+# golangci-lint - ignore "redeclared in this block" errors because each file is standalone, and not part of a go project
+# golangci-lint run .
+
 exit 0

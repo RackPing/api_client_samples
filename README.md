@@ -49,13 +49,15 @@ sys	0m6.428s
 
 ## Notes
 
-The demo_all.sh script can be monitored aurally using the following tones:
+The demo_all.sh script progress can be monitored aurally using the following tones emitted from */demo.sh:
 
 * 2 beeps for each failed add contact call
 * 3 beeps for each failed add check call
 * 1 beep at end of run
 
 (The php and php_with_pecl_http sample demos are mutually exclusive based on whether the pecl http extension is installed or not, so one of those sample demos will always generate 2 beeps when add contact is attempted.)
+
+* The add contact scripts don't assign a password or send a reminder email. You will have to login to the UI and click on "My Users" ... choose user ... "Reset Password."
 
 ## RackPing Account Limitations
 
