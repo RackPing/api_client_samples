@@ -13,12 +13,19 @@
 sudo docker build -t rackping_api:latest .
 docker images
 
-# takes 1 minute to run the test harness
-docker run --env-file ./env.list rackping_api /bin/bash -c "time ./demo_all.sh"
+# takes 1 minute to run the test harness, then terminate the container process
+docker run --env-file ./env.list rackping_api
 
 # helpful debugging commands:
 #
+# start a persistent process for 30 minutes:
 # docker run --env-file ./env.list rackping_api sleep 1800 &
+# find the container process id in the first column:
 # docker ps
-# docker exec -it 1b4bf7e6bb63 /bin/bash
-# docker exec -it 1b4bf7e6bb63 /bin/bash -c "cd perl; time ./demo.sh"
+#
+# login to the container and run the test harness one or more times::
+# docker exec -it <CONTAINER_ID> /bin/bash
+# time ./demo_all.sh
+#
+# use the persistent container to run tests for one scripting language:
+# docker exec -it <CONTAINER_ID> /bin/bash -c "cd perl; time ./demo.sh"
