@@ -1,6 +1,8 @@
 # RackPing API 2.0 Client Sample Programs Docker
 
-This folder includes a Dockerfile and instructions to build an image containing several scripting languages, the RackPing API sample programs, and the test harness.
+This folder includes a Dockerfile and instructions to build a container with the current RackPing API sample programs, several programming languages and the test harness.
+
+Docker makes getting started easier, and isolates any changes from your setup or filesystem.
 
 ## Getting Started
 
@@ -19,6 +21,7 @@ See `make.sh` for various docker commands including:
 * unzip and cd to the Docker folder and run the following commands:
 
 ```
+# add your RackPing API credentials to the Docker environment configuration file:
 vi env.list
 # don't forget the dot at the end:
 sudo docker build -t rackping_api:latest .
@@ -41,7 +44,7 @@ To run the complete test harness using the available scripting languages, then t
 docker run --env-file ./env.list rackping_api
 ```
 
-See `make.sh` for further commands for how to:
+See `make.sh` for further sample commands for how to:
 
 * run the tests for one scripting language.
 
