@@ -52,11 +52,7 @@ RUN ln -s /usr/bin/jq /usr/local/bin/jq
 RUN mkdir -p /opt/rh/python27/root/usr/bin
 RUN ln -s /usr/bin/python /opt/rh/python27/root/usr/bin/python
 
-RUN echo "extension=raphf.so"  >> /etc/php/7.3/cli/php.ini
-RUN echo "extension=propro.so" >> /etc/php/7.3/cli/php.ini
-RUN echo "extension=http.so"   >> /etc/php/7.3/cli/php.ini
-RUN echo "extension=http.so"   >> /etc/php/7.3/cli/php.ini
-RUN echo "extension=curl.so"   >> /etc/php/7.3/cli/php.ini
+RUN for i in "raphf.so" "propro.so" "http.so" "http.so" "curl.so" ; do echo "extension=$i" >> /etc/php/7.3/cli/php.ini; done
 
 # debug statements
 #RUN ./show_env.sh 
