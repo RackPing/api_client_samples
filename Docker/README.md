@@ -25,16 +25,14 @@ See `make.sh` for various docker commands including:
 vi env.list
 # now build the Docker container. Don't forget the dot at the end:
 sudo docker build -t rackping_api:latest .
+# view info on the new Docker image:
 docker images
 ```
 
-## Documentation
-
-See the [RackPing API web page](https://www.rackping.com/api.html) for:
-
-* RackPing 2.0 API PDF
-* errata (recent changes)
-* interactive Live API demo in your browser.
+```
+REPOSITORY                           TAG                                              IMAGE ID            CREATED             SIZE
+rackping_api                         latest                                           166eeb4b9ee8        1 minute ago        2.2GB
+```
 
 ## Running the tests
 
@@ -49,6 +47,14 @@ See `make.sh` for further sample commands for how to:
 * run the tests for only one scripting language.
 
 * maintain a persistent docker process, login to it, and/or run the test harness one or more times to pre-compile the Go and Java programs for improved performance.
+
+## Documentation
+
+See the [RackPing API web page](https://www.rackping.com/api.html) for:
+
+* RackPing 2.0 API PDF
+* errata (recent changes)
+* interactive Live API demo in your browser.
 
 ## Version
 
