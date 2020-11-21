@@ -23,7 +23,7 @@ See `make.sh` for various docker commands including:
 ```
 # add your RackPing API credentials to the Docker environment configuration file:
 vi env.list
-# don't forget the dot at the end:
+# now build the Docker container. Don't forget the dot at the end:
 sudo docker build -t rackping_api:latest .
 docker images
 ```
