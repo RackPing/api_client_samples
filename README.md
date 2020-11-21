@@ -15,7 +15,8 @@ Click on the Docker folder above if you prefer a pre-configured container, inste
 * [Create a FREE RackPing monitoring account!](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
 * Click on an above folder for your preferred programming language to view the source code.
 * Click on the green Github "Code" button, then "Download zip" to download the complete source code for all languages.
-* unzip and cd to your preferred language folder and follow the language-specific instructions
+* unzip and cd to your preferred language folder and follow the language-specific instructions or
+* click on the Docker folder and follow the instructions to build a Docker container.
 
 ## Documentation
 

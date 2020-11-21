@@ -2,7 +2,7 @@
 
 This folder includes a Dockerfile and instructions to build a container with the current RackPing API sample programs, several programming languages and the test harness.
 
-Docker makes getting started easier, and isolates any changes from your setup or filesystem.
+Docker makes getting started easier, and isolates any changes from your notebook or server setup or filesystem.
 
 ## Getting Started
 
@@ -46,9 +46,9 @@ docker run --env-file ./env.list rackping_api
 
 See `make.sh` for further sample commands for how to:
 
-* run the tests for one scripting language.
+* run the tests for only one scripting language.
 
-* maintain a persistent docker process, login to it, and run the test harness one or more times to pre-compile the Go and Java programs.
+* maintain a persistent docker process, login to it, and/or run the test harness one or more times to pre-compile the Go and Java programs for improved performance.
 
 ## Version
 
