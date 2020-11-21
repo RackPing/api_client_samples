@@ -12,10 +12,12 @@ FROM ruby:2.5.5
 # - fill in env.list config file first before running the image
 # - based on a ruby debian/ubuntu image
 
+MAINTAINER RackPing
+
 RUN apt update && \
   apt install -y jq python-pip python3-pip php php-dev php-pear php-raphf php-propro php-curl libwww-perl golang default-jdk
 
-# need to install java here if necessary
+RUN apt clean && apt autoremove --purge
 
 RUN gem install httparty
 
@@ -38,7 +40,7 @@ RUN unzip main.zip
 RUN cd api_client_samples-main
 WORKDIR /root/api_client_samples-main
 
-# we're using the docker cli feature to make a generic image, so truncate the old settings
+# we're using the docker cli env.list feature to make a generic image, so truncate the old settings
 RUN echo > set.sh
 
 COPY show_env.sh .

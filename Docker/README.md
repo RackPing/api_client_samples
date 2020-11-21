@@ -45,7 +45,7 @@ See `make.sh` for further commands for how to:
 
 * run the tests for one scripting language.
 
-* maintain a persistent docker process, login to it, and run the test harness one or more times.
+* maintain a persistent docker process, login to it, and run the test harness one or more times to pre-compile the Go and Java programs.
 
 ## Version
 

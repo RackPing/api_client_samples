@@ -8,6 +8,8 @@ The philosophy is that they should be easy-to-use, standalone (minimal or no dep
 
 See the README in each folder above for language-specific installation notes.
 
+Click on the Docker folder above if you prefer a pre-configured container, instead of installing packages on your machine.
+
 ## Getting Started
 
 * [Create a FREE RackPing monitoring account!](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
