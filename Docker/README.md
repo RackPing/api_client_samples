@@ -30,8 +30,8 @@ docker images
 ```
 
 ```
-REPOSITORY                           TAG                                              IMAGE ID            CREATED             SIZE
-rackping_api                         latest                                           166eeb4b9ee8        1 minute ago        2.2GB
+REPOSITORY            TAG                IMAGE ID            CREATED             SIZE
+rackping_api          latest             166eeb4b9ee8        1 minute ago        2.2GB
 ```
 
 ## Running the tests
