@@ -9,54 +9,58 @@ FROM ruby:2.5.5
 # Env: bash
 # Notes:
 #
-# - fill in env.list config file first before running the image
+# File: Dockerfile
+# Author: RackPiing 2020 USA
+# Purpose: Dockerfile for RackPing API 2.0 client sample programs
+# Env: Docker
+# Version: 1.0
+# Notes:
+# - fill in env.list config file first before doing `docker run`
 # - based on a ruby debian/ubuntu image
 
 MAINTAINER RackPing
 
-RUN apt update && \
-  apt install -y jq python-pip python3-pip php php-dev php-pear php-raphf php-propro php-curl libwww-perl golang default-jdk
+WORKDIR /root
 
-RUN apt clean && apt autoremove --purge
+RUN apt update && \
+    apt install -y jq less lsof net-tools telnet vim \
+                   php php-curl php-dev php-pear php-propro php-raphf \
+                   python-pip python3-pip libwww-perl golang default-jdk && \
+    apt clean && \
+    apt autoremove --purge
 
 RUN gem install httparty
 
 RUN pip install requests urllib3
-
 RUN pip3 install requests urllib3
 
 RUN pecl install pecl_http
 
 RUN cpan HTTP::Request
 
-RUN mkdir -p root
-RUN cd root
-WORKDIR /root
-
+# ADD doesn't automatically unpack from remote URLs
 ADD https://github.com/RackPing/api_client_samples/archive/main.zip .
 RUN unzip main.zip
 #RUN rm main.zip
 
-RUN cd api_client_samples-main
 WORKDIR /root/api_client_samples-main
 
-# we're using the docker cli env.list feature to make a generic image, so truncate the old settings
+# we're using the docker cli env.list feature, so truncate the old settings to make a generic image
 RUN echo > set.sh
 
 COPY show_env.sh .
-RUN chmod 755 show_env.sh 
 
 RUN ln -s /usr/bin/jq /usr/local/bin/jq
 
 # minor workaround for non-portable API sample config
-RUN mkdir -p /opt/rh/python27/root/usr/bin
-RUN ln -s /usr/bin/python /opt/rh/python27/root/usr/bin/python
+RUN mkdir -p /opt/rh/python27/root/usr/bin && \
+    ln -s /usr/bin/python /opt/rh/python27/root/usr/bin/python
 
-RUN for i in "raphf.so" "propro.so" "http.so" "http.so" "curl.so" ; do echo "extension=$i" >> /etc/php/7.3/cli/php.ini; done
+# configure php.ini extensions needed to run pecl_http
+RUN for i in "raphf.so" "propro.so" "http.so" "curl.so" ; do echo "extension=$i" >> /etc/php/7.3/cli/php.ini; done
 
 # debug statements
-#RUN ./show_env.sh 
-#RUN ls -l
+#RUN ./show_env.sh && ls -l
 
 CMD /bin/bash -c "time ./demo_all.sh"
 

@@ -39,7 +39,7 @@ rackping_api          latest             166eeb4b9ee8        1 minute ago       
 To run the complete test harness using the available scripting languages, then terminate the docker process:
 
 ```
-docker run --env-file ./env.list rackping_api
+docker run --rm --env-file ./env.list rackping_api
 ```
 
 See `make.sh` for further sample commands for how to:
