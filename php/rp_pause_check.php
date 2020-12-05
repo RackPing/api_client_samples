@@ -24,25 +24,27 @@
       exit(1);
    }
 
-function http_parse_headers($header) {
-// http://php.net/manual/it/function.http-parse-headers.php by Anon
+if (!function_exists('http_parse_headers')) {
+   function http_parse_headers($header) {
+   // http://php.net/manual/it/function.http-parse-headers.php by Anon
 
-   $retVal = array();
-   $fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
-   foreach( $fields as $field ) {
-      if (preg_match('/([^:]+): (.+)/m', $field, $match)) {
-         $match[1] = preg_replace('/(?<=^|[\x09\x20\x2D])./e', 'strtoupper("\0")', strtolower(trim($match[1])));
-         if (isset($retVal[$match[1]]) ) {
-            if (!is_array($retVal[$match[1]])) {
-               $retVal[$match[1]] = array($retVal[$match[1]]);
+      $retVal = array();
+      $fields = explode("\r\n", preg_replace('/\x0D\x0A[\x09\x20]+/', ' ', $header));
+      foreach( $fields as $field ) {
+         if (preg_match('/([^:]+): (.+)/m', $field, $match)) {
+            $match[1] = preg_replace('/(?<=^|[\x09\x20\x2D])./e', 'strtoupper("\0")', strtolower(trim($match[1])));
+            if (isset($retVal[$match[1]]) ) {
+               if (!is_array($retVal[$match[1]])) {
+                  $retVal[$match[1]] = array($retVal[$match[1]]);
+               }
+               $retVal[$match[1]][] = $match[2];
+            } else {
+               $retVal[$match[1]] = trim($match[2]);
             }
-            $retVal[$match[1]][] = $match[2];
-         } else {
-            $retVal[$match[1]] = trim($match[2]);
          }
       }
+      return $retVal;
    }
-   return $retVal;
 }
 
 function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
@@ -66,11 +68,11 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
 
    $redirects = getenv('RP_REDIRECTS');
    if ($redirects) {
-      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-      curl_setopt($curl, CURLOPT_POSTREDIR, 3);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+      curl_setopt($ch, CURLOPT_POSTREDIR, 3);
    }
    else {
-      curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
    }
 
    if ($method == 'POST' or $method == 'PUT' or $method == 'DELETE') {
@@ -110,13 +112,15 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    echo "Pause one check\n";
    $response = do_curl('PUT', $url . '/checks/' . $id . '?paused=1', $user, $password, $api_key, $timeout, NULL);
    $rc = $response['http_code'];
-   if ($rc == '200' or $rc == '204') {
-      echo "OK ($rc) - ";
+   if ($rc == '200') {
+      fwrite(STDERR, "OK ($rc) - \n");
    }
    else {
-      echo "ERROR ($rc) - ";
+      fwrite(STDERR, "ERROR ($rc) - \n");
       $ret++;
    }
+
+   echo $response['body'];
    echo "\n";
 
    exit($ret);

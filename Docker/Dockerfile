@@ -12,13 +12,13 @@ FROM ruby:2.5.5
 # File: Dockerfile
 # Author: RackPiing 2020 USA
 # Purpose: Dockerfile for RackPing API 2.0 client sample programs
-# Env: Docker
-# Version: 1.0
 # Notes:
 # - fill in env.list config file first before doing `docker run`
 # - based on a ruby debian/ubuntu image
 
-MAINTAINER RackPing
+MAINTAINER RackPing <support@rackping.com>
+
+ENV RackPing API 2.0 Client Sample Programs Docker 1.0
 
 WORKDIR /root
 
@@ -29,14 +29,11 @@ RUN apt update && \
     apt clean && \
     apt autoremove --purge
 
-RUN gem install httparty
-
-RUN pip install requests urllib3
-RUN pip3 install requests urllib3
-
-RUN pecl install pecl_http
-
-RUN cpan HTTP::Request
+RUN gem install httparty && \
+    pip install requests urllib3 && \
+    pip3 install requests urllib3 && \
+    pecl install pecl_http && \
+    cpan HTTP::Request
 
 # ADD doesn't automatically unpack from remote URLs
 ADD https://github.com/RackPing/api_client_samples/archive/main.zip .
@@ -45,22 +42,19 @@ RUN unzip main.zip
 
 WORKDIR /root/api_client_samples-main
 
-# we're using the docker cli env.list feature, so truncate the old settings to make a generic image
-RUN echo > set.sh
-
 COPY show_env.sh .
 
-RUN ln -s /usr/bin/jq /usr/local/bin/jq
-
-# minor workaround for non-portable API sample config
-RUN mkdir -p /opt/rh/python27/root/usr/bin && \
+# we're using the docker cli env.list feature, so truncate the old settings in set.sh to make a generic image
+RUN echo > set.sh && \
+    ln -s /usr/bin/jq /usr/local/bin/jq && \
+    mkdir -p /opt/rh/python27/root/usr/bin && \
     ln -s /usr/bin/python /opt/rh/python27/root/usr/bin/python
 
 # configure php.ini extensions needed to run pecl_http
 RUN for i in "raphf.so" "propro.so" "http.so" "curl.so" ; do echo "extension=$i" >> /etc/php/7.3/cli/php.ini; done
 
 # debug statements
-#RUN ./show_env.sh && ls -l
+#RUN ./show_env.sh
 
 CMD /bin/bash -c "time ./demo_all.sh"
 
