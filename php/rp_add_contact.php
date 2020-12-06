@@ -48,7 +48,7 @@ if (!function_exists('http_parse_headers')) {
 }
 
 function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
-    // echo "method=$method, url=$endpoint, data=$data\n";
+   // echo "method=$method, url=$endpoint, data=$data\n";
 
    $headers = array(
       'Content-Type: application/json',
@@ -65,6 +65,11 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
    curl_setopt($ch, CURLOPT_HEADER, 1);
+
+   global $debug;
+   if ($debug) {
+      curl_setopt($ch, CURLOPT_VERBOSE, true);
+   }
 
    $redirects = getenv('RP_REDIRECTS');
    if ($redirects) {
@@ -107,12 +112,16 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    $data = array(
       "first"        => "John",
       "last"         => "Doe",
-      "email"        => "john.doe+" . $api_key + "@example.com",
+      "email"        => "john.doe+" . $api_key . "@example.com",
       "role"         => "O",
       "cellphone"    => "408 555 1212",
       "countrycode"  => 1,
       "countryiso"   => "US",
    );
+
+   if ($debug) {
+      print_r($data);
+   }
 
    $response = do_curl('POST', $url . '/contacts', $user, $password, $api_key, $timeout, $data);
    $rc = $response['http_code'];
@@ -125,8 +134,11 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    }
 
    echo $response['body'];
-   // fwrite(STDERR, var_dump($response) . PHP_EOL);
    echo "\n";
+
+   if ($debug) {
+      fwrite(STDERR, var_dump($response) . PHP_EOL);
+   }
 
    exit($ret);
 ?>

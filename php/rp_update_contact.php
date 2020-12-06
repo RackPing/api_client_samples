@@ -114,7 +114,7 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    $data = array(
       "first"        => "JohnJohn",
       "last"         => "Doe",
-      "email"        => "john.doe+" + $api_key . "@example.com",
+      "email"        => "john.doe+" . $api_key . "@example.com",
       "role"         => "O",
       "cellphone"    => "408 555 1212",
       "countrycode"  => 1,
