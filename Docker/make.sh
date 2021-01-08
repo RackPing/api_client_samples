@@ -14,12 +14,12 @@ sudo docker build -t rackping_api:latest .
 docker images
 
 # takes 1 minute to run the test harness, then terminate and remove the container process:
-docker run --rm --env-file ./env.list rackping_api
+docker run --privileged --rm --env-file ./env.list rackping_api
 
 # helpful debugging commands:
 #
 # start a persistent process for 30 minutes in the background, then remove process:
-# docker run --rm -d --env-file ./env.list rackping_api sleep 1800 &
+# docker run --privileged --rm -d --env-file ./env.list rackping_api sleep 1800 &
 # find the container process id in the first column:
 # docker ps
 #
