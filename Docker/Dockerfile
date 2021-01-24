@@ -8,11 +8,6 @@ FROM ruby:2.5.5
 # Copyright: RackPing USA 2020
 # Env: bash
 # Notes:
-#
-# File: Dockerfile
-# Author: RackPiing 2020 USA
-# Purpose: Dockerfile for RackPing API 2.0 client sample programs
-# Notes:
 # - fill in env.list config file first before doing `docker run`
 # - based on a ruby debian/ubuntu image
 
