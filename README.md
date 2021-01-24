@@ -45,28 +45,38 @@ time ./demo_all.sh
 
 Sample output on linux and Mac OS X:
 ```
-real	1m47.736s
-user	0m40.550s
-sys	0m6.428s
+real	1m4.940s
+user	0m41.091s
+sys	0m5.485s
 ```
 
 ## Notes
 
-The demo_all.sh script progress can be monitored aurally using the following tones emitted from */demo.sh:
+The demo_all.sh script progress can be monitored by ear using the following tones emitted from */demo.sh:
 
 * 2 beeps for each failed add contact call
 * 3 beeps for each failed add check call
-* 1 beep at end of run
+* 1 beep at successful end of run.
 
 (The php and php_with_pecl_http sample demos are mutually exclusive based on whether the pecl http extension is installed or not, so one of those sample demos will always generate 2 beeps when add contact is attempted.)
 
 * The add contact scripts don't assign a password or send a reminder email. You will have to login to the UI and click on "My Users" ... choose user ... "Reset Password."
 
+* gzip response output is supported by the RackPing REST API using the standard request header `Accept-Encoding: gzip`.
+
+* The API cannot be used to delete the last account user, or any administrative-role users (use the UI to downgrade their role first.) The last monitor also cannot be deleted. These limitations are to reduce support calls over common oops.
+
+* The API does per-request authentication, but caches credentials for 1 minute for performance reasons.
+
+* The provided API test harnesses cannot be parallelized within or across languages because the tests depend on a temporary contact or monitor being created first before subsequent test requests are run. The process ID (PID) is appended to uniqify your test requests run across all accounts and users during the run. (Also, plan limits would prevent most accounts from adding enough users or monitors for all supported language samples simultaneously.)
+
 ## RackPing Account Limitations
 
-* Free accounts only allow one contact (user) and one check (monitor.) So the sample API scripts for add and delete check and contact will not succeed, likewise the demo.sh and demo_all.sh test harnesses. Please upgrade to a paid RackPing account.
+* Free accounts only allow one contact (user) and one check (monitor.) So the sample API scripts for add and delete check and contact will not succeed, likewise the demo.sh and demo_all.sh test harnesses. Please upgrade to a paid RackPing account if you want more than one user or monitor, or want to do advanced REST API development.
 
-* Paid accounts allow adding checks and contacts up to your plan limits.
+* Paid accounts allow adding checks and contacts up to your plan user, monitor and subaccount limits.
+
+* Do not do load testing against the API servers. If you are doing sequential API requests, please call sleep(1) between them. Contact support if you need performance information or suggestions.
 
 ## Versioning
 
