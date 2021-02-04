@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Base64;
+import java.util.Random;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -75,6 +76,9 @@ public class RackPingContacts {
          @SuppressWarnings("unchecked")
          Map<String, String> json = new JSONObject();
 
+         String pw = "";
+         pw = getSaltString();
+
          json.put("first", "John");
          json.put("last", "Doe");
          json.put("email", "john.doe+" + api_key + "@example.com");
@@ -82,6 +86,9 @@ public class RackPingContacts {
          json.put("cellphone", "408 555 1212");
          json.put("countrycode", "1");
          json.put("countryiso", "US");
+         json.put("alertable", "N");
+         json.put("sendemail", "0");
+         json.put("password", pw);
 
          String data = new String(json.toString());
          r = obj.send(url + "/contacts", username, password, api_key, timeout, data, "POST");
@@ -204,6 +211,22 @@ public class RackPingContacts {
          if (wr != null) wr.close();
          if (in != null) in.close();
      }
+   }
+
+   static protected String getSaltString() {
+      String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?.,-";
+      StringBuilder salt = new StringBuilder();
+
+      Random rnd = new Random();
+
+      while (salt.length() < 10) { // length of the random string.
+         int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+         salt.append(SALTCHARS.charAt(index));
+      }
+
+      String saltStr = salt.toString();
+
+      return saltStr;
    }
 }
 

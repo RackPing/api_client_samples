@@ -60,7 +60,7 @@ The demo_all.sh script progress can be monitored by ear using the following tone
 
 (The php and php_with_pecl_http sample demos are mutually exclusive based on whether the pecl http extension is installed or not, so one of those sample demos will always generate 2 beeps when add contact is attempted.)
 
-* The add contact scripts don't assign a password or send a reminder email. You will have to login to the UI and click on "My Users" ... choose user ... "Reset Password."
+* See the add contact scripts for how to assign a password and send a password reminder email. Or an account administrator can login to the UI and click on "My Users" ... choose user ... "Reset Password."
 
 * gzip response output is supported by the RackPing REST API using the standard request header `Accept-Encoding: gzip`.
 

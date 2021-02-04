@@ -37,10 +37,19 @@ use LWP::UserAgent;
    my $first        = 'John';
    my $last         = 'Doe';
    my $email        = 'john.doe+' . $api_key . '@example.com';
-   my $role         = 'O';
+   my $role         = 'O';                          # user role: A = Admin, O = Operator, B = Billing
    my $cellphone    = '408 555 1212';
-   my $countrycode  = '1';
-   my $countryiso   = 'US';
+   my $countrycode  = '1';                          # numeric telephone country code prefix
+   my $countryiso   = 'US';                         # 2-letter country ISO code
+   my $lang         = 'en';                         # language for new user and password reminder email
+   my $timezone     = 'America/New_York';
+   my $sendemail    = 0;                            # send password reminder email [0|1]
+   my $alertable    = 'N';                          # enable paid AlertPro user [Y|N]
+   my $pw           = "";                           # user password. blank disables password reminder email.
+
+   for my $i (1 .. 10) {                            # sample code to assign a random password (in plaintext for password reminder email)
+       $pw .= sprintf("%x", rand 16);
+   }
 
 ### end of user settings
 
@@ -72,6 +81,11 @@ use LWP::UserAgent;
       cellphone   => $cellphone,
       countrycode => $countrycode,
       countryiso  => $countryiso,
+      password    => $pw,
+      lang        => $lang,
+      timezone    => $timezone,
+      sendemail   => $sendemail,
+      alertable   => $alertable,
    ];
 
    my $res = $ua->post( $url . "/contacts", Content => $form );

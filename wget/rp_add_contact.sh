@@ -32,6 +32,8 @@ if [ "$debug" == "1" ]; then
    ENABLE_DEBUG="-d"
 fi
 
+pw=`cat /dev/urandom | tr -dc 'a-zA-Z0-9!?.,-' | fold -w 10 | head -n 1`
+
 json=$(cat <<EOF
 {
    "first"       : "John",
@@ -40,7 +42,11 @@ json=$(cat <<EOF
    "role"        : "O",
    "cellphone"   : "408 555 1212",
    "countrycode" : 1,
-   "countryiso"  : "US"
+   "countryiso"  : "US",
+   "alertable"   : "N",
+   "sendemail"   : "0",
+   "password"    : "$pw"
+
 }
 EOF
 )

@@ -17,6 +17,8 @@
 import json
 import os
 import sys
+import random
+import string
 # https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
 #import urllib3
 #urllib3.disable_warnings()
@@ -42,6 +44,8 @@ url = scheme + domain + base_url
 
 debug = 0
 
+pw = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+
 form = {
     'first':       'John',
     'last':        'Doe',
@@ -49,9 +53,12 @@ form = {
     'role':        'O',
     'cellphone':   '408 555 1212',
     'countrycode': '1',
-    'countryiso':  'US'
+    'countryiso':  'US',
+    'alertable':   'N',
+    'sendemail':   0,
+    'password':    pw
 }
-    
+
 ### end of user settings
 
 if debug:

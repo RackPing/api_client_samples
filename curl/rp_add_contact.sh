@@ -34,6 +34,7 @@ options="-sS --max-redirs $redirects --max-time $timeout"
 auth_options="--basic -u $user:$password"
 
 echo "Add one contact using HERE document:" >&2
+pw=`cat /dev/urandom | tr -dc 'a-zA-Z0-9!?.,-' | fold -w 10 | head -n 1`
 curl $options $auth_options -H 'Content-type: application/json' -H 'Accept: application/json' -H 'Accept-Charset: utf-8' -H "App-key: $RP_API_KEY" -w "\n" -X POST --data-binary @- ${url}/contacts <<EOF
 {
    "first"        : "John",
@@ -42,7 +43,10 @@ curl $options $auth_options -H 'Content-type: application/json' -H 'Accept: appl
    "role"         : "O",
    "cellphone"    : "408 555 1212",
    "countrycode"  : 1,
-   "countryiso"   : "US"
+   "countryiso"   : "US",
+   "alertable"    : "N",
+   "sendemail"    : "0",
+   "password"     : "$pw"
 }
 EOF
 

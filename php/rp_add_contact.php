@@ -109,6 +109,8 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
 
    fwrite(STDERR, "Add one contact" . PHP_EOL);
 
+   $pw = substr(md5(microtime()),rand(0,26),8);
+
    $data = array(
       "first"        => "John",
       "last"         => "Doe",
@@ -117,6 +119,9 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
       "cellphone"    => "408 555 1212",
       "countrycode"  => 1,
       "countryiso"   => "US",
+      "alertable"    => "N",
+      "sendemail"    => 0,
+      "password"     => $pw
    );
 
    if ($debug) {

@@ -30,6 +30,8 @@
 
    fwrite(STDERR, "Add one contact" . PHP_EOL);
 
+   $pw = substr(md5(microtime()),rand(0,26),8);
+
    $data = array(
       "first"        => "John",
       "last"         => "Doe",
@@ -38,6 +40,9 @@
       "cellphone"    => "408 555 1212",
       "countrycode"  => 1,
       "countryiso"   => "US",
+      "alertable"    => "N",
+      "sendemail"    => 0,
+      "password"     => $pw
    );
 
    $json_data = json_encode($data);

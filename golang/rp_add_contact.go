@@ -22,14 +22,15 @@ import (
 	"os"
         "strconv"
 	"time"
+        "math/rand"
 )
 
 func debug(data []byte, err error) {
-    if err == nil {
-       fmt.Printf("%s\n\n", data)
-    } else {
-       log.Fatalf("%s\n\n", err)
-    }
+   if err == nil {
+      fmt.Printf("%s\n\n", data)
+   } else {
+      log.Fatalf("%s\n\n", err)
+   }
 }
 
 // global variables for communicating with callback redirect function redirectPolicyFunc()
@@ -84,6 +85,9 @@ func main() {
       // - https://gobyexample.com/json
       // - https://golang.org/pkg/encoding/json/#Marshal
 
+      rand.Seed(time.Now().UnixNano())
+      var pw = RandomString(10)
+
       type RackPing struct {
            First       string `json:"first"`
            Last        string `json:"last"`
@@ -92,6 +96,9 @@ func main() {
            Cellphone   string `json:"cellphone"`
            Countrycode int    `json:"countrycode"`
            Countryiso  string `json:"countryiso"`
+           Alertable   string `json:"alertable"`
+           Sendemail   int    `json:"sendemail"`
+           Password    string `json:"password"`
       }
 
       m := RackPing{
@@ -101,7 +108,10 @@ func main() {
          Role:        "O",
          Cellphone:   "408 555 1212",
          Countrycode: 1,
-         Countryiso:  "US" } // leave bracket on same line as last field
+         Countryiso:  "US",
+         Alertable:   "N",
+         Sendemail:   0,
+         Password:    pw } // leave bracket on same line as last field
 
       b, err := json.Marshal(m)
       data := bytes.NewBuffer(b)
@@ -133,5 +143,16 @@ func main() {
    }
 
    os.Exit(0)
+}
+
+func RandomString(n int) string {
+   var letter = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!-.,?")
+
+   b := make([]rune, n)
+   for i := range b {
+      b[i] = letter[rand.Intn(len(letter))]
+   }
+
+   return string(b)
 }
 

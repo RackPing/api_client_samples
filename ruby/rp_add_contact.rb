@@ -62,6 +62,8 @@ end
 begin
 # Create a request to add one contact
 
+   $pw = rand(36**8).to_s(36)
+
    data = {
       'first'       => 'John',
       'last'        => 'Doe',
@@ -69,7 +71,10 @@ begin
       'role'        => 'O',
       'cellphone'   => '408 555 1212',
       'countrycode' => '1',
-      'countryiso'  => 'US'
+      'countryiso'  => 'US',
+      'alertable'   => 'N',
+      'sendemail'   => 0,
+      'password'    => $pw,
    }
 
    success = 0
