@@ -214,7 +214,7 @@ public class RackPingContacts {
    }
 
    static protected String getSaltString() {
-      String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?.,-";
+      String SALTCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?.,-";
       StringBuilder salt = new StringBuilder();
 
       Random rnd = new Random();

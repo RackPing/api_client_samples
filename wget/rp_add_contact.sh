@@ -32,7 +32,7 @@ if [ "$debug" == "1" ]; then
    ENABLE_DEBUG="-d"
 fi
 
-pw=`cat /dev/urandom | tr -dc 'a-zA-Z0-9!?.,-' | fold -w 10 | head -n 1`
+pw=$(head -c 512 /dev/urandom | tr -dc 'a-zA-Z0-9!?.,-' | fold -w 10 | head -n 1)
 
 json=$(cat <<EOF
 {
