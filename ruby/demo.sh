@@ -31,16 +31,9 @@ if [[ $old_id =~ $re ]] ; then
 fi
 
 # support versions of jq before 1.5, which don't have startswith()
-old_id=`$ruby_cmd ./rp_list_checks.$mylang | jq '.checks[] | select(.name=="APITest") | .id'`
+old_id=`$ruby_cmd ./rp_list_checks.$mylang | jq '.checks[] | select(.name=="APITest" or .name=="APITestTest") | .id'`
 if [[ $old_id =~ $re ]] ; then
    $ruby_cmd ./rp_del_check.$mylang $old_id
-fi
-
-if [ -z "$old_id" ]; then
-   old_id=`$ruby_cmd ./rp_list_checks.$mylang | jq '.checks[] | select(.name=="APITestTest") | .id'`
-   if [[ $old_id =~ $re ]] ; then
-      $ruby_cmd ./rp_del_check.$mylang $old_id
-   fi
 fi
 
 # 1. Demo the contacts (users) scripts
