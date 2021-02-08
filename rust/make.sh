@@ -12,9 +12,10 @@
 mylang=rs
 
 for i in *.$mylang; do
-    chmod 755 $i
     rustc $i > /dev/null
 done
+
+find . -type f ! -name "*.*" -exec chmod 755 {} \;
 
 for i in *.sh; do
     echo $i
