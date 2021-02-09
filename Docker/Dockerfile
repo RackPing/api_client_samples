@@ -22,7 +22,7 @@ WORKDIR /root
 RUN apt update && \
     apt install -y jq less lsof net-tools telnet vim \
                    php php-curl php-dev php-pear php-propro php-raphf \
-                   python-pip python3-pip libwww-perl golang rustc default-jdk && \
+                   python-pip python3-pip libwww-perl golang default-jdk && \
     apt clean && \
     apt autoremove --purge
 
@@ -31,6 +31,9 @@ RUN gem install httparty && \
     pip3 install requests urllib3 && \
     pecl install pecl_http && \
     cpan HTTP::Request
+
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # ADD doesn't automatically unpack from remote URLs
 ADD https://github.com/RackPing/api_client_samples/archive/main.zip .

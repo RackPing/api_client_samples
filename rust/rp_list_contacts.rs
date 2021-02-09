@@ -20,14 +20,15 @@
 //     - https://docs.rs/reqwest/0.9.20/reqwest/struct.Response.html
 
 use reqwest;
-use serde_json;
+// use serde_json;
 use std::env;
 use std::process;
-use std::error::Error;
+// use std::error::Error;
+// use std::result::Result;
 // use std::time::Duration;
 // use std::collections::HashMap;
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() {
    let username   = env::var("RP_USER").unwrap();
    let password   = env::var("RP_PASSWORD").unwrap();
    let api_key    = env::var("RP_API_KEY").unwrap();
@@ -57,9 +58,9 @@ fn main() -> Result<(), Box<dyn Error>> {
        .basic_auth(username, Some(String::from(password)))
 //     .timeout(Duration::from_secs(_timeout))
 //     .json::<HashMap<String, String>>();
-       .json::<serde_json::Value>()?;
-
-   println!("{:#?}", resp);
-   Ok(());
+//     .json::<serde_json::Value>();
+       .send()
+       .unwrap();
+    println!("{:#?}", resp);
 }
 

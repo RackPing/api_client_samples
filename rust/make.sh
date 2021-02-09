@@ -12,7 +12,7 @@
 mylang=rs
 
 # clear old cargo cache
-rm ~/.cargo
+#rm -fr ~/.cargo
 
 cargo build
 cargo run
