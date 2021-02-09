@@ -19,7 +19,8 @@
 //     - https://github.com/seanmonstar/reqwest/blob/master/examples/blocking.rs
 //     - https://docs.rs/reqwest/0.9.20/reqwest/struct.Response.html
 
-use reqwest::blocking::Client;
+extern crate reqwest;
+
 use std::env;
 use std::process;
 use std::time::Duration;
@@ -48,7 +49,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
    println!("Get list of contacts\n");
 
-   let client = Client::new();
+   let client = reqwest::blocking::Client::new();
    let resp = client.get(&url)
        .header("User-agent", user_agent)
        .header("app-key", api_key)

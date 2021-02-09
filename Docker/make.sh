@@ -23,7 +23,7 @@ docker run --privileged --rm --env-file ./env.list rackping_api
 # find the container process id in the first column:
 # docker ps
 #
-# login to the container and run the test harness one or more times::
+# login to the container and run the test harness one or more times:
 # docker exec -it <CONTAINER_ID> /bin/bash
 # time ./demo_all.sh
 #

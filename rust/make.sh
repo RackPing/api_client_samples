@@ -12,9 +12,11 @@
 mylang=rs
 
 for i in *.$mylang; do
+    echo $i
     rustc $i > /dev/null
 done
 
+# find files with no file extension and update permissions
 find . -type f ! -name "*.*" -exec chmod 755 {} \;
 
 for i in *.sh; do
