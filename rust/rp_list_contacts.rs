@@ -19,8 +19,8 @@
 //     - https://github.com/seanmonstar/reqwest/blob/master/examples/blocking.rs
 //     - https://docs.rs/reqwest/0.9.20/reqwest/struct.Response.html
 
-extern crate reqwest;
-
+use reqwest;
+use serde_json;
 use std::env;
 use std::process;
 // use std::time::Duration;
