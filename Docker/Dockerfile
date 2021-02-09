@@ -17,10 +17,12 @@ ENV RackPing API 2.0 Client Sample Programs Docker 1.0
 
 WORKDIR /root
 
+# See this link for TERM warnings: https://github.com/phusion/baseimage-docker/issues/58
+
 RUN apt update && \
     apt install -y jq less lsof net-tools telnet vim \
                    php php-curl php-dev php-pear php-propro php-raphf \
-                   python-pip python3-pip libwww-perl golang default-jdk && \
+                   python-pip python3-pip libwww-perl golang rustc default-jdk && \
     apt clean && \
     apt autoremove --purge
 

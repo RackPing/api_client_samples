@@ -11,6 +11,9 @@
 
 mylang=rs
 
+cargo install reqwest
+cargo run
+
 for i in *.$mylang; do
     echo $i
     rustc $i > /dev/null

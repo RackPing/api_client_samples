@@ -20,8 +20,8 @@ Rust is a strictly-typed programming language, so these samples are more suitabl
 Install the following dependencies:
 
 ```
-rustc --version
-OpenSSL and headers
+rustc --version (1.49.0+ recommended)
+OpenSSL and headers (needed for linux)
 jq (optional for the demo.sh test harness)
 ```
 
@@ -32,7 +32,7 @@ sudo ln -s /usr/local/bin/rustc /usr/bin/rustc
 
 ### Installing
 
-For setting the permissions on all files in this folder:
+For running cargo and setting the permissions on all files in this folder:
 
 ```
 ./make.sh
