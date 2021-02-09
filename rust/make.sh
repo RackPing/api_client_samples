@@ -11,13 +11,11 @@
 
 mylang=rs
 
+# clear old cargo cache
 rm ~/.cargo
-cargo run
 
-for i in *.$mylang; do
-    echo $i
-    rustc $i > /dev/null
-done
+cargo build
+cargo run
 
 # find files with no file extension and update permissions
 find . -type f ! -name "*.*" -exec chmod 755 {} \;
