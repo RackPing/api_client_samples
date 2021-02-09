@@ -1,8 +1,12 @@
 [package]
 name = "rp_list_contacts"
 version = "0.1.0"
-authors = "RackPing"
-edition = "2021"
+authors = ["RackPing <support@rackping.com>"]
+edition = "2018"
+
+[[bin]]
+name = "main"
+path = "rp_list_contacts.rs"
 
 [dependencies]
 reqwest = { version = "0.11", features = ["blocking", "json"] }
