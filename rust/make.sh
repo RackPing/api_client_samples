@@ -11,7 +11,7 @@
 
 mylang=rs
 
-cargo install reqwest
+rm ~/.cargo
 cargo run
 
 for i in *.$mylang; do
