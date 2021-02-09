@@ -11,11 +11,12 @@
 
 mylang=rs
 
-# clear old cargo cache
-#rm -fr ~/.cargo
+# clear old cargo cache 
+rm -fr ~/.cargo/registry
 
-cargo build
-cargo run
+cargo check
+#cargo build
+#cargo run
 
 # find files with no file extension and update permissions
 find . -type f ! -name "*.*" -exec chmod 755 {} \;
