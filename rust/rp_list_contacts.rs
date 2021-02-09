@@ -23,10 +23,11 @@ use reqwest;
 use serde_json;
 use std::env;
 use std::process;
+use std::error::Error;
 // use std::time::Duration;
 // use std::collections::HashMap;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() -> Result<(), Box<dyn Error>> {
    let username   = env::var("RP_USER").unwrap();
    let password   = env::var("RP_PASSWORD").unwrap();
    let api_key    = env::var("RP_API_KEY").unwrap();
@@ -41,7 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
    let base_url   = env::var("RP_BASE_URL").unwrap();
    let scheme     = env::var("RP_SCHEME").unwrap();
 
-   let _timeout    = env::var("RP_TIMEOUT").unwrap().parse::<u64>().unwrap();
+   let _timeout   = env::var("RP_TIMEOUT").unwrap().parse::<u64>().unwrap();
    let _redirects = env::var("RP_REDIRECTS").unwrap().parse::<u32>().unwrap();
    let _debug     = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
 
@@ -56,11 +57,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
        .basic_auth(username, Some(String::from(password)))
 //     .timeout(Duration::from_secs(_timeout))
 //     .json::<HashMap<String, String>>();
-       .json::<serde_json::Value>();
+       .json::<serde_json::Value>()?;
 
    println!("{:#?}", resp);
    Ok(());
-
-   process::exit(0);
 }
 
