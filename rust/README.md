@@ -35,6 +35,7 @@ sudo ln -s /usr/local/bin/rustc /usr/bin/rustc
 For running cargo and setting the permissions on all files in this folder:
 
 ```
+# review dependencies in Cargo.toml
 ./make.sh
 ```
 
