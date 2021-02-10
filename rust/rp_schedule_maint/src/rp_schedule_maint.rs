@@ -22,6 +22,11 @@ use std::io::Read;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args.len() < 4 {
+       println!("usage: {} id start end", &args[0]);
+       process::exit(1);
+    }
+
     let id    = &args[1];
     let start = &args[2];
     let end   = &args[3];

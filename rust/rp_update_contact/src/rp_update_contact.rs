@@ -22,6 +22,11 @@ use std::io::Read;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+       println!("usage: {} id", &args[0]);
+       process::exit(1);
+    }
+
     let id = &args[1];
 
     let username   = env::var("RP_USER").unwrap_or("".to_string());
