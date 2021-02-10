@@ -39,7 +39,7 @@ fn main() {
     let _redirects = env::var("RP_REDIRECTS").unwrap().parse::<u32>().unwrap();
     let debug      = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
 
-    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/contact";
+    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/contacts";
 
     eprintln!("info: add one contact\n");
 
@@ -51,6 +51,8 @@ fn main() {
 
     let email = format!("john.doe+{}@example.com", api_key);
 
+//  eprintln!("email={}\n", email);
+
     let params = [
        ("first",       "John"),
        ("last",        "Doe"),
@@ -58,7 +60,12 @@ fn main() {
        ("role",        "O"),
        ("cellphone",   "408 555 1212"),
        ("countrycode", "1"),
-       ("countryiso",  "US")
+       ("countryiso",  "US"),
+       ("password",    ""),
+       ("lang",        "en"),
+       ("timezone",    "i"),
+       ("sendemail",   "0"),
+       ("alertable",   "N")
     ];
 
     let mut resp = client.post(&url)

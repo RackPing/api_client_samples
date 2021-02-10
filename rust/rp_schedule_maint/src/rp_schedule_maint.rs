@@ -44,7 +44,7 @@ fn main() {
     let _redirects = env::var("RP_REDIRECTS").unwrap().parse::<u32>().unwrap();
     let debug      = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
 
-    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/checks/" + id + "?start_maintenance=" + start + "&end_maintenance=" + end;;
+    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/checks/" + id + "?start_maintenance=" + start + "&end_maintenance=" + end;
 
     println!("info: set maintenance window on one check\n");
 
