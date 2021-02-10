@@ -1,5 +1,5 @@
 // Program: rp_list_contacts.rs
-// Usage: ./rp_list_contacts.rs
+// Usage: cargo run
 // Date: 2021 02 06
 // Purpose: rust language sample client program for RackPing Monitoring API 2.0
 // Version: 1.0
@@ -13,7 +13,7 @@
 //   - decide if you want async or blocking call to get
 //   - update the main() definition with the correct signature if async
 //   - update the call to get
-//   - update the response println()
+//   - update the response println!()
 //   - See:
 //     - https://github.com/seanmonstar/reqwest
 //     - https://github.com/seanmonstar/reqwest/blob/master/examples/blocking.rs
@@ -22,8 +22,8 @@
 use reqwest;
 use std::env;
 use std::process;
-// use serde_json;
 use std::io::Read;
+// use serde_json;
 // use std::error::Error;
 // use std::result::Result;
 // use std::time::Duration;
@@ -64,7 +64,7 @@ fn main() {
        .send()
        .unwrap();
 
-    let mut body  = String::new();
+    let mut body = String::new();
     resp.read_to_string(&mut body).unwrap();
 
     if debug == 1 {
