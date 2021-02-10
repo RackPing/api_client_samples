@@ -12,14 +12,9 @@
 mylang=rs
 
 # clear old cargo cache 
-rm -fr ~/.cargo/registry
+#rm -fr ~/.cargo/registry
 
-cargo check
-#cargo build
-#cargo run
-
-# find files with no file extension and update permissions
-find . -type f ! -name "*.*" -exec chmod 755 {} \;
+chmod 755 mkdir -p dist/bin/*
 
 for i in *.sh; do
     echo $i

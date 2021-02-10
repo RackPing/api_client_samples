@@ -36,13 +36,10 @@ For running cargo and setting the permissions on all files in this folder:
 ```
 # review dependencies in Cargo.toml
 ./make.sh
+./build.sh
 ```
 
-For a single program file:
-
-```
-chmod 755 filename
-```
+The rust binaries will be in dist/bin.
 
 ## Documentation
 
