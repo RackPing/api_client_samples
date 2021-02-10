@@ -20,9 +20,10 @@
 //     - https://docs.rs/reqwest/0.9.20/reqwest/struct.Response.html
 
 use reqwest;
-// use serde_json;
 use std::env;
 use std::process;
+// use serde_json;
+use std::io::Read;
 // use std::error::Error;
 // use std::result::Result;
 // use std::time::Duration;
@@ -45,22 +46,32 @@ fn main() {
 
    let _timeout   = env::var("RP_TIMEOUT").unwrap().parse::<u64>().unwrap();
    let _redirects = env::var("RP_REDIRECTS").unwrap().parse::<u32>().unwrap();
-   let _debug     = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
+   let debug      = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
 
    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/contacts";
 
    println!("Get list of contacts\n");
 
-   let client = reqwest::blocking::Client::new();
-   let resp = client.get(&url)
+   let client  = reqwest::blocking::Client::new();
+
+   let mut resp = client.get(&url)
        .header("User-agent", user_agent)
        .header("app-key", api_key)
        .basic_auth(username, Some(String::from(password)))
-//     .timeout(Duration::from_secs(_timeout))
 //     .json::<HashMap<String, String>>();
 //     .json::<serde_json::Value>();
+//     .timeout(Duration::from_secs(_timeout))
        .send()
        .unwrap();
-    println!("{:#?}", resp);
+
+    let mut body  = String::new();
+    resp.read_to_string(&mut body).unwrap();
+
+    if debug == 1 {
+       println!("Status: {}", resp.status());
+       println!("Headers:\n{:#?}", resp.headers());
+    }
+
+    println!("{}", body);
 }
 

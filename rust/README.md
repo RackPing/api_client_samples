@@ -25,10 +25,9 @@ OpenSSL and headers (needed for linux)
 jq (optional for the demo.sh test harness)
 ```
 
-On Mac OS X, you may need to link rustc:
-```
-sudo ln -s /usr/local/bin/rustc /usr/bin/rustc
-```
+On linux or Mac OS, you can upgrade rust using `rustup`:
+
+https://www.rust-lang.org/tools/install
 
 ### Installing
 
