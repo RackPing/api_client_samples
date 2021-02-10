@@ -41,7 +41,7 @@ fn main() {
 
     let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/checks";
 
-    println!("info: get list of checks\n");
+    eprintln!("info: get list of checks\n");
 
     let client  = reqwest::blocking::Client::new();
 
