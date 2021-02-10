@@ -39,7 +39,35 @@ For running cargo and setting the permissions on all files in this folder:
 ./build.sh
 ```
 
-The rust binaries will be in dist/bin.
+The rust binaries are copied to dist/bin/.
+
+# Directory Structure
+
+Rust's cargo program is used in the standard way, but each RackPing sample program has its own project directory.
+
+```
+$ tree
+.
+├── build.sh
+├── clean.sh
+├── make.sh
+├── README.md
+├── dist
+│   └── bin
+├── doc
+│   └── README.md
+├── rp_add_check
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       └── rp_add_check.rs
+├── rp_add_contact
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       └── rp_add_contact.rs
+[...]
+```
 
 ## Documentation
 

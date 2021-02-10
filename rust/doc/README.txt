@@ -9,3 +9,10 @@
     - https://github.com/seanmonstar/reqwest/blob/master/examples/blocking.rs
     - https://docs.rs/reqwest/0.9.20/reqwest/struct.Response.html
     - https://www.justanotherdot.com/posts/structuring-rust-projects-with-multiple-binaries.html
+    - https://codereview.stackexchange.com/questions/179878/configuration-fallback-for-environment-value
+    - https://doc.rust-lang.org/cargo/guide/creating-a-new-project.html
+    - https://docs.rs/reqwest/0.10.0-alpha.2/reqwest/blocking/struct.ClientBuilder.html
+    - https://rust-lang-nursery.github.io/rust-cookbook/web/clients/apis.html
+    - https://rust-lang-nursery.github.io/rust-cookbook/web/clients/requests.html
+    - https://rolisz.ro/2020/03/01/web-crawler-in-rust/
+    - https://doc.rust-lang.org/cargo/guide/project-layout.html

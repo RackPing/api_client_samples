@@ -41,7 +41,7 @@ fn main() {
 
     let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/contacts";
 
-    println!("Get list of contacts\n");
+    println!("info: get list of contacts\n");
 
     let client  = reqwest::blocking::Client::new();
 
@@ -53,6 +53,8 @@ fn main() {
         .header("User-agent", user_agent)
         .header("app-key", api_key)
         .basic_auth(username, Some(String::from(password)))
+        .header("Accept","application/json")
+        .header("Accept-Charset","utf-8")
 //      .json::<HashMap<String, String>>();
 //      .json::<serde_json::Value>();
 //      .timeout(Duration::from_secs(_timeout))

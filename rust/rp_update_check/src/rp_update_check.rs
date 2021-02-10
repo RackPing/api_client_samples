@@ -1,4 +1,4 @@
-// Program: rp_list_checks.rs
+// Program: rp_update_check.rs
 // Usage: cargo run
 // Date: 2021 02 06
 // Purpose: rust language sample client program for RackPing Monitoring API 2.0
@@ -21,6 +21,9 @@ use std::io::Read;
 // use std::collections::HashMap;
 
 fn main() {
+    let args: Vec<String> = env::args().collect();
+    let id = &args[1];
+
     let username   = env::var("RP_USER").unwrap_or("".to_string());
     if username == "" {
        println!("error: do 'source ../set.sh' first.\n");
@@ -39,9 +42,9 @@ fn main() {
     let _redirects = env::var("RP_REDIRECTS").unwrap().parse::<u32>().unwrap();
     let debug      = env::var("RP_DEBUG").unwrap().parse::<u8>().unwrap();
 
-    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/checks";
+    let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/checks/" + id;
 
-    println!("info: get list of checks\n");
+    println!("info: update one check\n");
 
     let client  = reqwest::blocking::Client::new();
 
@@ -49,17 +52,29 @@ fn main() {
 //    .timeout(Duration::from_secs(10))
 //    .build()?;
 
-    let mut resp = client.get(&url)
-       .header("User-agent", user_agent)
-       .header("app-key", api_key)
-       .basic_auth(username, Some(String::from(password)))
-       .header("Accept","application/json")
-       .header("Accept-Charset","utf-8")
-//     .json::<HashMap<String, String>>();
-//     .json::<serde_json::Value>();
-//     .timeout(Duration::from_secs(_timeout))
-       .send()
-       .unwrap();
+    let host = format!("https://www.rackping.com/?{}", api_key);
+
+    let params = [
+       ("name",       "APITestTest"),
+       ("host",       &host),
+       ("port",       "443"),
+       ("resolution", "60"),
+       ("paused",     "1")
+    ];
+
+    let mut resp = client.put(&url)
+        .form(&params)
+        .header("User-agent", user_agent)
+        .header("app-key", api_key)
+        .header("Accept","application/json")
+        .header("Accept-Charset","utf-8")
+        .header("Content-type","application/json")
+        .basic_auth(username, Some(String::from(password)))
+//      .json::<HashMap<String, String>>();
+//      .json::<serde_json::Value>();
+//      .timeout(Duration::from_secs(_timeout))
+        .send()
+        .unwrap();
 
     let mut body = String::new();
     resp.read_to_string(&mut body).unwrap();
