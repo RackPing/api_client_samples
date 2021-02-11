@@ -3,7 +3,7 @@
 # Program: build.sh
 # Usage: ./build.sh
 # Date: 2020 10 05
-# Purpose: rust build script for multiple program files
+# Purpose: rust build script for multiple program files to populate dist/bin/
 # Version: 1.0
 # Copyright: RackPing USA 2020
 # Env: bash
