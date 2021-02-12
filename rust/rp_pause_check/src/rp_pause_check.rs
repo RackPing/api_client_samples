@@ -63,7 +63,7 @@ let custom = reqwest::redirect::Policy::custom(|attempt| {
 
     println!("info: pause one check\n");
 
-    let mut resp = client.put(&url)
+    let resp = client.put(&url)
         .header("Accept","application/json")
         .header("Accept-Charset","utf-8")
         .header("User-agent", user_agent)

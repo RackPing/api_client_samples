@@ -76,7 +76,7 @@ let custom = reqwest::redirect::Policy::custom(|attempt| {
 
     println!("info: update one contact\n");
 
-    let mut resp = client.put(&url)
+    let resp = client.put(&url)
         .form(&params)
         .header("Accept","application/json")
         .header("Accept-Charset","utf-8")
