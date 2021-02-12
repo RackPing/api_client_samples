@@ -35,8 +35,6 @@ fn main() {
 
     let url        = scheme.to_string() + &domain.to_string() + &base_url.to_string() + "/contacts";
 
-    eprintln!("info: get list of contacts\n");
-
 let custom = reqwest::redirect::Policy::custom(|attempt| {
     let redirects  = env::var("RP_REDIRECTS").unwrap().parse::<usize>().unwrap();
 
@@ -55,6 +53,8 @@ let custom = reqwest::redirect::Policy::custom(|attempt| {
        .redirect(custom)
        .build()
        .unwrap();
+
+    eprintln!("info: get list of contacts\n");
 
     let resp = client.get(&url)
        .header("Accept","application/json")
