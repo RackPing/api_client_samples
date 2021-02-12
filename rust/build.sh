@@ -14,19 +14,20 @@ ROOT="$PWD"
 mkdir -p dist/bin
 
 for crate in \
-   rp_add_check \
+   rp_list_contacts \
    rp_add_contact \
-   rp_del_check \
+   rp_update_contact \
    rp_del_contact \
    rp_list_checks \
-   rp_list_contacts \
+   rp_add_check \
+   rp_update_check \
    rp_pause_check \
-   rp_pause_maint \
    rp_resume_check \
+   rp_pause_maint \
    rp_resume_maint \
    rp_schedule_maint \
-   rp_update_check \
-   rp_update_contact; do
+   rp_del_check \
+; do
 
   cd "$crate"
   cargo build --release
