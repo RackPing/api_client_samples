@@ -71,7 +71,7 @@ const data = JSON.stringify({
        }
    }
 
-   console.error("info: add one contact:");
+   console.error("info: update one contact:");
 
    const req = https.request(options, function(res) {
        var chunks = [];

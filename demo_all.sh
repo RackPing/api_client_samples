@@ -16,7 +16,7 @@ for i in *; do
       if [ -r "$i/demo.sh" ]; then
          echo
          echo "***"
-         echo "*** $i"
+         echo "*** Language: $i"
          echo "***"
          echo
 

@@ -11,9 +11,12 @@
 
 mylang=go
 
+mkdir -p bin
+
 for i in *.$mylang; do
     chmod 755 $i
     gofmt -e $i > /dev/null
+#   go build -o bin/"${i%.*}" $i
 done
 
 for i in *.sh; do

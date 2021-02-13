@@ -11,7 +11,6 @@
 // Note: First set the envariables with: source ../set.sh
 
 const https = require("https");
-const util = require("util");
 
    var api_key  = process.env.RP_API_KEY;
    if (api_key == "") {
