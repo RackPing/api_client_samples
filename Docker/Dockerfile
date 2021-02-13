@@ -22,7 +22,7 @@ WORKDIR /root
 RUN apt update && \
     apt install -y jq less lsof net-tools telnet vim \
                    php php-curl php-dev php-pear php-propro php-raphf \
-                   python-pip python3-pip libwww-perl golang default-jdk && \
+                   python-pip python3-pip libwww-perl golang nodejs default-jdk && \
     apt clean && \
     apt autoremove --purge
 

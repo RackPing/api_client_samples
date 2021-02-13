@@ -32,7 +32,7 @@ const util = require("util");
 
    var pw = '';
    for (i = 1; i <= 10; i++) {                   // sample code to assign a random password (in plaintext for password reminder email)
-       pw += util.format("%x", between(0, 15));
+       pw += between(0, 15).toString(16);
    }
 
 const data = JSON.stringify({
