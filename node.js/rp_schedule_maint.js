@@ -3,6 +3,7 @@
 // Program: rp_schedule_maint.js
 // Usage: ./rp_schedule_maint.js
 // Purpose: node.js language sample client program for RackPing Monitoring API 2.0
+// Date: 2021 02 12
 // Version: 1.0
 // Copyright: RackPing USA 2020
 // Env: Perl5
@@ -35,11 +36,13 @@ const https = require("https");
    var useragent = process.env.RP_USERAGENT;
    var debug     = process.env.RP_DEBUG;
 
+   var escaped_str = require('querystring').escape('start_maintenance=' + start + '&end_maintenance=' + end);
+
    const options = {
        "method": "PUT",
        "hostname": host,
        "port": 443,
-       "path": base_url + "/checks/" + id + '?start_maintenance=' + start + '&end_maintenance=' + end,
+       "path": base_url + "/checks/" + id + '?' + escaped_str,
        "timeout": timeout,
 //     "redirects": redirects,
        "user-agent": useragent,

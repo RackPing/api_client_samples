@@ -3,6 +3,7 @@
 // Program: rp_resume_check.js
 // Usage: ./rp_resume_check.js
 // Purpose: node.js language sample client program for RackPing Monitoring API 2.0
+// Date: 2021 02 12
 // Version: 1.0
 // Copyright: RackPing USA 2020
 // Env: Perl5
