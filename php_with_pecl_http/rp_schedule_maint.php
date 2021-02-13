@@ -31,7 +31,7 @@
    $end   = str_replace(" ","%20",$argv[3]);
 
    if (empty($id)) {
-      echo "usage: ./$argv[0] checkid\n";
+      echo "usage: ./$argv[0] checkid start end\n";
       exit(1);
    }
 
