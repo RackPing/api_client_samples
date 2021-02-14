@@ -39,12 +39,6 @@ var g_api_key    string = ""
 var g_user_agent string = ""
 
 func redirectPolicyFunc(req *http.Request, via []*http.Request) error {
-   req.SetBasicAuth(g_username, g_password)
-   req.Header.Set("app-key", g_api_key)
-   req.Header.Set("Content-type", "application/json")
-   req.Header.Set("Accept", "application/json")
-   req.Header.Set("Accept-Charset", "utf-8")
-   req.Header.Set("User-Agent", g_user_agent)
 
    return nil
 }
@@ -106,9 +100,13 @@ func main() {
 
       req, err := http.NewRequest("POST", url + "/checks", data)
 
-      req.Header.Set("Content-Type", "application/json")
       req.SetBasicAuth(g_username, g_password)
       req.Header.Set("app-key", g_api_key)
+      req.Header.Set("Accept", "application/json")
+      req.Header.Set("Accept-Charset", "utf-8")
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("User-Agent", g_user_agent)
+
       if Debug { debug(httputil.DumpRequestOut(req, true)) }
 
       res, err := client.Do(req)

@@ -50,7 +50,6 @@ if debug:
 headers = {
            'Accept': 'application/json',
            'Accept-Charset': 'utf-8',
-           'Content-type': 'application/json',
            'App-Key': api_key
           }
 

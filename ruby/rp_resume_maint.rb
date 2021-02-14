@@ -30,7 +30,6 @@ class RackPing
 
   headers 'Accept' => 'application/json'
   headers 'Accept-Charset' => 'utf-8'
-  headers 'Content-Type' => 'application/json'
   headers 'App-key' => $api_key
 
   if ENV['RP_DEBUG'] != "0"

@@ -51,7 +51,6 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    // echo "method=$method, url=$endpoint, user=$user, pw=$pw, api_key=$api_key, timeout=$timeout, data=$data\n";
 
    $headers = array(
-      'Content-Type: application/json',
       'Authorization: Basic '. base64_encode("$user:$pw"),
       'Accept: application/json',
       'Accept-Charset: utf-8',

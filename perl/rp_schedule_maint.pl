@@ -60,7 +60,6 @@ use LWP::UserAgent;
       'Accept-Charset' => 'utf-8',
       'App-key'        => "$api_key",
       'Authorization'  => 'Basic ' . encode_base64("$user:$password", ''),
-      'Content-type'   => 'application/json',
       'User-Agent'     => $useragent,
    );
 

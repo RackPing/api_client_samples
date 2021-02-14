@@ -93,7 +93,6 @@ public class RackpingPauseCheck {
          con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
          // con.setRequestProperty("Accept-Encoding", "gzip, deflate");
          con.setRequestProperty("Accept", "application/json");
-         con.setRequestProperty("Content-Type", "application/json");
          con.setRequestProperty("App-key", api_key);
          con.setRequestProperty("Accept-Charset", "utf-8");
 

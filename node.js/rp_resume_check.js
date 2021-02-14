@@ -45,7 +45,6 @@ const https = require("https");
        "headers": {
            "Accept":         "application/json",
            "Accept-Charset": "utf-8",
-           "Content-type":   "application/json",
            "app-key":        api_key,
            "cache-control":  "no-cache",
            'Authorization':  'Basic ' + new Buffer(user + ':' + password).toString('base64')

@@ -44,7 +44,6 @@
       'Authorization' => "Basic " . base64_encode("$user:$password"),
       'Accept'        => 'application/json',
       'Accept-Charset' => 'utf-8',
-      'Content-type'  => 'application/json',
       'X-HTTP-Method-Override' => 'PUT'
    );
 
