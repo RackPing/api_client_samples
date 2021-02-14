@@ -85,7 +85,6 @@ func main() {
 
       req, err := http.NewRequest("PUT", url + "/checks/"+id+"?paused=1", nil)
       req.SetBasicAuth(g_username, g_password)
-      req.Header.Set("Content-type", "application/json")
       req.Header.Set("User-Agent", g_user_agent)
       req.Header.Set("app-key", g_api_key)
       req.Header.Set("Accept", "application/json")
