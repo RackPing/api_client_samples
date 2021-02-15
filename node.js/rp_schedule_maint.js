@@ -36,7 +36,7 @@ const https = require("https");
    var useragent = process.env.RP_USERAGENT;
    var debug     = process.env.RP_DEBUG;
 
-   var escaped_str = require('querystring').escape('start_maintenance=' + start + '&end_maintenance=' + end);
+   var escaped_str = require('querystring').stringify({ 'start_maintenance': start, 'end_maintenance': end });
 
    const options = {
        "method": "PUT",
@@ -65,6 +65,11 @@ const https = require("https");
        });
 
        res.on("end", function() {
+           if (res.statusCode != 200) {
+              console.log("error: status code", res.statusCode);
+              process.exit(1);
+           }
+
            var body = Buffer.concat(chunks);
            console.log(body.toString());
        });

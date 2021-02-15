@@ -68,6 +68,11 @@ const data = JSON.stringify({
        });
 
        res.on("end", function() {
+           if (res.statusCode != 200) {
+              console.log("error: status code", res.statusCode);
+              process.exit(1);
+           }
+
            var body = Buffer.concat(chunks);
            console.log(body.toString());
        });
