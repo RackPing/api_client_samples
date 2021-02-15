@@ -81,7 +81,7 @@ def main():
        redirects_flag = True
 
     try:
-        print("Create a request to delete 1 contact (user):\n")
+        print("info: delete one contact:\n")
         myResponse = requests.delete(url + "/contacts/" + monitor, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

@@ -78,7 +78,7 @@ def main():
        redirects_flag = True
 
     try:
-        print("Create a request to delete 1 monitor:\n")
+        print("info: delete one check:\n")
         myResponse = requests.delete(url + "/checks/" + monitor, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

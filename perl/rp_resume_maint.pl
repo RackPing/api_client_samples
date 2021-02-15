@@ -65,7 +65,7 @@ use LWP::UserAgent;
 # Pass request to the user agent and get a response back
    my $res = $ua->request($req);
 
-   print STDERR "info: finish maintenance on one check\n" if $DEBUG;
+   print STDERR "info: finish maintenance on one check\n";
 
 # Check the outcome of the response
    if ($res->is_success) {

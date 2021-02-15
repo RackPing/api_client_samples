@@ -83,7 +83,7 @@ def main():
        redirects_flag = True
 
     try:
-        print("Create a request to enable a maintenance window for 1 monitor:\n")
+        print("info: schedule maintenance window for one check:\n")
         myResponse = requests.put(url + "/checks/" + monitor + '?maintenance=1', \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

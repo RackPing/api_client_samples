@@ -66,7 +66,7 @@ use LWP::UserAgent;
 # Pass request to the user agent and get a response back
    my $res = $ua->request($req);
 
-   print STDERR "info: delete one contact\n" if $DEBUG;
+   print STDERR "info: delete one contact\n";
 
 # Check the outcome of the response
    if ($res->is_success) {

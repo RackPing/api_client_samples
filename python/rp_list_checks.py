@@ -76,7 +76,7 @@ def main():
        redirects_flag = True
 
     try:
-        sys.stderr.write("Create a request to fetch list of monitors:\n")
+        sys.stderr.write("info: list checks:\n")
         myResponse = requests.get(url + "/checks", \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

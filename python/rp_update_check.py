@@ -87,7 +87,7 @@ def main():
        redirects_flag = True
 
     try:
-        sys.stderr.write("Create a request to update 1 check (monitor):\n")
+        sys.stderr.write("info: update one check:\n")
         myResponse = requests.put(url + "/checks/" + checkid, json=form, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

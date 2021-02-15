@@ -89,7 +89,7 @@ def main():
        redirects_flag = True
 
     try:
-        sys.stderr.write("Create a request to update 1 contact (user):\n")
+        sys.stderr.write("info: update one contact:\n")
         myResponse = requests.put(url + "/contacts/" + contactid, json=form, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

@@ -58,7 +58,7 @@ use LWP::UserAgent;
    my @headers = (
       'Accept'         => 'application/json',
       'Accept-Charset' => 'utf-8',
-      'App-key'        => "$api_key",
+      'App-key'        => $api_key,
       'Authorization'  => 'Basic ' . encode_base64("$user:$password", ''),
       'User-Agent'     => $useragent,
    );
@@ -72,7 +72,7 @@ use LWP::UserAgent;
 # Pass request to the user agent and get a response back
    my $res = $ua->request($req);
 
-   print STDERR "info: start maintenance on one check\n" if $DEBUG;
+   print STDERR "info: start maintenance window on one check\n";
 
 # Check the outcome of the response
    if ($res->is_success) {

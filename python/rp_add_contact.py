@@ -94,7 +94,7 @@ def main():
        redirects_flag = True
 
     try:
-        sys.stderr.write("Create a request to add a new contact (user):\n")
+        sys.stderr.write("info: add one new contact:\n")
         myResponse = requests.post(url + "/contacts", json=form, \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

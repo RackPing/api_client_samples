@@ -81,7 +81,7 @@ def main():
        redirects_flag = True
 
     try:
-        print("Create a request to disable 1 monitor:\n")
+        print("info: pause one check:\n")
         myResponse = requests.put(url + "/checks/" + monitor + '?paused=1', \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

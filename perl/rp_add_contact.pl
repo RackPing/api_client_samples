@@ -90,7 +90,7 @@ use LWP::UserAgent;
 
    my $res = $ua->post( $url . "/contacts", Content => $form );
 
-   print STDERR "info: add one contact\n" if $DEBUG;
+   print STDERR "info: add one contact\n";
 
 # Check the outcome of the response
    if ($res->is_success) {

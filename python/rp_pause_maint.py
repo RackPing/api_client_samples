@@ -81,7 +81,7 @@ def main():
        redirects_flag = True
 
     try:
-        print("Create a request to maintenance mode 1 monitor:\n")
+        print("info: start maintenance for one check:\n")
         myResponse = requests.put(url + "/checks/" + monitor + '?maintenance=1', \
                                   auth=HTTPBasicAuth(user, password), \
                                   headers=headers, \

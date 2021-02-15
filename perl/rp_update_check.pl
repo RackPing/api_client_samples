@@ -81,7 +81,7 @@ use LWP::UserAgent;
 
    my $res = $ua->put( $url . "/checks/" . $checkid, Content => $form );
 
-   print STDERR "info: update one check\n" if $DEBUG;
+   print STDERR "info: update one check\n";
 
 # Check the outcome of the response
    if ($res->is_success) {

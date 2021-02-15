@@ -82,7 +82,7 @@ use LWP::UserAgent;
 # Create a request to update one contact
    my $res = $ua->put( $url . "/contacts/$contactid", Content => $form );
 
-   print STDERR "info: update one contact\n" if $DEBUG;
+   print STDERR "info: update one contact\n";
 
 # Check the outcome of the response
    if ($res->is_success) {
