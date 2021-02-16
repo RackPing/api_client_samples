@@ -1,8 +1,8 @@
 # RackPing API 2.0 Client Sample Javascript Programs
 
-Please navigate to the node.js folder for Javascript samples.
+Please navigate to the node.js folder for Javascript sample programs.
 
-Note: if you attempt to use RackPing authentication credentials in a public browser page with Javascript, other people will be able to see your username, password and API key.
+Note: if you include RackPing authentication credentials in a public browser page with Javascript, other people will be able to use "View Source" to see your username, password and API key.
 
 ## Version
 
