@@ -31,7 +31,7 @@ https://www.rust-lang.org/tools/install
 
 ### Installing
 
-For running cargo and setting the permissions on all files in this folder:
+For running `cargo` and setting the permissions on all files in this folder:
 
 ```
 # review dependencies in Cargo.toml
@@ -39,15 +39,32 @@ For running cargo and setting the permissions on all files in this folder:
 ./build.sh
 ```
 
-The rust binaries are copied to dist/bin/.
+`build.sh` copies the rust binaries to dist/bin/:
+```
+$ ls -1
+
+rp_add_check
+rp_add_contact
+rp_del_check
+rp_del_contact
+rp_list_checks
+rp_list_contacts
+rp_pause_check
+rp_pause_maint
+rp_resume_check
+rp_resume_maint
+rp_schedule_maint
+rp_update_check
+rp_update_contact
+```
 
 # Directory Structure
 
-Rust's cargo program is used in the standard way, but each RackPing sample program has its own project directory.
+Rust's `cargo` build program is used in the standard way, but each RackPing sample program has its own Rust project directory.
 
 ```
 $ tree
-.
+
 ├── build.sh
 ├── clean.sh
 ├── make.sh
