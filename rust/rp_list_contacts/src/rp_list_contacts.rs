@@ -83,7 +83,7 @@ let custom = reqwest::redirect::Policy::custom(|attempt| {
           println!("{}", resp);
         },
         Err(err) => {
-            println!("error: while receiving respponse body: {}", err);
+            println!("error: while receiving response body: {}", err);
             process::exit(1);
         }
     };
