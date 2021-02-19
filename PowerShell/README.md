@@ -1,11 +1,12 @@
 # RackPing API 2.0 Client Sample PowerShell Programs
 
-Microsoft PowerShell sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command lin, including managing checks and contacts.e
+Microsoft PowerShell sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command lin, including managing checks and contacts.
 
 ## Getting Started
 
 * [Create a FREE RackPing monitoring account!](https://www.rackping.com/cgi-bin/signup.cgi) (Ctrl-click or Cmd-click link to signup in new tab)
 * Download or copy-and-paste a program, then configure set.sh with your RackPing login and API key.
+* Or use the Dockerfile to create a docker container that has PowerShell pre-installed.
 
 ### Prerequisites
 
@@ -27,6 +28,8 @@ On Mac OS High Sierra or newer, you can install PowerShell with:
 ```
 brew install powershell
 ```
+
+To install on Debian 10, Ubuntu 18 or Ubuntu 19, see the Dockerfile.
 
 ## Documentation
 
