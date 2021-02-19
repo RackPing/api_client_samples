@@ -41,7 +41,7 @@ For running `cargo` and setting the permissions on all files in this folder:
 
 `build.sh` copies the rust binaries to dist/bin/:
 ```
-$ ls -1
+$ ls -1 dist/bin
 
 rp_add_check
 rp_add_contact
