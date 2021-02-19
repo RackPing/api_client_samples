@@ -10,9 +10,10 @@ Microsoft PowerShell sample programs that you can copy-and-paste to automate com
 
 ### Prerequisites
 
-Tested with Microsoft PowerShell 7.1 for linux.
+Tested with Microsoft PowerShell 7.1.2 for linux.
 
 ```
+pwsh -v
 jq (optional for the demo.sh test harness)
 ```
 

@@ -53,7 +53,8 @@ $headers.Add("User-Agent",     $useragent)
 $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($user + ":" + $password))
 $headers.Add("Authorization",  "Basic $auth")
 
-Write-Error "info: add one contact"
+### 411 - jq is confused because Write-Error by default writes to stdout, not stderr
+### Write-Error "info: add one contact"
 
 $resp = try {
    Invoke-RestMethod $url -Method Post -Headers $headers -Body $json -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop
