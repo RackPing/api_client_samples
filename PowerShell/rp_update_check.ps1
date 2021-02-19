@@ -14,6 +14,7 @@ if (!$id) {
    Write-Error "usage: rp_update_check.ps1 id"
    exit
 }
+
 $user          = $env::RP_USER
 if (!$user) {
    Write-Error "error: run set.sh first"
