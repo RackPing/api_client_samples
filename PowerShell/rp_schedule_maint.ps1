@@ -7,16 +7,16 @@
 # Returns: exit status is non-zero on failure
 # Note: First set the envariables from ../set.sh
 
-if ($args.Count -lt 3) {
-   Write-Error "usage: rp_schedule_maint.ps1 id start end"
-   exit
-}
-
 param(
    [string]$id,
    [string]$start,
    [string]$end
 )
+
+if (!$id) {
+   Write-Error "usage: rp_schedule_maint.ps1 id start end"
+   exit
+}
 
 $user          = $env:RP_USER
 if (!$user) {
@@ -31,8 +31,8 @@ $max_redirects = $env:RP_REDIRECTS
 $useragent     = $env:RP_USERAGENT
 $DEBUG         = $env:RP_DEBUG
 
-$url = $env:RP_SCHEME + $env:RP_DOMAIN + $env:RP_BASE_URL + "/checks/" + $id + '?start_maintenance=' + start + '&end_maintenance=' + end
-$url = [uri]:EscapeUriString($url)
+$url = $env:RP_SCHEME + $env:RP_DOMAIN + $env:RP_BASE_URL + "/checks/" + $id + '?start_maintenance=' + $start + '&end_maintenance=' + $end
+$url = [uri]::EscapeUriString($url)
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 
