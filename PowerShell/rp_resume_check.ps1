@@ -1,21 +1,21 @@
-# Program: rp_del_contact.ps1
-# Usage: rp_del_contact.ps1
+# Program: rp_resume_check.ps1
+# Usage: rp_resume_check.ps1
 # Purpose: Powershell language sample client program for RackPing Monitoring API 2.0
 # Version: 1.0
 # Copyright: RackPing USA 2020
 # Env: Perl5
 # Returns: exit status is non-zero on failure
-# Note: First set the envariables with: source ../set.sh
+# Note: First set the envariables from ../set.sh
 
 param(
    [string]$id
 )
 if (!$id) {
-   Write-Error "usage: rp_del_contact.ps1 id"
+   Write-Error "usage: rp_resume_check.ps1 id"
    exit
 }
 
-$user          = $env:RP_USER
+$user          = $env::RP_USER
 if (!$user) {
    Write-Error "error: run set.sh first"
    exit
@@ -28,7 +28,7 @@ $max_redirects = $env::RP_REDIRECTS
 $useragent     = $env::RP_USERAGENT
 $DEBUG         = $env::RP_DEBUG
 
-$url = $env::RP_SCHEME + $env::RP_DOMAIN + $env::RP_BASE_URL + "/contacts/" + $id
+$url = $env::RP_SCHEME + $env::RP_DOMAIN + $env::RP_BASE_URL + "/checks/" + $id + '?paused=0'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 
@@ -40,10 +40,12 @@ $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($
 $headers.Add("Authorization",  "Basic $auth")
 
 $resp = try {
-   Invoke-RestMethod $url -Method Delete -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ErrorAction Stop
+   Invoke-RestMethod $url -Method Put -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ErrorAction Stop
 }
 catch {
-    $_.Exception.Response
+   $_.Exception.Response
+   Write-Error $_
+   exit
 }
 
 Write-Output $resp

@@ -1,20 +1,20 @@
-# Program: rp_update_contact.ps1
-# Usage: rp_update_contact.ps1
+# Program: rp_update_check.ps1
+# Usage: rp_update_check.ps1
 # Purpose: Powershell language sample client program for RackPing Monitoring API 2.0
 # Version: 1.0
 # Copyright: RackPing USA 2020
 # Env: Perl5
 # Returns: exit status is non-zero on failure
-# Note: First set the envariables with: source ../set.sh
+# Note: First set the envariables from ../set.sh
 
 param(
    [string]$id
 )
 if (!$id) {
-   Write-Error "usage: rp_update_contact.ps1 id"
+   Write-Error "usage: rp_update_check.ps1 id"
    exit
 }
-$user          = $env:RP_USER
+$user          = $env::RP_USER
 if (!$user) {
    Write-Error "error: run set.sh first"
    exit
@@ -27,7 +27,7 @@ $max_redirects = $env::RP_REDIRECTS
 $useragent     = $env::RP_USERAGENT
 $DEBUG         = $env::RP_DEBUG
 
-$url = $env::RP_SCHEME + $env::RP_DOMAIN + $env::RP_BASE_URL + "/contacts/" + $id
+$url = $env::RP_SCHEME + $env::RP_DOMAIN + $env::RP_BASE_URL + "/checks/" + $id
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 
@@ -42,13 +42,11 @@ $headers.Add("Authorization",  "Basic $auth")
 ### start of user settings
 
 $json = @{
-    "first        = 'JohnJohn'
-    "last         = 'Doe'
-    "email        = 'john.doe+' + $api_key + '@example.com'
-    "role         = 'O'                          # user role: A = Admin, O = Operator, B = Billing
-    "cellphone    = '408 555 1212'
-    "countrycode  = '1'                          # numeric telephone country code prefix
-    "countryiso   = 'US'                         # 2-letter country ISO code
+   "name"       = 'APITestTest'
+   "host"       = 'https://www.rackping.com/?' + $api_key
+   "port"       = 443
+   "resolution" = 60
+   "paused"     = 1
 } | ConvertTo-Json
 
 ### end of user settings
@@ -58,6 +56,8 @@ $resp = try {
 }
 catch {
    $_.Exception.Response
+   Write-Error $_
+   exit
 }
 
 Write-Output $resp

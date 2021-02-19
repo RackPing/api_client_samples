@@ -1,6 +1,6 @@
-# RackPing API 2.0 Client Sample Powershell Programs
+# RackPing API 2.0 Client Sample PowerShell Programs
 
-Microsoft Powershell sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command lin, including managing checks and contacts.e
+Microsoft PowerShell sample programs that you can copy-and-paste to automate common RackPing monitoring tasks from the command lin, including managing checks and contacts.e
 
 ## Getting Started
 
@@ -9,7 +9,7 @@ Microsoft Powershell sample programs that you can copy-and-paste to automate com
 
 ### Prerequisites
 
-Tested with Microsoft Powershell for Windows XP.
+Tested with Microsoft PowerShell 5.1 for Windows XP.
 
 ### Installing
 
