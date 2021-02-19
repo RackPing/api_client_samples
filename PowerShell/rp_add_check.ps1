@@ -53,4 +53,4 @@ catch {
    exit
 }
 
-Write-Output $resp
+Write-Output $resp | ConvertTo-Json
