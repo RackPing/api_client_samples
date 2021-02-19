@@ -9,11 +9,24 @@ Microsoft PowerShell sample programs that you can copy-and-paste to automate com
 
 ### Prerequisites
 
-Tested with Microsoft PowerShell 5.1 for Windows XP.
+Tested with Microsoft PowerShell 7.1 for linux.
+
+```
+jq (optional for the demo.sh test harness)
+```
 
 ### Installing
 
-TBD.
+For setting the permissions on all files in this folder:
+
+```
+./make.sh
+```
+
+On Mac OS High Sierra or newer, you can install PowerShell with:
+```
+brew install powershell
+```
 
 ## Documentation
 
@@ -25,7 +38,12 @@ See the [RackPing API web page](https://www.rackping.com/api.html) for:
 
 ## Running the tests
 
-TBD.
+After installing all the files in this folder, you can use demo.sh as a test harness to create a temporary check and contact using your RackPing account:
+
+```
+source ../set.sh
+time ./demo.sh
+```
 
 ## Version
 

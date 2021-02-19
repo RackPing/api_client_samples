@@ -19,6 +19,11 @@ mylang="ps1"
 
 cmd="pwsh"
 
+if ! command -v "$cmd" &> /dev/null; then
+    echo "error: $cmd could not be found"
+    exit 1
+fi
+
 source ../set.sh
 
 re='^[0-9]+$'

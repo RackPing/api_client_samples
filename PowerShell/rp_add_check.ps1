@@ -22,16 +22,6 @@ $DEBUG         = $env:RP_DEBUG
 
 $url = $env:RP_SCHEME + $env:RP_DOMAIN + $env:RP_BASE_URL + "/checks"
 
-$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-
-$headers.Add("Accept",         'application/json')
-$headers.Add("Accept-Charset", 'utf-8')
-$headers.Add("App-key",        $api_key)
-$headers.Add('Content-type',   'application/json')
-$headers.Add("User-Agent",     $useragent)
-$auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($user + ":" + $password))
-$headers.Add("Authorization",  "Basic $auth")
-
 ### start of user settings
 
 $json = @{
@@ -43,6 +33,18 @@ $json = @{
 } | ConvertTo-Json
 
 ### end of user settings
+
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+
+$headers.Add("Accept",         'application/json')
+$headers.Add("Accept-Charset", 'utf-8')
+$headers.Add("App-key",        $api_key)
+$headers.Add('Content-type',   'application/json')
+$headers.Add("User-Agent",     $useragent)
+$auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($user + ":" + $password))
+$headers.Add("Authorization",  "Basic $auth")
+
+Write-Error "info: add one check"
 
 $resp = try {
    Invoke-RestMethod $url -Method Post -Headers $headers -Body $json -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop

@@ -31,6 +31,8 @@ $headers.Add("App-key",        $api_key)
 $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($user + ":" + $password))
 $headers.Add("Authorization",  "Basic $auth")
 
+Write-Error "info: show list of contacts"
+
 $resp = try {
    Invoke-RestMethod $url -Method Get -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop
 }

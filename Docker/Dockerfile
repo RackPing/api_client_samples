@@ -26,12 +26,30 @@ RUN apt update && \
     apt clean && \
     apt autoremove --purge
 
+
+# start of Microsoft PowerShell for Linux install (optional)
+
+RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb && \
+    dpkg -i packages-microsoft-prod.deb && \
+    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/microsoft.list'
+
+RUN apt update && \
+    apt install -y powershell && \
+    apt clean && \
+    apt autoremove --purge
+
+### Some alternate installation commands (not used)
+###
+### RUN dpkg -i powershell_7.1.2-1.debian.9_amd64.deb && \
+###    apt install -f
+
+# end of Microsoft PowerShell install
+
 RUN gem install httparty && \
     pip install requests urllib3 && \
     pip3 install requests urllib3 && \
     pecl install pecl_http && \
     cpan HTTP::Request
-
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

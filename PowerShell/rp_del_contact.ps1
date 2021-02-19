@@ -39,6 +39,8 @@ $headers.Add("App-key",        $api_key)
 $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($user + ":" + $password))
 $headers.Add("Authorization",  "Basic $auth")
 
+Write-Error "info: delete one contact"
+
 $resp = try {
    Invoke-RestMethod $url -Method Delete -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop
 }
