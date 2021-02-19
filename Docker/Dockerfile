@@ -51,7 +51,8 @@ RUN gem install httparty && \
     pecl install pecl_http && \
     cpan HTTP::Request
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Note: the sh options are for a non-interactive install
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # ADD doesn't automatically unpack from remote URLs
 ADD https://github.com/RackPing/api_client_samples/archive/main.zip .

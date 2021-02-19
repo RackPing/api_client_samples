@@ -12,7 +12,6 @@ param(
    [string]$start,
    [string]$end
 )
-
 if (!$id) {
    Write-Error "usage: rp_schedule_maint.ps1 id start end"
    exit
