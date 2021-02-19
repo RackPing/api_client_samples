@@ -15,20 +15,20 @@ if (!$id) {
    exit
 }
 
-$user          = $env::RP_USER
+$user          = $env:RP_USER
 if (!$user) {
    Write-Error "error: run set.sh first"
    exit
 }
 
-$password      = $env::RP_PASSWORD
-$api_key       = $env::RP_API_KEY
-$timeout       = $env::RP_TIMEOUT
-$max_redirects = $env::RP_REDIRECTS
-$useragent     = $env::RP_USERAGENT
-$DEBUG         = $env::RP_DEBUG
+$password      = $env:RP_PASSWORD
+$api_key       = $env:RP_API_KEY
+$timeout       = $env:RP_TIMEOUT
+$max_redirects = $env:RP_REDIRECTS
+$useragent     = $env:RP_USERAGENT
+$DEBUG         = $env:RP_DEBUG
 
-$url = $env::RP_SCHEME + $env::RP_DOMAIN + $env::RP_BASE_URL + "/checks/" + $id + '?maintenance=0'
+$url = $env:RP_SCHEME + $env:RP_DOMAIN + $env:RP_BASE_URL + "/checks/" + $id + '?maintenance=0'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 

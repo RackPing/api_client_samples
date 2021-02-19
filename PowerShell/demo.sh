@@ -17,7 +17,7 @@ jq_cmd="/usr/bin/jq"
 # set the language extension for this sample folder
 mylang="ps1"
 
-cmd="powershell"
+cmd="pwsh"
 
 source ../set.sh
 
