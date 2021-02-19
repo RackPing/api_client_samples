@@ -40,4 +40,6 @@ catch {
    exit
 }
 
-Write-Output $resp
+if ($resp.statuscode -eq '200') {
+   Write-Output $resp.Content | ConvertTo-Json
+}
