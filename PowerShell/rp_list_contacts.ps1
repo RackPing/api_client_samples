@@ -43,4 +43,4 @@ catch {
    exit
 }
 
-   Write-Output $resp | ConvertTo-Json
+Write-Output $resp | ConvertTo-Json -Depth 10
