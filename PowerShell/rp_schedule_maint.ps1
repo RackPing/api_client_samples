@@ -7,7 +7,7 @@
 # Returns: exit status is non-zero on failure
 # Note: First set the envariables from ../set.sh
 
-if ($args.count < 3) {
+if ($args.Count -lt 3) {
    Write-Error "usage: rp_schedule_maint.ps1 id start end"
    exit
 }
