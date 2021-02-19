@@ -53,7 +53,7 @@ $json = @{
 ### end of user settings
 
 $resp = try {
-   Invoke-RestMethod $url -Method Put -Headers $headers –Body $json -MaximumRedirection $max_redirects -TimeoutSec $timeout -ErrorAction Stop
+   Invoke-RestMethod $url -Method Put -Headers $headers –Body $json -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop
 }
 catch {
    $_.Exception.Response

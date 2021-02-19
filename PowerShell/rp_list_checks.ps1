@@ -32,7 +32,7 @@ $auth = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($
 $headers.Add("Authorization",  "Basic $auth")
 
 $resp = try {
-   Invoke-RestMethod $url -Method Get -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ErrorAction Stop
+   Invoke-RestMethod $url -Method Get -Headers $headers -MaximumRedirection $max_redirects -TimeoutSec $timeout -ContentType 'application/json' -ErrorAction Stop
 }
 catch {
    $_.Exception.Response
