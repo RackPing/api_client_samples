@@ -85,7 +85,7 @@ $cmd ./rp_resume_check.$mylang $id
 $cmd ./rp_pause_maint.$mylang $id
 $cmd ./rp_resume_maint.$mylang $id
 
-$cmd ./rp_schedule_maint.$mylang $id "2020-10-01 00:00:00" "2020-10-07 00:00:00"
+$cmd ./rp_schedule_maint.$mylang $id "2020-10-01 00:00:07" "2020-10-07 00:00:00"
 
 $cmd ./rp_del_check.$mylang $id
 

@@ -102,7 +102,7 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    $id = $argv[1];
 
    if (empty($id)) {
-      echo "usage: ./$argv[0] contactid\n";
+      echo "usage: ./$argv[0] id\n";
       exit(1);
    }
 

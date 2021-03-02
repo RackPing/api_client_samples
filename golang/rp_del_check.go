@@ -83,8 +83,8 @@ func main() {
 
       fmt.Printf("%s\n", "Delete one check")
 
-      req.Header.Set("User-Agent", g_user_agent)
       req, err := http.NewRequest("DELETE", url + "/checks/"+id, nil)
+      req.Header.Set("User-Agent", g_user_agent)
       req.SetBasicAuth(g_username, g_password)
       req.Header.Set("app-key", g_api_key)
       req.Header.Set("Accept", "application/json")

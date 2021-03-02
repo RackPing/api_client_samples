@@ -82,7 +82,7 @@ $cmd_python ./rp_resume_check.$mylang $id
 $cmd_python ./rp_pause_maint.$mylang $id
 $cmd_python ./rp_resume_maint.$mylang $id
 
-$cmd_python ./rp_schedule_maint.$mylang $id "2020-10-01 00:00:00" "2020-10-07 00:00:00"
+$cmd_python ./rp_schedule_maint.$mylang $id "2020-10-01 00:00:08" "2020-10-07 00:00:00"
 
 $cmd_python ./rp_del_check.$mylang $id
 

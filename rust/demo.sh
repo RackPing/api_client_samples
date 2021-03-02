@@ -86,7 +86,7 @@ $distro/rp_resume_check $id
 $distro/rp_pause_maint $id
 $distro/rp_resume_maint $id
 
-$distro/rp_schedule_maint $id "2020-10-01 00:00:00" "2020-10-07 00:00:00"
+$distro/rp_schedule_maint $id "2020-10-01 00:00:10" "2020-10-07 00:00:00"
 
 $distro/rp_del_check $id
 

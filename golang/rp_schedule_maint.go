@@ -21,7 +21,6 @@ import (
         "net/http/httputil"
 	"os"
         "strconv"
-        "strings"
 	"time"
 )
 
@@ -75,14 +74,14 @@ func main() {
    }
 
    {
-      if (len(os.Args) < 4) {
-         fmt.Fprintf(os.Stderr, "usage: %s id 'start' 'end'\n", os.Args[0])
+      if (len(os.Args) < 6) { // when bash passes args with spaces to go, the args are split
+         fmt.Fprintf(os.Stderr, "usage: %s id 'start date' 'start time' 'end date' 'end time'\n", os.Args[0])
          os.Exit(1)
       }
 
       id    := os.Args[1]
-      start := strings.Replace(os.Args[2], " ", "%20", 1) 
-      end   := strings.Replace(os.Args[3], " ", "%20", 1) 
+      start := os.Args[2] + "%20"+ os.Args[3]
+      end   := os.Args[4] + "%20"+ os.Args[5]
 
       fmt.Printf("%s\n", "Enable maintenance window for one check")
 
