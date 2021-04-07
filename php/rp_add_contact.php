@@ -92,15 +92,20 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    }
 
    $response = curl_exec($ch);
+
    $info = curl_getinfo($ch);
+
    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-   curl_close($ch);  
+   $error_message = curl_error($ch);
+
+   curl_close($ch);
 
    $headers = substr($response, 0, $header_size);
    $body = substr($response, $header_size);
 
    $info['headers'] = http_parse_headers($headers);
    $info['body'] = $body;
+   $info['error_message'] = $error_message;
 
    return $info;
 }
@@ -131,15 +136,15 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    $response = do_curl('POST', $url . '/contacts', $user, $password, $api_key, $timeout, $data);
    $rc = $response['http_code'];
    if ($rc == '200') {
-      fwrite(STDERR, "OK ($rc) - " . PHP_EOL);
+      fwrite(STDERR, "OK ($rc)" . PHP_EOL);
+      echo $response['body'];
+      echo "\n";
    }
    else {
-      fwrite(STDERR, "ERROR ($rc) - " . PHP_EOL);
+      $msg = $response['error_message'];
+      fwrite(STDERR, "ERROR ($rc) - $msg\n");
       $ret++;
    }
-
-   echo $response['body'];
-   echo "\n";
 
    if ($debug) {
       fwrite(STDERR, var_dump($response) . PHP_EOL);

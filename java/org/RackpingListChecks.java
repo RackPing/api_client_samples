@@ -1,5 +1,5 @@
-// Program: RackpingDelCheck.java
-// Usage: java RackpingDelCheck
+// Program: RackpingListChecks.java
+// Usage: java RackpingListChecks
 // Purpose: Java language sample client program for RackPing Monitoring API 2.0
 // Copyright: RackPing USA 2020
 // Env: Java 1.8
@@ -25,7 +25,7 @@ import org.json.simple.parser.JSONParser;
 
 // import javax.net.ssl.HttpsURLConnection;
 
-public class RackpingDelCheck {
+public class RackpingListChecks {
 
    private final String USER_AGENT = "Mozilla/5.0";
 
@@ -47,33 +47,18 @@ public class RackpingDelCheck {
       final String password = System.getenv("RP_PASSWORD");
       final String api_key  = System.getenv("RP_API_KEY");
 
-      RackpingDelCheck obj = new RackpingDelCheck();
+      RackpingListChecks obj = new RackpingListChecks();
 
       HttpURLConnection.setFollowRedirects(true);
       System.setProperty("http.maxRedirects", "3");
-
-      int id = 0;
-      if (args.length > 0) {
-          try {
-              id = Integer.parseInt(args[0]);
-          } catch (NumberFormatException e) {
-              System.err.println("usage: check id must be numeric.");
-              System.exit(1);
-          }
-      }
 
       // response Map with HTTP response headers, response code and content body
       Map<String, List<String>> r;
 
       try {
-         System.out.println("8. Delete one check");
-         r = obj.send(url + "/checks/" + id, username, password, api_key, timeout, "", "DELETE");
-         if (r != null) {
-            System.out.println(r.get("body").get(0));
-         }
-         else {
-            System.exit(1);
-         }
+         System.err.println("1. Get list of checks");
+         r = obj.send(url + "/checks", username, password, api_key, timeout, "", "GET");
+         System.out.println(r.get("body").get(0));
       }
       catch (IOException e) {
          System.out.println(e);
@@ -116,33 +101,27 @@ public class RackpingDelCheck {
          // Get response headers
          int responseCode = con.getResponseCode();
 
-         if (responseCode==200) {
-            String inputLine;
-            StringBuffer response = new StringBuffer();
+         String inputLine;
+         StringBuffer response = new StringBuffer();
 
-            in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            while ((inputLine = in.readLine()) != null) {
-               response.append(inputLine).append("\n");
-            }
-
-            // getHeaderFields() returns an unmodifiable Map of the header fields so ...
-            // Make a writable copy of headers to add body and response code
-            Map<String, List<String>> h = new HashMap<String, List<String>>(con.getHeaderFields());
-
-            h.put("body", Arrays.asList(response.toString()));
-            h.put("response-code", Arrays.asList(String.valueOf(responseCode)));
-
-            return h;
+         in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+         while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine).append("\n");
          }
-         else {
-            System.out.println("HTTP response code is " + responseCode);
-         }
+
+         // getHeaderFields() returns an unmodifiable Map of the header fields so ...
+         // Make a writable copy of headers to add body and response code
+         Map<String, List<String>> h = new HashMap<String, List<String>>(con.getHeaderFields());
+
+         h.put("body", Arrays.asList(response.toString()));
+         h.put("response-code", Arrays.asList(String.valueOf(responseCode)));
+
+         return h;
      } finally {
          if (con != null) con.disconnect();
          if (wr != null) wr.close();
          if (in != null) in.close();
      }
-
-     return null;
    }
 }
+

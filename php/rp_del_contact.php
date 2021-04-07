@@ -88,15 +88,20 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    }
 
    $response = curl_exec($ch);
+
    $info = curl_getinfo($ch);
+
    $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-   curl_close($ch);  
+   $error_message = curl_error($ch);
+
+   curl_close($ch);
 
    $headers = substr($response, 0, $header_size);
    $body = substr($response, $header_size);
 
    $info['headers'] = http_parse_headers($headers);
    $info['body'] = $body;
+   $info['error_message'] = $error_message;
 
    return $info;
 }
@@ -114,16 +119,17 @@ function do_curl($method, $endpoint, $user, $pw, $api_key, $timeout, $data) {
    $response = do_curl('DELETE', $url . '/contacts/' . $id, $user, $password, $api_key, $timeout, "");
    $rc = $response['http_code'];
    if ($rc == '200') {
-      fwrite(STDERR, "OK ($rc) - \n");
+      fwrite(STDERR, "OK ($rc)\n");
+      echo $response['body'];
+      echo "\n";
    }
    else {
-      fwrite(STDERR, "ERROR ($rc) - \n");
+      $msg = $response['error_message'];
+      fwrite(STDERR, "ERROR ($rc) - $msg\n");
       $ret++;
    }
 
-   echo $response['body'];
 // fwrite(STDERR, var_dump($response) . PHP_EOL);
-   echo "\n";
 
    exit($ret);
 ?>

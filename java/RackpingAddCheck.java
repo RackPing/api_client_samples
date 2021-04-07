@@ -55,8 +55,6 @@ public class RackpingAddCheck {
       // response Map with HTTP response headers, response code and content body
       Map<String, List<String>> r;
 
-      String location = "";
-      int rc = 0;
       Long id = 0L;
 
       try {
@@ -74,16 +72,15 @@ public class RackpingAddCheck {
 
          String data = new String(json.toString());
          r = obj.send(url + "/checks", username, password, api_key, timeout, data, "POST");
-         System.out.println(r.get("body").get(0));
-
-         // location = r.get("Location").get(0);
-         rc = Integer.valueOf(r.get("response-code").get(0));
+         if (r != null) {
+            System.out.println(r.get("body").get(0));
+         }
+         else {
+            System.exit(1);
+         }
       }
       catch (IOException e) {
          System.out.println(e);
-      }
-
-      if (rc == 200 || rc == 201) {
       }
    }
 
@@ -124,27 +121,33 @@ public class RackpingAddCheck {
          // Get response headers
          int responseCode = con.getResponseCode();
 
-         String inputLine;
-         StringBuffer response = new StringBuffer();
+         if (responseCode==200) {
+            String inputLine;
+            StringBuffer response = new StringBuffer();
 
-         in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine).append("\n");
+            in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            while ((inputLine = in.readLine()) != null) {
+               response.append(inputLine).append("\n");
+            }
+
+            // getHeaderFields() returns an unmodifiable Map of the header fields so ...
+            // Make a writable copy of headers to add body and response code
+            Map<String, List<String>> h = new HashMap<String, List<String>>(con.getHeaderFields());
+
+            h.put("body", Arrays.asList(response.toString()));
+            h.put("response-code", Arrays.asList(String.valueOf(responseCode)));
+
+            return h;
          }
-
-         // getHeaderFields() returns an unmodifiable Map of the header fields so ...
-         // Make a writable copy of headers to add body and response code
-         Map<String, List<String>> h = new HashMap<String, List<String>>(con.getHeaderFields());
-
-         h.put("body", Arrays.asList(response.toString()));
-         h.put("response-code", Arrays.asList(String.valueOf(responseCode)));
-
-         return h;
+         else {
+            System.out.println("HTTP response code is " + responseCode);
+         }
      } finally {
          if (con != null) con.disconnect();
          if (wr != null) wr.close();
          if (in != null) in.close();
      }
+
+     return null;
    }
 }
-

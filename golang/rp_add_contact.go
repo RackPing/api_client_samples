@@ -126,17 +126,20 @@ func main() {
       if err != nil {
          log.Fatal(err)
          debug(httputil.DumpResponse(res, true))
+         os.Exit(1)
       } else {
          defer res.Body.Close()
          if Debug { debug(httputil.DumpResponse(res, true)) }
          body, err := ioutil.ReadAll(res.Body)
-         if err == nil {
+         if err == nil && res.StatusCode == 200 {
             fmt.Printf("%s\n", body)
+         } else {
+            println("HTTP status code is", res.StatusCode)
+            os.Exit(1)
          }
       }
 
       if Debug { debug(httputil.DumpResponse(res, true)) }
-      println("HTTP status code is", res.StatusCode)
    }
 
    os.Exit(0)

@@ -26,8 +26,6 @@
       exit(1);
    }
 
-   $ret = 0;
-
    fwrite(STDERR, "Add one contact" . PHP_EOL);
 
    $pw = substr(md5(microtime()),rand(0,26),8);
@@ -66,13 +64,19 @@
 
    $http_req->setBody($json_data);
 
+   $ret = 0;
+
    try {
        $http_req->send();
        if ($http_req->getResponseCode() == 200) {
            echo $http_req->getResponseBody();
        }
        else {
-           echo $http_req->getRawResponseMessage();
+           if ($debug) {
+              echo $http_req->getRawResponseMessage();
+           }
+           echo "HTTP response code: " . $http_req->getResponseCode() . "\n";
+           exit(1);
        }
    } catch (HttpException $ex) {
        echo $ex;

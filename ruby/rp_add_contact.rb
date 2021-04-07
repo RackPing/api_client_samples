@@ -14,6 +14,7 @@ require 'httparty'
 user=ENV['RP_USER']
 pass=ENV['RP_PASSWORD']
 $api_key=ENV['RP_API_KEY']
+$debug=ENV['RP_DEBUG']
 
 class RackPing
   include HTTParty
@@ -33,7 +34,7 @@ class RackPing
   headers 'Content-Type' => 'application/json'
   headers 'App-key' => $api_key
 
-  if ENV['RP_DEBUG'] != "0"
+  if $debug != "0"
      puts "info: enabling debug mode"
      debug_output
   end
@@ -85,7 +86,11 @@ begin
       puts response.body, "\n"
       success = 1
    else
-      puts response.inspect, "\n"
+      if $debug != "0"
+         puts response.inspect, "\n"
+      end
+      puts "HTTP response code: #{response.code}\n"
+      exit 1
    end
 
 rescue => e
