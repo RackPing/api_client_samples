@@ -68,7 +68,7 @@ use LWP::UserAgent;
    print STDERR "info: finish maintenance on one check\n";
 
 # Check the outcome of the response
-   if ($res->is_success) {
+   if ($res->code() == 200) {
       print $res->content, "\n";
    }
    else {
