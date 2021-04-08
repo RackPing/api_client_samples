@@ -22,10 +22,13 @@ distro="dist/bin"
 n_progs=`ls -1 $distro | grep -c rp_`
 if [[ "$n_progs" < 13 ]]; then
    echo "error: run rust/build.sh first (takes about 1 hour)"
-   exit 1
+   exit 0
 fi
 
 source ../set.sh
+
+set -o pipefail
+set -e
 
 re='^[0-9]+$'
 

@@ -21,10 +21,13 @@ cmd="pwsh"
 
 if ! command -v "$cmd" &> /dev/null; then
     echo "error: $cmd could not be found"
-    exit 1
+    exit 0
 fi
 
 source ../set.sh
+
+set -o pipefail
+set -e
 
 re='^[0-9]+$'
 

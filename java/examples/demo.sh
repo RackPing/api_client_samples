@@ -20,6 +20,9 @@ mylang="java"
 
 source ../set.sh
 
+set -o pipefail
+set -e
+
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-0.el6_10.x86_64
 export PATH=$JAVA_HOME/bin:$PATH
 

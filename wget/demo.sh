@@ -19,6 +19,9 @@ mylang="sh"
 
 source ../set.sh
 
+set -o pipefail
+set -e
+
 re='^[0-9]+$'
 
 echo "0. Cleanup old demo contacts and checks:"

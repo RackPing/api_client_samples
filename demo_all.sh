@@ -7,22 +7,24 @@
 # Version: 1.0
 # Copyright: RackPing USA 2020
 # Env: bash
-# Note:
+# Note: uncomment the set -e line if you want to stop the test harness immediately when a language folder has a non-zero exit
+
+#set -e
 
 date
 
 for i in *; do
    if [ -d $i ]; then
       if [ -r "$i/demo.sh" ]; then
-         echo
-         echo "***"
-         echo "*** Language: $i"
-         echo "***"
-         echo
+         cat <<EOD
 
-         cd $i
-         time ./demo.sh
-         cd -
+***
+*** Language: $i
+***
+
+EOD
+
+         (cd $i && time ./demo.sh)
       fi
    fi
 done
@@ -30,5 +32,7 @@ done
 date
 
 echo 
+
+set +e
 
 exit 0
