@@ -26,6 +26,7 @@ brew install openjdk@11
 
 Some docker commands require sudo access, which requires sudo with no password for Jenkins, where `jenkins` is the build user:
 ```
+sudo visudo -f /etc/sudoers.d/sudoers
 jenkins ALL=(ALL) NOPASSWD: /usr/local/bin/docker
 ```
 
