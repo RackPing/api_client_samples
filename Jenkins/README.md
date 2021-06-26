@@ -18,30 +18,32 @@ to use the dir() command.
 
 After installing docker, here are the additional configuration steps needed for a Jenkins node to build this pipeline.
 
-Mac OSX node (master or slave)
-
 A recent version of Java is needed.
 
-'''
+```
 brew install openjdk@11
-'''
+```
 
 Some docker commands require sudo access, which requires sudo with no password for Jenkins, where `jenkins` is the build user:
-'''
+```
 jenkins ALL=(ALL) NOPASSWD: /usr/local/bin/docker
-'''
+```
 
 Jenkins requires a PATH setting to find the docker command:
 
 Under Manage Settings -> Configure System -> Global properties -> Environment variables, add this path to your environment for docker:
 
+```
 PATH+EXTRA
 $PATH:/usr/local/bin
+```
 
 In your Jenkins build node settings, under Launch method -> Advanced, the full Java command path needs to be set:
 
+```
 JavaPath
 /usr/local/opt/openjdk@11/bin/java
+```
 
 ## References
 
