@@ -76,6 +76,15 @@ The demo_all.sh script progress can be monitored by ear using the following tone
 
 * Do not do load testing against the API servers. If you are doing sequential API requests, please call sleep(1) between them. Contact support if you need performance information or suggestions.
 
+### HTTP Response Codes
+
+The RackPing API returns the following HTTP response codes:
+
+* 200 OK
+* 401 Not Auhorized (API key, email or password incorrect)
+* 403 Forbidden (Plan limits exceeded)
+* 500 Server Error
+
 ## Versioning
 
 Version 1.0

@@ -1,0 +1,41 @@
+pipeline {
+   agent { label "docker" }
+   options {
+       skipStagesAfterUnstable()
+   }
+   stages {
+       stage('Clone') {
+           steps {
+               echo 'Cloning'
+               dir("api_client_samples") {
+                   git url: 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
+               }
+           }
+       }
+       stage('Build') {
+           steps {
+               echo 'Building'
+               dir("api_client_samples/Docker") {
+                   sh "pwd"
+                   sh "ls -l"
+                   sh "./make.sh"
+               }
+           }
+       }
+       stage('Test') {
+           steps {
+               echo 'Testing'
+           }
+       }
+       stage('Deploy') {
+           steps {
+               echo 'Deploying'
+           }
+       }
+   }
+   post { 
+       always { 
+           cleanWs()
+       }
+   }
+}
