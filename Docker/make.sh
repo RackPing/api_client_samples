@@ -9,6 +9,8 @@
 # Env: bash
 # Note: fill in env.list config file first before running the image
 
+printenv
+
 # takes 5-10 minutes to build with a fast Internet connection
 sudo docker build -t rackping_api:latest .
 docker images
