@@ -1,3 +1,6 @@
+// File: jenkinsfile.dockerhub
+// See jenkinsfile.smoketest for dir() and environment settings
+
 pipeline {
    environment {
       registry = "YourDockerhubAccount/YourRepository"

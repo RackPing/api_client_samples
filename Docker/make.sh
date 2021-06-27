@@ -7,7 +7,8 @@
 # Version: 1.0
 # Copyright: RackPing USA 2020
 # Env: bash
-# Note: fill in env.list config file first before running the image
+# Note: fill in the env.list config file first before running the container image
+# Usage: ./make.sh (no arguments means run all steps) or ./make.sh [build|test]
 
 command=$1
 

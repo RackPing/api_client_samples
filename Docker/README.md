@@ -1,6 +1,6 @@
 # RackPing API 2.0 Client Sample Programs Docker
 
-This folder includes a Dockerfile and instructions to build a container with the current RackPing API sample programs, several programming languages and the test harness.
+This folder includes a Dockerfile and instructions to build a container with the current RackPing API sample programs, several programming languages and the test harness. If you use Jenkins, also see the Jenkins/ folder.
 
 Docker makes getting started easier, and isolates any changes from your notebook or server setup or filesystem.
 
