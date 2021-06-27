@@ -1,5 +1,10 @@
 pipeline {
    agent { label "docker" }
+   environment {
+       RP_USER=""
+       RP_PASSWORD=""
+       RP_API_KEY=""
+   }
    options {
        skipStagesAfterUnstable()
    }
@@ -10,26 +15,42 @@ pipeline {
                dir("api_client_samples") {
                    git url: 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
                }
+
+               dir("api_client_samples/Docker") {
+                   sh "echo RP_USER=$RP_USER"         >>env.list
+                   sh "echo RP_PASSWORD=$RP_PASSWORD" >>env.list
+                   sh "echo RP_API_KEY=$RP_API_KEY"   >>env.list
+               }
            }
        }
        stage('Build') {
            steps {
                echo 'Building'
                dir("api_client_samples/Docker") {
+                   sh "set"
                    sh "pwd"
                    sh "ls -l"
-                   sh "./make.sh"
+
+                   sh "./make.sh build"
                }
            }
        }
        stage('Test') {
            steps {
                echo 'Testing'
+               dir("api_client_samples/Docker") {
+                   sh "set"
+                   sh "pwd"
+                   sh "ls -l"
+
+                   sh "./make.sh test"
+               }
            }
        }
        stage('Deploy') {
            steps {
                echo 'Deploying'
+               echo "info: add your repo upload command here if necessary. Note that Docker Hub requires a paid account."
            }
        }
    }

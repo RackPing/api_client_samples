@@ -9,6 +9,11 @@
 # Env: bash
 # Note: fill in env.list config file first before running
 
+# show envariables
+
 set
+
+# other diagnostic commands
+
 ls -l
 tail /etc/php/7.3/cli/php.ini

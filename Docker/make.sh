@@ -9,14 +9,22 @@
 # Env: bash
 # Note: fill in env.list config file first before running the image
 
-printenv
+command=$1
 
-# takes 5-10 minutes to build with a fast Internet connection
-sudo docker build -t rackping_api:latest .
-docker images
+set
 
-# takes 1 minute to run the test harness, then terminate and remove the container process:
-docker run --privileged --rm --env-file ./env.list rackping_api
+if [[ "$command" == "" -or "$command" == "build" ]]; then
+   # takes 5-10 minutes to build with a fast Internet connection:
+   sudo docker build -t rackping_api:latest .
+   docker images
+fi
+
+if [[ "$command" == "" -or "$command" == "test" ]]; then
+   # takes 1 minute to run the test harness, then terminate and remove the container process:
+   docker run --privileged --rm --env-file ./env.list rackping_api
+fi
+
+exit 0
 
 # helpful debugging commands:
 #
