@@ -15,12 +15,10 @@ pipeline {
        stage('Clone') {
            steps {
                echo 'Cloning'
-               dir("api_client_samples") {
-                   git url: 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
-               }
+               git url: 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
 
                // RackPing REST API credentials that will be added to the env template and used in the docker container during the Test stage
-               dir("api_client_samples/Docker") {
+               dir("Docker") {
                    sh "echo RP_USER=$RP_USER         >>env.list"
                    sh "echo RP_PASSWORD=$RP_PASSWORD >>env.list"
                    sh "echo RP_API_KEY=$RP_API_KEY   >>env.list"
@@ -30,7 +28,7 @@ pipeline {
        stage('Build') {
            steps {
                echo 'Building'
-               dir("api_client_samples/Docker") {
+               dir("Docker") {
                    sh "./make.sh build"
                }
            }
@@ -38,7 +36,7 @@ pipeline {
        stage('Test') {
            steps {
                echo 'Testing'
-               dir("api_client_samples/Docker") {
+               dir("Docker") {
                    sh "./make.sh test"
                }
            }
@@ -46,7 +44,7 @@ pipeline {
        stage('Deploy') {
            steps {
                echo 'Deploying'
-               echo "info: add your repo upload command here if necessary. Note that Docker Hub requires a paid account."
+               echo "info: add your repo upload command here if necessary. Note that Docker Hub requires a paid account for uploads."
            }
        }
    }
