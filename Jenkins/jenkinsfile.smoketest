@@ -17,9 +17,9 @@ pipeline {
                }
 
                dir("api_client_samples/Docker") {
-                   sh "echo RP_USER=$RP_USER"         >>env.list
-                   sh "echo RP_PASSWORD=$RP_PASSWORD" >>env.list
-                   sh "echo RP_API_KEY=$RP_API_KEY"   >>env.list
+                   sh "echo RP_USER=$RP_USER         >>env.list"
+                   sh "echo RP_PASSWORD=$RP_PASSWORD >>env.list"
+                   sh "echo RP_API_KEY=$RP_API_KEY   >>env.list"
                }
            }
        }

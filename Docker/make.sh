@@ -13,13 +13,13 @@ command=$1
 
 set
 
-if [[ "$command" == "" -or "$command" == "build" ]]; then
+if [[ "$command" == "" || "$command" == "build" ]]; then
    # takes 5-10 minutes to build with a fast Internet connection:
    sudo docker build -t rackping_api:latest .
    docker images
 fi
 
-if [[ "$command" == "" -or "$command" == "test" ]]; then
+if [[ "$command" == "" || "$command" == "test" ]]; then
    # takes 1 minute to run the test harness, then terminate and remove the container process:
    docker run --privileged --rm --env-file ./env.list rackping_api
 fi
