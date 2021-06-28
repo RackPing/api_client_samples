@@ -4,11 +4,11 @@ Some Jenkins Pipeline scripts are included if you want to do automated building 
 
 * jenkinsfile.smoketest (easy)
 
-This Jenkins Pipeline script is recommended for testing the RackPing REST API samples Docker image build process, but without pushing to a repo hub.
+The smoketest script is recommended for testing the RackPing REST API samples Docker image build process, but without pushing to a repo hub.
 
 * jenkinsfile.dockerhub (advanced)
 
-This Jenkins Pipeline script is an advanced sample showing the recommended "official Jenkins" way to use the full Jenkins and Docker plugins. You will need to customize Jenkins and Docker node, which may take an hour if not previously configured. See the References section for more information.
+The dockerhub script is an advanced sample showing the official way to use the full Jenkins and Docker plugins. You will need to customize the Jenkins and Docker nodes, which may take an hour if not previously configured. See the References section for more information.
 
 ## Configuration for Jenkins remote and Docker on a Mac OSX build node
 
