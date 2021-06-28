@@ -12,7 +12,7 @@
 
 command=$1
 
-set
+# set
 
 if [[ "$command" == "" || "$command" == "build" ]]; then
    # takes 5-10 minutes to build with a fast Internet connection:

@@ -1,12 +1,12 @@
 // File: jenkinsfile.dockerhub
-// Note: Requires Jenkins Docker plugin to be installed
+// Note: Requires Jenkins Docker Pipeline plugin to be installed
 
 pipeline {
    // agent any
    agent { label "docker" }
    environment {
       registry = "YourDockerhubAccount/YourRepository"
-      registryCredential = 'dockerhub_id' // a Docker Registry Token
+      registryCredential = 'dockerhub_id' // id for a Jenkins global credential
       dockerImage = 'rackping_api'
 
       RP_USER=""
