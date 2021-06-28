@@ -6,8 +6,6 @@ Some Jenkins Pipeline scripts are included if you want to do automated building 
 
 This Jenkins Pipeline script is recommended for testing the RackPing REST API samples Docker image build process, but without pushing to a repo hub.
 
-(Since Docker Hub is no longer free, not everybody wants to incur fees.)
-
 * jenkinsfile.dockerhub (advanced)
 
 This Jenkins Pipeline script is an advanced sample showing the recommended "official Jenkins" way to use the full Jenkins and Docker plugins. You will need to customize Jenkins and Docker node, which may take an hour if not previously configured. See the References section for more information.

@@ -44,7 +44,7 @@ pipeline {
        stage('Deploy') {
            steps {
                echo 'Deploying'
-               echo "info: add your repo upload command here if necessary. Note that Docker Hub requires a paid account for uploads."
+               echo "info: add your repo upload command here if necessary."
            }
        }
    }
