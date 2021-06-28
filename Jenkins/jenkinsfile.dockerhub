@@ -1,39 +1,66 @@
 // File: jenkinsfile.dockerhub
-// See jenkinsfile.smoketest for dir() and environment settings
+// Note: Requires Jenkins Docker plugin to be installed
 
 pipeline {
+   // agent any
+   agent { label "docker" }
    environment {
       registry = "YourDockerhubAccount/YourRepository"
-      registryCredential = 'dockerhub_id'
-      dockerImage = ''
+      registryCredential = 'dockerhub_id' // a Docker Registry Token
+      dockerImage = 'rackping_api'
+
+      RP_USER=""
+      RP_PASSWORD=""
+      RP_API_KEY=""
    }
-   agent any
    stages {
-      stage('Cloning our Git') {
+      stage('Clone') {
          steps {
-            git 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
-         }
-      }
-      stage('Building our image') {
-         steps{
-            script {
-               dockerImage = docker.build registry + ":$BUILD_NUMBER"
+            echo 'Cloning'
+            git url: 'https://github.com/RackPing/api_client_samples.git', branch: 'main'
+         
+            // RackPing REST API credentials are appended to the env template and used in the docker container during the Test stage
+            dir("Docker") {
+               sh "echo RP_USER=$RP_USER         >>env.list"
+               sh "echo RP_PASSWORD=$RP_PASSWORD >>env.list"
+               sh "echo RP_API_KEY=$RP_API_KEY   >>env.list"
             }
          }
       }
-      stage('Deploy our image') {
-         steps{
+      stage('Build') {
+         steps {
+            echo 'Building'
             script {
-               docker.withRegistry( '', registryCredential ) {
-                  dockerImage.push()
+               dir("./Docker") {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+         }
+      }
+      stage('Test') {
+         steps {
+               echo 'Testing'
+               dir("Docker") {
+                   sh "./make.sh test"
                }
-            }
          }
       }
-      stage('Cleaning up') {
-         steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
+      stage('Deploy') {
+         steps {
+               echo 'Deploying'
+               script {
+                  docker.withRegistry('', registryCredential) {
+                     dockerImage.push()
+                  }
+               }
+         }
+      }
+      stage('Clean') {
+         steps {
+               echo 'Cleaning'
+               sh "docker rmi $registry:$BUILD_NUMBER"
          }
       }
    }
 }
+
