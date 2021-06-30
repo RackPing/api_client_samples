@@ -2,13 +2,13 @@
 
 Some Jenkins Pipeline scripts are included if you want to do automated building and testing of the scripts in the Docker/ folder.
 
-* jenkinsfile.smoketest (easy)
+* jenkinsfile.smoketest (easy to configure and use)
 
-The smoketest script is recommended for testing the RackPing REST API samples Docker image build process, but without pushing to a repo hub.
+The smoketest script is recommended for testing the RackPing REST API samples Docker image build process, but without pushing to an image repo like Docker Hub.
 
-* jenkinsfile.dockerhub (advanced)
+* jenkinsfile.dockerhub (advanced configuration required)
 
-The dockerhub script is an advanced sample showing the official way to use the full Jenkins and Docker plugins. You will need to customize the Jenkins and Docker nodes, which may take an hour if not previously configured. See the References section for more information.
+The dockerhub script is an advanced sample showing the official way to use the full Jenkins and Docker plugins to push to Docker Hub. You will need to customize the Jenkins and Docker nodes, which may take an hour if not previously configured. See the References section for more information.
 
 ## Configuration for Jenkins remote and Docker on a Mac OSX build node
 
@@ -41,12 +41,12 @@ JavaPath
 /usr/local/opt/openjdk@11/bin/java
 ```
 
-Jenkins Docker Pipeline plugin requires a path to the `docker` command in ~jenkins_user/.bashrc:
+Jenkins Docker Pipeline plugin requires a path to the `docker` command in ~jenkins_user/.bashrc on the docker build node:
 ```
 export PATH=$PATH:/usr/local/bin
 ```
 
-Jenkins Docker Pipeline plugin requires a clean secrets setup:
+Jenkins Docker Pipeline plugin requires a clean secrets setup on the docker build node:
 ```
 rm -fr ~/.docker/config.json /usr/local/bin/docker-credential-osxkeychain
 ```
