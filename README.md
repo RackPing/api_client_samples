@@ -91,6 +91,7 @@ The RackPing API returns the following HTTP response codes:
 * 200 OK
 * 401 Not Auhorized (API key, email or password incorrect)
 * 403 Forbidden (Plan limits exceeded)
+* 429 Too Many Requests
 * 500 Server Error
 
 ## Versioning
